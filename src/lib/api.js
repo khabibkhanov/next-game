@@ -148,10 +148,10 @@ export function getPostBySlugcustom(slug, fields = []) {
     return posts.filter((post) => post.slug === slug);
 }
 
-// export function getPostsByCategory(cat, fields = []) {
-//     const posts = getAllPosts(fields);
-//     return posts.filter((post) => post.genres.genres_name === cat);
-// }
+export function getPostsByCategory(cat, fields = []) {
+    const posts = getAllPosts(fields);
+    return posts.filter((post) => post.genres.genres_name === cat);
+}
 
 export function getPostsByTag(genres, fields = []) {
     const posts = getAllPosts(fields);
