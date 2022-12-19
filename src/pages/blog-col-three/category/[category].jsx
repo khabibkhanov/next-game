@@ -22,11 +22,11 @@ const BlogTwoColumn = ({ posts, title }) => (
 export async function getStaticPaths() {
     const posts = getAllPosts(["category"]);
     return {
-        paths: posts.map(({ category }) => ({
+        paths: {
             params: {
-                category: category.slug,
+                category: "category",
             },
-        })),
+        },
         fallback: false,
     };
 }
