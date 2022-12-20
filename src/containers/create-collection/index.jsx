@@ -34,7 +34,6 @@ const CreateCollectionArea = () => {
         notify();
         reset();
         // eslint-disable-next-line no-console
-        console.log(data);
     };
 
     return (

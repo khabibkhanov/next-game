@@ -96,8 +96,6 @@ export async function getStaticProps({ params }) {
     const game_pictures = posts?.map((game) => game.game_picture);
     const recentPosts = posts.slice(0, 4);
 
-    console.log("publisher_notice", publisher_notice?.data)
-
     let post = await getPostBySlug(poster, [
         "reviews",
         "title",

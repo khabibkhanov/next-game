@@ -3,7 +3,6 @@ import Anchor from "@ui/anchor";
 import { flatDeep, slugify } from "@utils/methods";
 
 const PublisherDetailsWidget = ({ details, heading }) => {
-    console.log(details);
     return (
         <div className="rbt-single-widget widget_tag_cloud mt--40 mb--40">
         <h5 className="title">{heading}</h5>
