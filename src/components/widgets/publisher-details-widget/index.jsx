@@ -11,16 +11,16 @@ const PublisherDetailsWidget = ({ details, heading }) => {
         <div className="inner mt--20">
             <div className="tagcloud">
                 <span className="link fs-3">
-                    {details?.title}
+                    {`Ishlab chiqarvuchi nomi: ${details?.title}`}
                 </span>
                 <a href={details?.publisher_site} target="_blank" rel="noreferrer">
-                    {`${details?.title}ning sayti`}
+                    {`O'yinning rasmiy sayti`}
                 </a>
                 <a href={details?.privacy_policy} target="_blank" rel="noreferrer">
-                    {`${details?.title}ning huquqlari`}
+                    {`Ishlab chiqaruvchi huquqlari`}
                 </a>
                 <a href={details?.publisher_support} target="_blank" rel="noreferrer">
-                    {`${details?.title} bilan bog'lanish`}
+                    {`ishlab chiqaruvchi bilan bog'lanish`}
                 </a>
             </div>
         </div>

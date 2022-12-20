@@ -4,8 +4,6 @@ import Image from "next/image";
 import { getMonth, slugify } from "@utils/methods";
 import { ImageType } from "@utils/types";
 import { markdown } from "markdown"
-import Anchor from "@ui/anchor";
-import DetailsWidget from "@components/widgets/details-widget";
 import GameDetails from "@containers/blog/game-details";
 
 const BlogDetailsArea = ({ className, post }) => {
@@ -13,8 +11,27 @@ const BlogDetailsArea = ({ className, post }) => {
 
     return (
         <div className={clsx("blog-details-area", className)}>
+
             <div className="blog-content-top">
+                <div className="game-headings">
+                    <h2 className="title mb-2">{post.title}</h2>
+                    
+                    <div className="blog-meta">
+                        <span className="reading-time d-block mb-3 me-5"> 
+                            {post?.timeToRead} min read
+                        </span>
+
+                        <span className="date mb-5">
+                            {
+                                `${date.getDate().toString().padStart(2, "0")} ${" "}
+                                ${getMonth(date)}, ${date.getFullYear()}`
+                            }
+                        </span>
+                    </div>
+                </div>
+
                 <div className="bd-thumbnail">
+
                     <div className="large-img mb--30">
                         {
                             post?.game_picture?.data.map((img, index) => (
@@ -33,31 +50,21 @@ const BlogDetailsArea = ({ className, post }) => {
                             ))
                         }
                     </div>
-                </div>
-                <h2 className="title text-center">{post.title}</h2>
 
-                <div className="blog-meta d-flex justify-content-center">
-                    <span className="reading-time me-5"> 
-                        {post?.timeToRead} min read
-                    </span>
-
-                    <span className="date">
-                        {
-                            `${date.getDate().toString().padStart(2, "0")} ${" "}
-                            ${getMonth(date)}, ${date.getFullYear()}`
-                        }
-                    </span>
+                    <div>
+                        <span>
+                            {post.age_restricts}
+                        </span>
+                    </div>
                 </div>
             </div>
+
             <div
                 className="news-details mb-5"
                 dangerouslySetInnerHTML={{ __html: markdown.toHTML(post.reviews.replaceAll("/uploads", "http://localhost:1337/uploads")) }}
             />
             <div className="blog-content-bottom">
-                <GameDetails publisher_notice = {post?.publisher_notice?.data} />
-                <GameDetails languages={post?.languages?.data} />
-                <GameDetails features = {post?.features?.data} />
-                <GameDetails availables = {post?.availables?.data} />
+                <GameDetails games = {post} />
             </div>    
         </div>
     );
@@ -67,6 +74,7 @@ BlogDetailsArea.propTypes = {
     className: PropTypes.string,
     post: PropTypes.shape({
         title: PropTypes.string,
+        age_restricts: PropTypes.string,
         release_date: PropTypes.string,
         game_picture: ImageType,
         reviews: PropTypes.string,
