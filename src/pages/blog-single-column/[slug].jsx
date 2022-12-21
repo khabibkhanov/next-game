@@ -16,8 +16,7 @@ const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => 
     <Wrapper>
         <SEO pageTitle="Blog Details" />
         <Header />
-        <main id="main-content">
-            <Breadcrumb pageTitle="Blog Details" currentPage="Blog Details" />
+        <main id="main-content main-content-style position-relative">
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">
@@ -80,6 +79,7 @@ export async function getStaticProps({ params }) {
         "createdAt",
         "updatedAt",
         "languages",
+        "age_rating",
         "timeToRead",
         "publisher_notice",
         "features",
@@ -93,8 +93,10 @@ export async function getStaticProps({ params }) {
     const availables = posts?.map((game) => game?.availables)
     const publisher_notice = posts?.map((game) => game?.publisher_notice)
     const features = posts?.map((game) => game?.features)
-    const game_pictures = posts?.map((game) => game.game_picture);
+    const game_pictures = posts?.map((game) => game?.game_picture);
+    const age_rating = posts?.map((game) => game?.age_rating);
     const recentPosts = posts.slice(0, 4);
+
 
     let post = await getPostBySlug(poster, [
         "reviews",
@@ -110,6 +112,7 @@ export async function getStaticProps({ params }) {
         "timeToRead",
         "publisher_notice",
         "features",
+        "age_rating",
         "availables",
         "genres",
         "slug",
@@ -126,7 +129,6 @@ export async function getStaticProps({ params }) {
         });
         return isRelated && post.slug !== poster?.slug;
     }).slice(0, 3);
-    
 
     return {
         props: {
@@ -139,6 +141,7 @@ export async function getStaticProps({ params }) {
             languages,
             game_pictures,
             relatedPosts,
+            age_rating,
             genres,
             className: "template-color-1",
         },
@@ -149,6 +152,7 @@ BlogDetails.propTypes = {
     post: PropTypes.shape({}),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
     game_picture: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    age_rating: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     languages: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     publisher_notice: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),

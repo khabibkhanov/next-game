@@ -8,11 +8,35 @@ import GameDetails from "@containers/blog/game-details";
 
 const BlogDetailsArea = ({ className, post }) => {
     const date = new Date(post.createdAt);
+    const age_rating = post.age_rating.data.attributes
 
     return (
         <div className={clsx("blog-details-area", className)}>
 
             <div className="blog-content-top">
+                <div className="bd-thumbnail">
+
+                    <div className="large-img mb--30 position-absolute w-100 start-0 top-0">
+                        <div className="offset"></div>
+                        {
+                            post?.game_picture?.data.map((img, index) => (
+                                
+                                img.attributes.url && (
+                                    <Image
+                                        key={index}
+                                        z-index={-1}
+                                        loader={() => "http://localhost:1337"+img.attributes.url}
+                                        src={img.attributes.name}
+                                        sizes="width: 100 min-height: 10"
+                                        alt={img.attributes.alternativeText}
+                                        layout="fill"
+                                    />
+                                )
+                            ))
+                        }
+                    </div>
+                </div>
+                
                 <div className="game-headings">
                     <h2 className="title mb-2">{post.title}</h2>
                     
@@ -28,33 +52,24 @@ const BlogDetailsArea = ({ className, post }) => {
                             }
                         </span>
                     </div>
-                </div>
-
-                <div className="bd-thumbnail">
-
-                    <div className="large-img mb--30">
-                        {
-                            post?.game_picture?.data.map((img, index) => (
-                                img.attributes.url && (
-                                    <Image
-                                        key={index}
-                                        className="w-100"
-                                        loader={() => "http://localhost:1337"+img.attributes.url}
-                                        src={img.attributes.name}
-                                        width={img.attributes.width}
-                                        height={img.attributes.height}
-                                        alt={img.attributes.alternativeText}
-                                        layout="responsive"
-                                    />
-                                )
-                            ))
-                        }
-                    </div>
 
                     <div>
-                        <span>
-                            {post.age_restricts}
-                        </span>
+                        {
+                            age_rating && (
+                                <div className="d-flex">
+                                    <img src={`http://localhost:1337${age_rating.age_ratings_url}`} alt="age rating pic" />
+
+                                    <div className="age-rating-text">
+                                        <h5>
+                                            {age_rating.title}
+                                        </h5>
+                                        <span>
+                                            {age_rating.description}
+                                        </span>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </div>
