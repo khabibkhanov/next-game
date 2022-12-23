@@ -6,7 +6,7 @@ const TagWidget = ({ genres, rootPage }) => {
     const tagss = [...new Set(flatDeep(genres).map((genres) => genres.title))];
     return (
         <div className="rbt-single-widget widget_tag_cloud mt--40">
-            <h3 className="title">genres</h3>
+            <h3 className="title">Janrlar</h3>
             <div className="inner mt--20">
                 <div className="tagcloud">
                     {tagss?.map((genres) => (

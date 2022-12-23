@@ -22,8 +22,6 @@ const BlogDetails = ({ post, categories, recentPosts, genres, relatedPosts }) =>
                     <div className="row g-6">
                         <div className="col-xl-8 col-lg-8">
                             <BlogDetailsArea post={post} />
-                            <CommentsArea />
-                            <CommentForm />
                             <RelatedPostsArea relatedPosts={relatedPosts} />
                         </div>
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">

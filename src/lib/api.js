@@ -13,7 +13,7 @@ export async function getGames() {
     .then(response => {
         data = response.data
     }) 
-    return data;
+    return data
 }
 
 export async function getGenres() {
@@ -70,7 +70,7 @@ export function getPostBySlug(posts, fields = []) {
     let game_picture = posts?.game_picture?.data?.map((picture) => picture.attributes) ?? [];
     let languages = posts?.languages?.data?.map((language) => language.attributes) ?? [];
 
-    const realSlug = posts?.slug?.replace(/\.md$/, "");
+    const realSlug = posts?.title?.replace(/\.md$/, "");
     const items = {};
 
     // Ensure only the minimal needed data is exposed
@@ -129,9 +129,11 @@ export async function getAllPosts(fields = []) {
     // console.log('games: ',games.data);
 
     const posts = games?.data
-        ?.map((game) => getPostBySlug(game.attributes, fields));
+        // ?.sort((a, b) => b.id - a.id)
+        ?.map((game) => getPostBySlug(game.attributes, fields))
         // sort posts by date in descending order
-        // .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+    // console.log("posts: ", posts);
+
     return posts;
 }
 

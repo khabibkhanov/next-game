@@ -3,7 +3,7 @@ import Anchor from "@ui/anchor";
 
 const RecentPostsWidget = ({ recentPosts, rootPage }) => (
     <div className="rbt-single-widget widget_recent_entries mt--40">
-        <h3 className="title">Recent Games</h3>
+        <h3 className="title">So'nggi o'yinlar</h3>
 
         <div className="inner">
             <ul>

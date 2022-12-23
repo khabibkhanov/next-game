@@ -16,59 +16,63 @@ const BlogDetailsArea = ({ className, post }) => {
             <div className="blog-content-top">
                 <div className="bd-thumbnail">
 
-                    <div className="large-img mb--30 position-absolute w-100 start-0 top-0">
-                        <div className="offset"></div>
+                    <div className="large-img mb--30">
+
+                        <div className="offset">
+                            <div className="container">
+                                <div className="d-flex mb-0">
+                                    <p className="reading-time    mb-3 me-5"> 
+                                        {post?.timeToRead} min read
+                                    </p>
+
+                                    <p className="date mb-5">
+                                        {
+                                            `${date.getDate().toString().padStart(2, "0")} ${" "}
+                                            ${getMonth(date)}, ${date.getFullYear()}`
+                                        }
+                                    </p>
+                                </div>
+                                <div className="game-headings d-flex">
+                                    <h1 className="title mb-2">{post.title}</h1>
+
+                                        {
+                                            age_rating && (
+                                                <div className="age-rating d-flex">
+                                                    <img className="me-4" src={`http://localhost:1337${age_rating.age_ratings_url}`} alt="age rating pic" />
+
+                                                    <div className="age-rating-text">
+                                                        <h5 className="mb-1">
+                                                            {age_rating.title}
+                                                        </h5>
+                                                        <p>
+                                                            {
+                                                                post.purchase ? "O'yinda turli xil to'lovlar bo'lishi mumkin" : "O'yinda hech qanday to'lovlar mavjud emas!"
+                                                            }
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                </div>
+                            </div>
+
+
+                        </div>
                         {
                             post?.game_picture?.data.map((img, index) => (
-                                
                                 img.attributes.url && (
                                     <Image
                                         key={index}
-                                        z-index={-1}
+                                        className="w-100"
                                         loader={() => "http://localhost:1337"+img.attributes.url}
                                         src={img.attributes.name}
-                                        sizes="width: 100 min-height: 10"
+                                        width={img.attributes.width}
+                                        height={img.attributes.height}
                                         alt={img.attributes.alternativeText}
-                                        layout="fill"
+                                        layout="responsive"
                                     />
                                 )
                             ))
-                        }
-                    </div>
-                </div>
-                
-                <div className="game-headings">
-                    <h2 className="title mb-2">{post.title}</h2>
-                    
-                    <div className="blog-meta">
-                        <span className="reading-time d-block mb-3 me-5"> 
-                            {post?.timeToRead} min read
-                        </span>
-
-                        <span className="date mb-5">
-                            {
-                                `${date.getDate().toString().padStart(2, "0")} ${" "}
-                                ${getMonth(date)}, ${date.getFullYear()}`
-                            }
-                        </span>
-                    </div>
-
-                    <div>
-                        {
-                            age_rating && (
-                                <div className="d-flex">
-                                    <img src={`http://localhost:1337${age_rating.age_ratings_url}`} alt="age rating pic" />
-
-                                    <div className="age-rating-text">
-                                        <h5>
-                                            {age_rating.title}
-                                        </h5>
-                                        <span>
-                                            {age_rating.description}
-                                        </span>
-                                    </div>
-                                </div>
-                            )
                         }
                     </div>
                 </div>
