@@ -40,6 +40,7 @@ const GamesList = ({
                                 genres={genres}
                                 rootPage="/games"
                             />
+                            
                         </div>
                     </div>
                     <div className="row">
