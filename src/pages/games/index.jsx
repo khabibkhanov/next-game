@@ -65,6 +65,7 @@ const GamesList = ({
         <Footer />
     </Wrapper>
 );
+
 export async function getStaticProps() {
     const posts = await getAllPosts([
         "title",

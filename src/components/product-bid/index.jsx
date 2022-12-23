@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 const ProductBid = ({ price, likeCount }) => (
     <div className="bid-react-area">
         <div className="last-bid">
-            {price.amount}
-            {price.currency}
+            {/* {price.amount}
+            {price.currency} */}
+            amount 
         </div>
         <div className="react-area">
             <svg

@@ -6,11 +6,15 @@ import { HeadingType, TextType, ImageType, ButtonType } from "@utils/types";
 
 const HeroArea = ({ data }) => (
     <div className="slider-area ptb--60">
+{
+    console.log(data[0])
+
+}
         <div className="container-fluid padding-contorler-am-slide">
             <div className="row d-flex align-items-center">
                 <div className="col-lg-12 col-xl-6 order-2 order-xl-1 padding-contorler-am-slide-right">
                     <div className="banner-top-rating sal-animate">
-                        {data?.badges?.[0] && (
+                        {/* {data?.badges?.[0] && (
                             <BannerBadge
                                 data-sal-delay="300"
                                 data-sal="slide-up"
@@ -35,9 +39,9 @@ const HeroArea = ({ data }) => (
                                     height: 19,
                                 }}
                             />
-                        )}
+                        )} */}
                     </div>
-                    {data?.headings[0]?.content && (
+                    {/* {data?.headings[0]?.content && (
                         <h1
                             className="title large-height theme-color"
                             data-sal-delay="200"
@@ -73,10 +77,15 @@ const HeroArea = ({ data }) => (
                                 </Button>
                             ))}
                         </div>
-                    )}
+                    )} */}
                 </div>
                 <div className="col-lg-12 col-xl-6 order-1 order-xl-2">
-                    {data?.images && <BannerGallery images={data.images} />}
+                    {
+                        data?.game_picture?.data?.map(( picture ) => (
+                            console.log(picture)
+                        ))
+                    }
+                    {/* {data?.game_picture && <BannerGallery images={data.game_picture} />} */}
                 </div>
             </div>
         </div>
