@@ -13,7 +13,7 @@ const PublisherDetailsWidget = ({ details, heading }) => {
                     {`Ishlab chiqarvuchi nomi: ${details?.title}`}
                 </span>
                 <a href={details?.publisher_site} target="_blank" rel="noreferrer">
-                    {`O'yinning rasmiy sayti`}
+                    {`Ishlab chiqaruvchi rasmiy sayti`}
                 </a>
                 <a href={details?.privacy_policy} target="_blank" rel="noreferrer">
                     {`Ishlab chiqaruvchi huquqlari`}

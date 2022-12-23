@@ -13,9 +13,8 @@ const POSTS_PER_PAGE = 4;
 
 const GamesList = ({
     posts,
-    categories,
     recentPosts,
-    tags,
+    genres,
     pagiData,
     page,
 }) => (
@@ -38,9 +37,8 @@ const GamesList = ({
                         </div>
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                             <BlogSidebar
-                                categories={categories}
                                 recentPosts={recentPosts}
-                                tags={tags}
+                                genres={genres}
                                 rootPage="/games"
                             />
                         </div>
@@ -70,7 +68,10 @@ const GamesList = ({
 );
 
 export const getStaticPaths = async () => {
-    const pages = Math.ceil(getPostSlugs().length / POSTS_PER_PAGE);
+    const postSlugs = await getPostSlugs();
+    const pages = Math.ceil(postSlugs?.length / POSTS_PER_PAGE);
+
+
     const paths = Array.from(Array(pages).keys()).map((page) => ({
         params: { page: String(page + 1) },
     }));
@@ -83,29 +84,38 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({ params }) {
     const { page } = params;
-    const posts = getAllPosts([
-        "title",
-        "date",
+    const posts = await getAllPosts([
+        "reviews",
         "slug",
-        "author",
-        "image",
-        "excerpt",
-        "category",
-        "tags",
+        "title",
+        "release_date",
+        "publisher",
+        "developer",
+        "age_restricts",
+        "game_picture",
+        "createdAt",
+        "updatedAt",
+        "purchase",
+        "languages",
+        "age_rating",
         "timeToRead",
-    ]);
-    const categories = posts.map((blog) => ({ ...blog.category }));
-    const tags = posts.map((blog) => [...blog.tags]);
+        "publisher_notice",
+        "features",
+        "availables",
+        "genres",
+    ])
+
+    const genres = posts.map((blog) => [...blog.genres]);
     const recentPosts = posts.slice(0, 4);
+
     return {
         props: {
             posts: posts.slice(
                 (page - 1) * POSTS_PER_PAGE,
                 page * POSTS_PER_PAGE
             ),
-            categories,
             recentPosts,
-            tags,
+            genres,
             className: "template-color-1",
             page: Number(page),
             pagiData: {
@@ -118,9 +128,8 @@ export async function getStaticProps({ params }) {
 
 GamesList.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape({})),
-    categories: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
-    tags: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     pagiData: PropTypes.shape({
         currentPage: PropTypes.number.isRequired,
         numberOfPages: PropTypes.number.isRequired,

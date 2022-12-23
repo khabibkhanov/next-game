@@ -28,6 +28,7 @@ export async function getGenres() {
 export async function getPostSlugs() {
     let slugs = await getGames();
     slugs = slugs.data.map((slug) => slug.attributes["slug"]);
+
     return slugs;
 }
 

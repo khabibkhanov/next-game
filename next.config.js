@@ -11,7 +11,7 @@ module.exports = {
         ignoreDuringBuilds: true,
       },
     images: {
-        domains: ["http://localhost:1337"],
+        domains: ["localhost"],
     },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         // eslint-disable-next-line no-param-reassign
