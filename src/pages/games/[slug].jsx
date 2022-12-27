@@ -99,7 +99,6 @@ export async function getStaticProps({ params }) {
     const game_pictures = posts?.map((game) => game?.game_picture);
     const age_rating = posts?.map((game) => game?.age_rating);
     const recentPosts = posts.reverse().slice(0, 4);
-    
 
     let post = await getPostBySlug(poster, [
         "reviews",

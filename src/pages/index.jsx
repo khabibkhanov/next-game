@@ -38,13 +38,25 @@ export async function getStaticProps() {
     ]);
 
     const genres = games.map((blog) => [...blog.genres]);
-    const recentPosts = games.slice(0, 4);
+    const recentPosts = games.reverse().slice(0, 9);
+
+    const  game_picture = recentPosts.map(game => game.game_picture.data.reduce((acc, val) => {
+        acc[val] = game.game_picture
+    }))
+
+    const iages = function ([a,b,c,...rest]) {
+        if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
+        return [[a,b,c]].concat(iages(rest))
+    }
+
+    const images = iages(game_picture)
 
     return { 
         props: { 
             games: games,
             recentPosts,
             genres,
+            images,
             className: "template-color-1",
         } 
     };
@@ -53,7 +65,8 @@ export async function getStaticProps() {
 const Home = ({
     games,
     recentPosts,
-    genres
+    genres,
+    images
 }) => {
     const content = normalizedData(homepageData?.content || []);
     const liveAuctionData = productData.filter(
@@ -73,7 +86,7 @@ const Home = ({
             <SEO pageTitle="Home" />
             <Header />
             <main id="main-content">
-                <HeroArea data={games} />
+                <HeroArea data={games} game_picture={images} />
                 <CategoryArea data={content["category-section"]} />
                 <LiveExploreArea
                     data={{
@@ -117,7 +130,8 @@ const Home = ({
 Home.propTypes = {
     games: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
+    images: PropTypes.arrayOf(PropTypes.shape({})),
     genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
 };
 
-export default Home;
+export default Home

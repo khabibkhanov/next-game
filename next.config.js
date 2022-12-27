@@ -12,6 +12,14 @@ module.exports = {
       },
     images: {
         domains: ["localhost"],
+        remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: 'localhost',
+              port: '1337',
+              pathname: '',
+            },
+          ],
     },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         // eslint-disable-next-line no-param-reassign

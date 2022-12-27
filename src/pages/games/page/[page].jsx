@@ -69,7 +69,7 @@ const GamesList = ({
 
 export const getStaticPaths = async () => {
     const postSlugs = await getPostSlugs();
-    const pages = Math.ceil(postSlugs?.length / POSTS_PER_PAGE);
+    const pages = Math.ceil(postSlugs?.length / POSTS_PER_PAGE)
 
 
     const paths = Array.from(Array(pages).keys()).map((page) => ({

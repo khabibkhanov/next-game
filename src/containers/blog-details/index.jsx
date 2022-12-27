@@ -38,7 +38,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                         {
                                             age_rating && (
                                                 <div className="age-rating d-flex">
-                                                    <img className="me-4" src={`http://localhost:1337${age_rating.age_ratings_url}`} alt="age rating pic" />
+                                                    <img src={`http://192.168.0.87:1337${age_rating.age_ratings_url}`} className="me-4" alt="age rating pic" />
 
                                                     <div className="age-rating-text">
                                                         <h5 className="mb-1">
@@ -63,9 +63,9 @@ const BlogDetailsArea = ({ className, post }) => {
                                 img.attributes.url && (
                                     <Image
                                         key={index}
-                                        className="w-100"
+                                        className="game-hero w-100"
                                         loader={() => "http://localhost:1337"+img.attributes.url}
-                                        src={img.attributes.name}
+                                        src={`http://localhost:1337${img.attributes.url}`}
                                         width={img.attributes.width}
                                         height={img.attributes.height}
                                         alt={img.attributes.alternativeText}

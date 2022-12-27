@@ -82,7 +82,7 @@ export async function getStaticProps() {
     ]);
 
     const genres = posts.map((blog) => [...blog.genres]);
-    const recentPosts = posts.slice(0, 4);
+    const recentPosts = posts.reverse().slice(0, 4);
 
     return {
         props: {

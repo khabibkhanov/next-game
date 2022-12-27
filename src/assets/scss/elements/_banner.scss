@@ -816,6 +816,7 @@
     max-height: 700px;
     overflow: hidden;
     position: relative;
+
     @media #{$md-layout} {
         max-height: 450px;
     }
@@ -824,7 +825,7 @@
     }
     &::before {
         position: absolute;
-        width: 100%;
+         width: 100%;
         height: 30%;
         left: 0;
         bottom: 0;
@@ -847,44 +848,48 @@
     .banner-gallery-loop {
         display: flex;
         align-items: center;
-        margin: 0 -20px;
+        // margin: 0 -20px;
     }
     .banner-gallery {
         transform: translate3d(0, 0, 0);
         transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-        padding: 0 20px;
+        padding: 20px 20px;
         width: 280px;
+
         img {
             transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
             display: block;
             width: 100%;
-            margin-bottom: 30px;
+            // margin-bottom: 30px;
+            border-radius: 20px;    
+            object-position: center;
+            margin: 0 !important;
         }
     }
 
     .banner-gallery-1 {
-        -webkit-animation: verticalSlide 115s linear infinite;
-        animation: verticalSlide 90s linear infinite;
+        -webkit-animation: verticalSlide 15s linear alternate infinite;
+        animation: verticalSlide 9s linear alternate infinite;
     }
 
     .banner-gallery-2 {
-        -webkit-animation: verticalSlide 115s linear infinite;
-        animation: verticalSlide 70s linear infinite;
+        -webkit-animation: verticalSlide 15s linear alternate infinite;
+        animation: verticalSlide 7s linear alternate infinite;
     }
 
     .banner-gallery-3 {
-        -webkit-animation: verticalSlide 115s linear infinite;
-        animation: verticalSlide 65s linear infinite;
+        -webkit-animation: verticalSlide 15s linear alternate infinite;
+        animation: verticalSlide 6s linear alternate infinite;
     }
 
     .banner-gallery-4 {
-        -webkit-animation: verticalSlide 115s linear infinite;
-        animation: verticalSlide 80s linear infinite;
+        -webkit-animation: verticalSlide 15s linear alternate infinite;
+        animation: verticalSlide 8s linear alternate infinite;
     }
 
     .banner-gallery-5 {
-        -webkit-animation: verticalSlide 115s linear infinite;
-        animation: verticalSlide 50s linear infinite;
+        -webkit-animation: verticalSlide 15s linear alternate infinite;
+        animation: verticalSlide 5s linear alternate infinite;
     }
 }
 
@@ -977,7 +982,6 @@
 .banner-right-feature-product {
     height: 850px;
     background: linear-gradient(0deg, #191923, #000000b5);
-    //   background: linear-gradient(0deg, #191923, #0397edb5);
     width: 100%;
     position: relative;
 

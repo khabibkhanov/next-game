@@ -20,12 +20,12 @@ const Pagination = ({ className, currentPage, numberOfPages, rootPage }) => {
                 {isFirst ? (
                     <li className="page-item">
                         <button type="button" className="disabled">
-                            Previous
+                            Oldingi
                         </button>
                     </li>
                 ) : (
                     <li className="page-item prev">
-                        <Anchor path={previousPage}>Previous</Anchor>
+                        <Anchor path={previousPage}>Oldingi</Anchor>
                     </li>
                 )}
                 {Array.from({ length: numberOfPages }, (_, i) =>
@@ -57,12 +57,12 @@ const Pagination = ({ className, currentPage, numberOfPages, rootPage }) => {
                 {isLast ? (
                     <li className="page-item">
                         <button type="button" className="disabled">
-                            Next
+                            Keyingi
                         </button>
                     </li>
                 ) : (
                     <li className="page-item next">
-                        <Anchor path={nextPage}>Next</Anchor>
+                        <Anchor path={nextPage}>Keyingi</Anchor>
                     </li>
                 )}
             </ul>
