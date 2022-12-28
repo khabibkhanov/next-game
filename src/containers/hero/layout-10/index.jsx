@@ -31,6 +31,7 @@ const HeroArea = ({ data, game_picture }) => (
                                 <Button
                                     data-sal="slide-up"
                                     data-sal-duration="800"
+                                    path={"/reviews"}
                                 >
                                     Button
                                 </Button>

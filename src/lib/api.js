@@ -1,29 +1,7 @@
-import fs from "fs";
 import { join } from "path";
-import matter from "gray-matter";
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
-import axios from "axios";
-
-const postsDirectory = join(process.cwd(), "src/data/posts");
-
-export async function getGames() {
-    let data
-    await axios.get("http://localhost:1337/api/names?populate=%2A")
-    .then(response => {
-        data = response.data
-    }) 
-    return data
-}
-
-export async function getGenres() {
-    let data
-    await axios.get("http://localhost:1337/api/genres?populate[0]=names")
-    .then(response => {
-        data = response.data
-    }  )
-    return data;
-}
+import { getGames } from "./request";
 
 export async function getPostSlugs() {
     let slugs = await getGames();
@@ -68,7 +46,6 @@ export function readingTime(text) {
 
 export function getPostBySlug(posts, fields = []) {
     let genres = posts?.genres?.data?.map((genre) => genre.attributes) || [];
-    let game_picture = posts?.game_picture?.data?.map((picture) => picture.attributes) ?? [];
     let languages = posts?.languages?.data?.map((language) => language.attributes) ?? [];
 
     const realSlug = posts?.title?.replace(/\.md$/, "");
@@ -138,13 +115,6 @@ export async function getAllPosts(fields = []) {
     return posts;
 }
 
-// export function getPost (slug, fields = []) {
-//     const posts = getAllPosts(fields);
-//     const post = posts.find((post) => post.slug === slug);
-//     console.log('post: ', post); 
-//     return post;
-// }
-
 export function getPostBySlugcustom(slug, fields = []) {
     const posts = getAllPosts(fields);
     // console.log('posts: ', posts);
@@ -160,16 +130,3 @@ export function getPostsByTag(genres, fields = []) {
     const posts = getAllPosts(fields);
     return posts.filter((post) => post.tags.map((t) => t.slug).includes(genres));
 }
-
-// const productsDirectory = JSON.parse(
-//     fs.readFileSync("src/data/products.json", "utf8")
-// );
-
-// export function getProductSlugs() {
-//     return fs.readdirSync(productsDirectory);
-// }
-
-// export function getAllProducts() {
-//     const slugs = getPostSlugs();
-//     return slugs;
-// }

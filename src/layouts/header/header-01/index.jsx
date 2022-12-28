@@ -47,7 +47,7 @@ const Header = ({ className }) => {
                             <div className="setting-option d-none d-lg-block">
                                 <SearchForm />
                             </div>
-                            <div className="setting-option rn-icon-list d-block d-lg-none">
+                            {/* <div className="setting-option rn-icon-list d-block d-lg-none">
                                 <div className="icon-box search-mobile-icon">
                                     <button
                                         type="button"
@@ -58,7 +58,7 @@ const Header = ({ className }) => {
                                     </button>
                                 </div>
                                 <FlyoutSearchForm isOpen={search} />
-                            </div>
+                            </div> */}
                             {!isAuthenticated && (
                                 <div className="setting-option header-btn">
                                     <div className="icon-box">
@@ -66,9 +66,10 @@ const Header = ({ className }) => {
                                             color="primary-alta"
                                             className="connectBtn"
                                             size="small"
-                                            onClick={() => authenticate()}
+                                            onClick={() => authenticate = true}
+                                            // path={"/sign-up"}
                                         >
-                                            Wallet connect
+                                            Sign on
                                         </Button>
                                     </div>
                                 </div>

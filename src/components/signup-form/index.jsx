@@ -4,9 +4,11 @@ import Button from "@ui/button";
 import ErrorText from "@ui/error-text";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const SignupForm = ({ className }) => {
     const router = useRouter();
+  
     const {
         register,
         handleSubmit,
@@ -15,12 +17,21 @@ const SignupForm = ({ className }) => {
     } = useForm({
         mode: "onChange",
     });
+
     const onSubmit = (data, e) => {
-        e.preventDefault();
-        // eslint-disable-next-line no-console
-        console.log(data);
-        router.push({
-            pathname: "/",
+        e.preventDefault()
+
+        axios({
+            method: "post",
+            url: "http://localhost:1337/api/auth/local/register",
+            data,
+        })
+        .then((_res) => {
+            window.localStorage.setItem("token", _res.jwt)
+            router.replace('/')
+        })
+        .catch((err) => {
+            console.log(err)
         });
     };
 
@@ -29,43 +40,28 @@ const SignupForm = ({ className }) => {
             <h4>Sign Up</h4>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-5">
-                    <label htmlFor="firstName" className="form-label">
-                        First name
+                    <label htmlFor="username" className="form-label">
+                        Username
                     </label>
                     <input
                         type="text"
-                        id="firstName"
-                        {...register("firstName", {
-                            required: "First name is required",
+                        id="username"
+                        {...register("username", {
+                            required: "username is required",
                         })}
                     />
-                    {errors.firstName && (
-                        <ErrorText>{errors.firstName?.message}</ErrorText>
+                    {errors.username && (
+                        <ErrorText>{errors.username?.message}</ErrorText>
                     )}
                 </div>
                 <div className="mb-5">
-                    <label htmlFor="sastName" className="form-label">
-                        Last name
-                    </label>
-                    <input
-                        type="text"
-                        id="sastName"
-                        {...register("sastName", {
-                            required: "Last name is required",
-                        })}
-                    />
-                    {errors.sastName && (
-                        <ErrorText>{errors.sastName?.message}</ErrorText>
-                    )}
-                </div>
-                <div className="mb-5">
-                    <label htmlFor="exampleInputEmail1" className="form-label">
+                    <label htmlFor="email" className="form-label">
                         Email address
                     </label>
                     <input
                         type="email"
-                        id="exampleInputEmail1"
-                        {...register("exampleInputEmail1", {
+                        id="email"
+                        {...register("email", {
                             required: "Email is required",
                             pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -73,25 +69,25 @@ const SignupForm = ({ className }) => {
                             },
                         })}
                     />
-                    {errors.exampleInputEmail1 && (
+                    {errors.email && (
                         <ErrorText>
-                            {errors.exampleInputEmail1?.message}
+                            {errors.email?.message}
                         </ErrorText>
                     )}
                 </div>
                 <div className="mb-5">
-                    <label htmlFor="newPassword" className="form-label">
+                    <label htmlFor="password" className="form-label">
                         Create Password
                     </label>
                     <input
                         type="password"
-                        id="newPassword"
-                        {...register("newPassword", {
+                        id="password"
+                        {...register("password", {
                             required: "Password is required",
                         })}
                     />
-                    {errors.newPassword && (
-                        <ErrorText>{errors.newPassword?.message}</ErrorText>
+                    {errors.password && (
+                        <ErrorText>{errors.password?.message}</ErrorText>
                     )}
                 </div>
                 <div className="mb-5">
@@ -99,7 +95,7 @@ const SignupForm = ({ className }) => {
                         htmlFor="exampleInputPassword1"
                         className="form-label"
                     >
-                        Re Password
+                        Confirm Password
                     </label>
                     <input
                         type="password"
@@ -107,7 +103,7 @@ const SignupForm = ({ className }) => {
                         {...register("exampleInputPassword1", {
                             required: "Confirm Password is required",
                             validate: (value) =>
-                                value === getValues("newPassword") ||
+                                value === getValues("password") ||
                                 "The passwords do not match",
                         })}
                     />

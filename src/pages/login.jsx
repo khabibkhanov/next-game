@@ -9,6 +9,7 @@ export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
+
 const Login = () => (
     <Wrapper>
         <SEO pageTitle="Log In" />

@@ -18,14 +18,14 @@ const BannerGallery = ({ className, images }) => (
                     src={`http://localhost:1337${image.attributes.url}`}
                     alt={image.attributes.alternativeText || "banner"}
                     width={300}
-                    height={300}
+                    height={250}
                     className="mb-5"
                     priority
                 />
             </div>
         ))}
     </div>
-);
+)
 
 BannerGallery.propTypes = {
     className: PropTypes.string,

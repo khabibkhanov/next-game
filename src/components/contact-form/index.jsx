@@ -12,6 +12,7 @@ const ContactForm = () => {
     } = useForm({
         mode: "onChange",
     });
+
     const [serverState, setServerState] = useState({
         submitting: false,
         status: null,
@@ -28,17 +29,18 @@ const ContactForm = () => {
     const onSubmit = (data, e) => {
         const form = e.target;
         setServerState({ submitting: true });
+       console.log(data);
         axios({
             method: "post",
             url: "https://getform.io/f/7a6695a7-c8e3-442c-bc2f-d46d3b9a535e",
             data,
         })
-            .then((_res) => {
-                handleServerResponse(true, "Thanks! for being with us", form);
-            })
-            .catch((err) => {
-                handleServerResponse(false, err.response.data.error, form);
-            });
+        .then((_res) => {
+            handleServerResponse(true, "Thanks! for being with us", form);
+        })
+        .catch((err) => {
+            handleServerResponse(false, err.response.data.error, form);
+        });
     };
     return (
         <div className="form-wrapper-one registration-area">

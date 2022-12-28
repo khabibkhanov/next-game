@@ -4,6 +4,7 @@ import Button from "@ui/button";
 import ErrorText from "@ui/error-text";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const LoginForm = ({ className }) => {
     const router = useRouter();
@@ -15,11 +16,19 @@ const LoginForm = ({ className }) => {
         mode: "onChange",
     });
     const onSubmit = (data, e) => {
-        e.preventDefault();
-        // eslint-disable-next-line no-console
-        console.log(data);
-        router.push({
-            pathname: "/",
+        e.preventDefault()
+
+        axios({
+            method: "post",
+            url: "http://localhost:1337/api/auth/local",
+            data,
+        })
+        .then((_res) => {
+            window.localStorage.setItem("access_token",_res.data.jwt)
+            router.replace('/')
+        })
+        .catch((err) => {
+            console.log(err)
         });
     };
 
@@ -27,44 +36,38 @@ const LoginForm = ({ className }) => {
         <div className={clsx("form-wrapper-one", className)}>
             <h4>Login</h4>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mb-5">
-                    <label htmlFor="exampleInputEmail1" className="form-label">
-                        Email address
+            <div className="mb-5">
+                    <label htmlFor="identifier" className="form-label">
+                        Username
                     </label>
                     <input
-                        type="email"
-                        id="exampleInputEmail1"
-                        {...register("exampleInputEmail1", {
-                            required: "Email is required",
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                message: "invalid email address",
-                            },
+                        type="text"
+                        id="identifier"
+                        {...register("identifier", {
+                            required: "username is required",
                         })}
                     />
-                    {errors.exampleInputEmail1 && (
-                        <ErrorText>
-                            {errors.exampleInputEmail1?.message}
-                        </ErrorText>
+                    {errors.identifier && (
+                        <ErrorText>{errors.identifier?.message}</ErrorText>
                     )}
                 </div>
                 <div className="mb-5">
                     <label
-                        htmlFor="exampleInputPassword1"
+                        htmlFor="password"
                         className="form-label"
                     >
                         Password
                     </label>
                     <input
                         type="password"
-                        id="exampleInputPassword1"
-                        {...register("exampleInputPassword1", {
+                        id="password"
+                        {...register("password", {
                             required: "Password is required",
                         })}
                     />
-                    {errors.exampleInputPassword1 && (
+                    {errors.password && (
                         <ErrorText>
-                            {errors.exampleInputPassword1?.message}
+                            {errors.password?.message}
                         </ErrorText>
                     )}
                 </div>

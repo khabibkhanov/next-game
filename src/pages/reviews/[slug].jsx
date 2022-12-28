@@ -26,7 +26,7 @@ const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => 
                             <BlogDetailsArea post={post} languages={languages} />
                             <RelatedPostsArea
                                 relatedPosts={relatedPosts}
-                                rootPage="/games"
+                                rootPage="/reviews"
                             />
                         </div>
 
@@ -34,7 +34,7 @@ const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => 
                             <BlogSidebar
                                 genres={genres}
                                 recentPosts={recentPosts}
-                                rootPage="/games"
+                                rootPage="/reviews"
                             />
                         </div>
                     </div>
