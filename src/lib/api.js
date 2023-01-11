@@ -1,7 +1,7 @@
 import { join } from "path";
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
-import { getGames } from "./request";
+import { getGames, getMinRequirements, getGenres, getLanguages } from "./request";
 
 export async function getPostSlugs() {
     let slugs = await getGames();
@@ -9,6 +9,11 @@ export async function getPostSlugs() {
 
     return slugs;
 }
+
+// export async function getLanguagesByGame(game) {
+//     let languages = await getLanguages()
+//     languages = languages.data.filter((language) => game.id === language.
+// }
 
 const wordsPerMinute = 225;
 

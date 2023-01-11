@@ -27,7 +27,7 @@ const SignupForm = ({ className }) => {
             data,
         })
         .then((_res) => {
-            window.localStorage.setItem("token", _res.jwt)
+            window.localStorage.setItem("access_token", _res.jwt)
             router.replace('/')
         })
         .catch((err) => {
@@ -92,24 +92,24 @@ const SignupForm = ({ className }) => {
                 </div>
                 <div className="mb-5">
                     <label
-                        htmlFor="exampleInputPassword1"
+                        htmlFor="confirmpassword"
                         className="form-label"
                     >
                         Confirm Password
                     </label>
                     <input
                         type="password"
-                        id="exampleInputPassword1"
-                        {...register("exampleInputPassword1", {
+                        id="confirmpassword"
+                        {...register("confirmpassword", {
                             required: "Confirm Password is required",
                             validate: (value) =>
                                 value === getValues("password") ||
                                 "The passwords do not match",
                         })}
                     />
-                    {errors.exampleInputPassword1 && (
+                    {errors.confirmpassword && (
                         <ErrorText>
-                            {errors.exampleInputPassword1?.message}
+                            {errors.confirmpassword?.message}
                         </ErrorText>
                     )}
                 </div>

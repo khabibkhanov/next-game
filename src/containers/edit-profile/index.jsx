@@ -45,7 +45,7 @@ const EditProfile = () => (
                                         eventKey="nav-contact"
                                         as="button"
                                     >
-                                        <i className="feather-bell" />
+                                        <i className="feather-be    ll" />
                                         Notification Setting
                                     </Nav.Link>
                                 </Nav>

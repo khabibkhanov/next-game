@@ -15,7 +15,6 @@ import CollectionArea from "@containers/collection/layout-01";
 import NewsletterArea from "@containers/newsletter/layout-01";
 import { normalizedData } from "@utils/methods";
 
-
 // Demo Data
 import homepageData from "../data/homepages/home-10.json";
 import productData from "../data/products.json";

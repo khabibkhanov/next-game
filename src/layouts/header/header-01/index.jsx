@@ -19,7 +19,7 @@ const Header = ({ className }) => {
     const sticky = useSticky();
     const { offcanvas, offcanvasHandler } = useOffcanvas();
     const { search, searchHandler } = useFlyoutSearch();
-    const { authenticate, isAuthenticated } = useMoralis();
+    // const { authenticate, isAuthenticated } = useMoralis();
 
     return (
         <>
@@ -59,26 +59,26 @@ const Header = ({ className }) => {
                                 </div>
                                 <FlyoutSearchForm isOpen={search} />
                             </div> */}
-                            {!isAuthenticated && (
+                            {/* {!isAuthenticated && ( */}
                                 <div className="setting-option header-btn">
                                     <div className="icon-box">
                                         <Button
                                             color="primary-alta"
                                             className="connectBtn"
                                             size="small"
-                                            onClick={() => authenticate = true}
-                                            // path={"/sign-up"}
+                                            // onClick={() => true}
+                                            path={"/sign-up"}
                                         >
                                             Sign on
                                         </Button>
                                     </div>
                                 </div>
-                            )}
-                            {isAuthenticated && (
+                            {/* )} */}
+                            {/* {isAuthenticated && ( */}
                                 <div className="setting-option rn-icon-list user-account">
                                     <UserDropdown />
                                 </div>
-                            )}
+                            {/* )} */}
                             {/* <div className="setting-option rn-icon-list notification-badge">
                                 <div className="icon-box">
                                     <Anchor path={headerData.activity_link}>

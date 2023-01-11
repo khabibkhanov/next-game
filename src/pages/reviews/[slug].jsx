@@ -88,6 +88,7 @@ export async function getStaticProps({ params }) {
         "features",
         "availables",
         "genres",
+        "min_requirements",
     ]);
 
     let poster = posts?.find((game) => game?.slug === slug);
@@ -117,6 +118,7 @@ export async function getStaticProps({ params }) {
         "age_rating",
         "availables",
         "genres",
+        "min_reqirements",
         "purchase",
         "slug",
     ]);
