@@ -3,25 +3,22 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import EditProfileArea from "@containers/edit-profile";
+import ReviewInformation from "@containers/edit-review/edit-review";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const EditProfile = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Edit Profile" />
         <Header />
         <main id="main-content">
-            <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
-            />
-            <ForgetPasswordArea />
+            <ReviewInformation />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default EditProfile;

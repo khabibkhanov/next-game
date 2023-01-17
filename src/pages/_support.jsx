@@ -3,25 +3,27 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import ServiceArea from "@containers/services/layout-01";
+import SupportArea from "@containers/support";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const Support = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Support" />
         <Header />
         <main id="main-content">
             <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
+                pageTitle="Support Center"
+                currentPage="Support Center"
             />
-            <ForgetPasswordArea />
+            <ServiceArea />
+            <SupportArea />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default Support;

@@ -15,6 +15,7 @@ const moralisServerURL = "https://mrnuat16od8z.usemoralis.com:2053/server";
 
 const MyApp = ({ Component, pageProps }) => {
     const router = useRouter();
+
     useEffect(() => {
         sal({ threshold: 0.1, once: true });
     }, [router.asPath]);
@@ -22,9 +23,11 @@ const MyApp = ({ Component, pageProps }) => {
     useEffect(() => {
         sal();
     }, []);
+
     useEffect(() => {
         document.body.className = `${pageProps.className}`;
     });
+
     return (
         <MoralisProvider appId={moralisAppId} serverUrl={moralisServerURL}>
             <ThemeProvider defaultTheme="dark">

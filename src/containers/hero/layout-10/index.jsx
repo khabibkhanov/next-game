@@ -33,7 +33,7 @@ const HeroArea = ({ data, game_picture }) => (
                                     data-sal-duration="800"
                                     path={"/reviews"}
                                 >
-                                    Button
+                                    Maqolalarni o'qish
                                 </Button>
                         </div>
                 </div>

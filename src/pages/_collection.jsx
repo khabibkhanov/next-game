@@ -3,25 +3,25 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import CollectionArea from "@containers/collection/layout-03";
+
+// demo data
+import collectionsData from "../data/collections.json";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const Collection = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Collection" />
         <Header />
         <main id="main-content">
-            <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
-            />
-            <ForgetPasswordArea />
+            <Breadcrumb pageTitle="Our Collection" currentPage="Collection" />
+            <CollectionArea data={{ collections: collectionsData }} />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default Collection;

@@ -2,7 +2,7 @@ import { useReducer, useRef, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import SectionTitle from "@components/section-title/layout-02";
-import Product from "@components/product/layout-01";
+// import Product from "@components/product/layout-01";
 import ProductFilter from "@components/product-filter/layout-01";
 import FilterButton from "@ui/filter-button";
 import { slideToggle } from "@utils/methods";
@@ -132,7 +132,7 @@ const ExploreProductArea = ({ className, space, data }) => {
                                     key={prod.id}
                                     className="col-5 col-lg-4 col-md-6 col-sm-6 col-12"
                                 >
-                                    <Product
+                                    {/* <Product
                                         overlay
                                         placeBid={!!data.placeBid}
                                         title={prod.title}
@@ -144,7 +144,7 @@ const ExploreProductArea = ({ className, space, data }) => {
                                         image={prod.images?.[0]}
                                         authors={prod.authors}
                                         bitCount={prod.bitCount}
-                                    />
+                                    /> */}
                                 </div>
                             ))}
                         </>
@@ -162,7 +162,7 @@ ExploreProductArea.propTypes = {
     space: PropTypes.oneOf([1, 2]),
     data: PropTypes.shape({
         section_title: SectionTitleType,
-        products: PropTypes.arrayOf(ProductType),
+        // products: PropTypes.arrayOf(ProductType),
         placeBid: PropTypes.bool,
     }),
 };

@@ -19,7 +19,8 @@ const Header = ({ className }) => {
     const sticky = useSticky();
     const { offcanvas, offcanvasHandler } = useOffcanvas();
     const { search, searchHandler } = useFlyoutSearch();
-    // const { authenticate, isAuthenticated } = useMoralis();
+    const token = typeof window !== "undefined" && window.localStorage.getItem('access_token');
+
 
     return (
         <>
@@ -45,7 +46,7 @@ const Header = ({ className }) => {
                         </div>
                         <div className="header-right">
                             <div className="setting-option d-none d-lg-block">
-                                <SearchForm />
+                                {/* <SearchForm /> */}
                             </div>
                             {/* <div className="setting-option rn-icon-list d-block d-lg-none">
                                 <div className="icon-box search-mobile-icon">
@@ -59,26 +60,27 @@ const Header = ({ className }) => {
                                 </div>
                                 <FlyoutSearchForm isOpen={search} />
                             </div> */}
-                            {/* {!isAuthenticated && ( */}
-                                <div className="setting-option header-btn">
-                                    <div className="icon-box">
-                                        <Button
-                                            color="primary-alta"
-                                            className="connectBtn"
-                                            size="small"
-                                            // onClick={() => true}
-                                            path={"/sign-up"}
-                                        >
-                                            Sign on
-                                        </Button>
-                                    </div>
-                                </div>
-                            {/* )} */}
-                            {/* {isAuthenticated && ( */}
-                                <div className="setting-option rn-icon-list user-account">
-                                    <UserDropdown />
-                                </div>
-                            {/* )} */}
+                            {
+                                // !token || token == undefined ?  (
+                                //     <div className="setting-option header-btn">
+                                //         <div className="icon-box">
+                                //             <Button
+                                //                 color="primary-alta"
+                                //                 className="connectBtn"
+                                //                 size="small"
+                                //                 // onClick={() => true}
+                                //                 path={"/sign-up"}
+                                //             >
+                                //                 Ro'yxatdan o'tish
+                                //             </Button>
+                                //         </div>
+                                //     </div>
+                                // ) : (
+                                //     <div className="setting-option rn-icon-list user-account">
+                                //         <UserDropdown />
+                                //     </div>
+                                // )
+                            }
                             {/* <div className="setting-option rn-icon-list notification-badge">
                                 <div className="icon-box">
                                     <Anchor path={headerData.activity_link}>

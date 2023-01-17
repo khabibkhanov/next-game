@@ -3,25 +3,25 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import RankingArea from "@containers/ranking";
+
+// Demo data for the ranking page
+import rankingData from "../data/ranking.json";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const Product = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Top NFT" />
         <Header />
         <main id="main-content">
-            <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
-            />
-            <ForgetPasswordArea />
+            <Breadcrumb pageTitle="Our Top NFTs" currentPage="Ranking" />
+            <RankingArea data={{ ranking: rankingData }} />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default Product;

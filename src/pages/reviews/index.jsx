@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
-import Footer from "@layout/footer/footer-01";
+import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
 import BlogArea from "@containers/blog/layout-03";
 import BlogSidebar from "@containers/blog-sidebar";
@@ -18,13 +18,13 @@ const GamesList = ({
     pagiData,
 }) => (
     <Wrapper>
-        <SEO pageTitle="Barcha o'yinlar" />
+        <SEO pageTitle="Barcha Maqolalar" />
         <Header />
         <main id="main-content">
-            <Breadcrumb
-                pageTitle="Barcha o'yinlar"
-                currentPage="Barcha o'yinlar"
-            />
+            {/* <Breadcrumb
+                pageTitle="Barcha Maqolalar"
+                currentPage="Barcha Maqolalar"
+            /> */}
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">

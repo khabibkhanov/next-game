@@ -3,25 +3,25 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import ConnectArea from "@containers/connect";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const Connect = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Connect" />
         <Header />
         <main id="main-content">
             <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
+                pageTitle="Make your payment easier"
+                currentPage="Make your payment easier"
             />
-            <ForgetPasswordArea />
+            <ConnectArea />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default Connect;

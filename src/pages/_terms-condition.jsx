@@ -3,25 +3,25 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import TermsAndConditionsArea from "@containers/terms-condition";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const TermsAndConditions = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Terms & Condition" />
         <Header />
         <main id="main-content">
             <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
+                pageTitle="Terms & Condition"
+                currentPage="Terms & Condition"
             />
-            <ForgetPasswordArea />
+            <TermsAndConditionsArea />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default TermsAndConditions;

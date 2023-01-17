@@ -1,25 +1,24 @@
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
-import Footer from "@layout/footer/footer";
-import Breadcrumb from "@components/breadcrumb";
-import LoginArea from "@containers/login";
+import Footer from "@layout/footer";
+import ActivityArea from "@containers/activity";
+
+// Demo Data
+import activityData from "../data/activity.json";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
-
-
-const Login = () => (
+const Home = () => (
     <Wrapper>
-        <SEO pageTitle="Log In" />
+        <SEO pageTitle="Acivity" />
         <Header />
         <main id="main-content">
-            <Breadcrumb pageTitle="Nuron Login" currentPage="Nuron Login" />
-            <LoginArea />
+            <ActivityArea data={{ activities: activityData }} />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Login;
+export default Home;

@@ -3,25 +3,22 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import UploadVariants from "@containers/upload-variants";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const Home = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Upload Variants" />
         <Header />
         <main id="main-content">
-            <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
-            />
-            <ForgetPasswordArea />
+            <Breadcrumb pageTitle="Upload Variants" />
+            <UploadVariants />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default Home;

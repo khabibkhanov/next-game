@@ -3,25 +3,25 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import ProductArea from "@containers/explore-product/layout-01/index";
+
+// Demo Data
+import productData from "../data/products.json";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const Product = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Product" />
         <Header />
         <main id="main-content">
-            <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
-            />
-            <ForgetPasswordArea />
+            <Breadcrumb pageTitle="Our Product" currentPage="Our Product" />
+            <ProductArea data={{ products: productData }} />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default Product;

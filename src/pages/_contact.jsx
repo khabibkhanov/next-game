@@ -3,25 +3,29 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ForgetPasswordArea from "@containers/forget-password";
+import ContactTopArea from "@containers/contact-top";
+import ContactFormArea from "@containers/contact-form";
+import GoogleMapArea from "@containers/google-map";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const Forget = () => (
+const Contact = () => (
     <Wrapper>
-        <SEO pageTitle="Forget Page" />
+        <SEO pageTitle="Contact" />
         <Header />
         <main id="main-content">
             <Breadcrumb
-                pageTitle="Forget Password?"
-                currentPage="Forget Password?"
+                pageTitle="Contact With Us"
+                currentPage="Contact With Us"
             />
-            <ForgetPasswordArea />
+            <ContactTopArea />
+            <ContactFormArea />
+            <GoogleMapArea />
         </main>
         <Footer />
     </Wrapper>
 );
 
-export default Forget;
+export default Contact;

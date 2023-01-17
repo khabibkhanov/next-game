@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import Button from "@ui/button";
 import ErrorText from "@ui/error-text";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -18,10 +18,10 @@ const SignupForm = ({ className }) => {
         mode: "onChange",
     });
 
-    const onSubmit = (data, e) => {
+    const onSubmit = async (data, e) => {
         e.preventDefault()
 
-        axios({
+        let res = await axios({
             method: "post",
             url: "http://localhost:1337/api/auth/local/register",
             data,
@@ -29,10 +29,12 @@ const SignupForm = ({ className }) => {
         .then((_res) => {
             window.localStorage.setItem("access_token", _res.jwt)
             router.replace('/')
+            return _res
         })
-        .catch((err) => {
-            console.log(err)
+        .catch((errors) => {
+            return errors.error
         });
+        console.log('res', res);
     };
 
     return (
@@ -50,8 +52,11 @@ const SignupForm = ({ className }) => {
                             required: "username is required",
                         })}
                     />
-                    {errors.username && (
-                        <ErrorText>{errors.username?.message}</ErrorText>
+                    {
+                        console.log(errors)
+                    }
+                    {errors?.username && (
+                        <ErrorText>{console.log(errors)}</ErrorText>
                     )}
                 </div>
                 <div className="mb-5">
@@ -69,9 +74,9 @@ const SignupForm = ({ className }) => {
                             },
                         })}
                     />
-                    {errors.email && (
+                    {errors?.email && (
                         <ErrorText>
-                            {errors.email?.message}
+                            {errors?.email?.message}
                         </ErrorText>
                     )}
                 </div>
@@ -86,8 +91,8 @@ const SignupForm = ({ className }) => {
                             required: "Password is required",
                         })}
                     />
-                    {errors.password && (
-                        <ErrorText>{errors.password?.message}</ErrorText>
+                    {errors?.password && (
+                        <ErrorText>{errors?.password?.message}</ErrorText>
                     )}
                 </div>
                 <div className="mb-5">
@@ -107,9 +112,9 @@ const SignupForm = ({ className }) => {
                                 "The passwords do not match",
                         })}
                     />
-                    {errors.confirmpassword && (
+                    {errors?.confirmpassword && (
                         <ErrorText>
-                            {errors.confirmpassword?.message}
+                            {errors?.confirmpassword?.message}
                         </ErrorText>
                     )}
                 </div>
@@ -129,8 +134,8 @@ const SignupForm = ({ className }) => {
                         Allow to all tearms & Allow to all tearms & condition
                     </label>
                     <br />
-                    {errors.exampleCheck1 && (
-                        <ErrorText>{errors.exampleCheck1?.message}</ErrorText>
+                    {errors?.exampleCheck1 && (
+                        <ErrorText>{errors?.exampleCheck1?.message}</ErrorText>
                     )}
                 </div>
                 <Button type="submit" size="medium" className="mr--15">
@@ -147,4 +152,5 @@ const SignupForm = ({ className }) => {
 SignupForm.propTypes = {
     className: PropTypes.string,
 };
+
 export default SignupForm;
