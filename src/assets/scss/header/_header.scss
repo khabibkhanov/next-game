@@ -85,6 +85,10 @@
         display: flex;
         align-items: center;
 
+        @media #{$large-mobile} {
+            height: 20px;
+        }
+
         .rn-dropdown {
             min-width: 320px;
             height: auto;
@@ -221,6 +225,18 @@
         }
     }
 }
+
+// @media #{$large-mobile} {
+//     justify-content: center;
+//     flex-basis: 100%;
+//     margin-top: 10px;
+// }
+// .setting-option {
+//     margin: 0 5px;
+//     @media #{$small-mobile} {
+//         margin: 0 2px;
+//     }
+// }
 
 .rn-header {
     .logo-thumbnail {

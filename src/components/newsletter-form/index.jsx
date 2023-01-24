@@ -11,7 +11,7 @@ const NewsletterForm = ({ className }) => {
     } = useForm();
     const onSubmit = (data) => {
         // eslint-disable-next-line no-console
-        console.log(data);
+        // console.log(data);
     };
     return (
         <form

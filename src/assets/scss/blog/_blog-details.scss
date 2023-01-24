@@ -1,6 +1,6 @@
-.game-site-header {
+// .game-site-header {
     // padding-top: 56%;
-}
+// }
 
 .right-post-details {
     height: 100%;
@@ -30,6 +30,14 @@
                     width: 100% !important;
                     height: 100vh !important;
                     z-index: -5;
+                
+                    @media #{$large-mobile} {
+                        // position: static !important;
+
+                        // &.title {
+
+                        // }
+                    }
                 }
 
                 .offset {
@@ -41,7 +49,7 @@
                     top: 0;
                     margin: 0 auto;
                     height: 100vh !important;
-                    background: linear-gradient(360deg,  rgba(19,19,29,1) 0%, rgba(19,19,29,0.5186449579831933) 100%);
+                    background: linear-gradient(360deg,  rgba(19,19,29,1) 0%, rgba(19,19,29,0.5186449579831933) 50%);
                     padding-top: 55vh;
 
                     .game-headings {
@@ -59,6 +67,14 @@
                         max-height: 300px;
                         width: 600px;
                         margin-right: 40px;
+
+                        @media #{$large-mobile} {
+                            font-size: 20px;
+    
+                            // &.title {
+    
+                            // }
+                        }
                     }
                 }
         }

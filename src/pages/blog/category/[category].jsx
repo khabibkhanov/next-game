@@ -5,7 +5,7 @@
 // import Footer from "@layout/footer/footer-01";
 // import Breadcrumb from "@components/breadcrumb";
 // import BlogArea from "@containers/blog/layout-02";
-// import { getPostsByCategory, getAllPosts } from "../../../lib/api";
+// import { getPostsByCategory, getAllReviews } from "../../../lib/api";
 
 // const Blog = ({ posts, title }) => (
 //     <Wrapper>
@@ -20,7 +20,7 @@
 // );
 
 // export async function getStaticPaths() {
-//     const posts = getAllPosts(["category"]);
+//     const posts = getAllReviews(["category"]);
 //     return {
 //         paths: posts.map(({ category }) => ({
 //             params: {

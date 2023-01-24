@@ -6,7 +6,7 @@ import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
 import BlogArea from "@containers/blog/layout-03";
 import BlogSidebar from "@containers/blog-sidebar";
-import { getPostsByCategory, getAllPosts, getGenres } from "../../../lib/api";
+import { getPostsByCategory, getAllReviews, getGenres } from "../../../lib/api";
 
 const GamesList = ({ posts, title, genres, recentPosts, tags }) => (
     <Wrapper>
@@ -39,21 +39,8 @@ const GamesList = ({ posts, title, genres, recentPosts, tags }) => (
     </Wrapper>
 );
 
-export async function getStaticPaths() {
-    let genres_name = await getGenres();
-    genres_name = genres_name.data.map((genre) => genre.attributes.genre_name);
-    // console.log(genres_name);
-    return {
-        paths: {
-            params: {
-                genres: genres_name,
-            },
-        },
-        fallback: false,
-    };
-}
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const posts = getPostsByCategory(params.genres, [
         "title",
         "date",
@@ -62,7 +49,8 @@ export async function getStaticProps({ params }) {
         "genres",
         "timeToRead",
     ]);
-    const widgetPosts = getAllPosts(["title", "slug", "genres", "tags"]);
+
+    const widgetPosts = getAllReviews(["title", "slug", "genres", "tags"]);
     const genres = widgetPosts.map((blog) => ({ ...blog.genres }));
     const tags = widgetPosts.map((blog) => [...blog.tags]);
     const recentPosts = widgetPosts.slice(0, 4);

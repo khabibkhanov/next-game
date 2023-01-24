@@ -3,6 +3,14 @@ import clsx from "clsx";
 import Image from "next/image";
 import Anchor from "@ui/anchor";
 import { ImageType } from "@utils/types";
+import { images } from "next.config";
+
+const { protocol, hostname, port } = images.remotePatterns
+
+const myLoader = (({src}) => {
+    return src
+})
+
 
 const BlogCard = ({
     className,
@@ -25,8 +33,10 @@ const BlogCard = ({
                                     <Image
                                         key={index}
                                         className="display-block"
+                                        loader={myLoader}
+                                        unoptimized={true}
+                                        src={`${protocol}${hostname}:${port}${img.attributes?.url}`}
                                         layout={img?.attributes?.height ? "responsive" : "fill"}
-                                        src={"http://localhost:1337"+img.attributes.url}
                                         alt={img.attributes.alternativeText}
                                         width={img?.attributes?.width || 489}
                                         height={img?.attributes?.height || 366}
@@ -40,8 +50,7 @@ const BlogCard = ({
                         <div className="category-info">
                             <div className="meta">
                                 <span>
-                                    <i className="feather-clock" /> {timeToRead} min
-                                    read
+                                    <i className="feather-clock" /> O'qish davomiyligi {timeToRead} minut
                                 </span>
                             </div>
                         </div>

@@ -26,10 +26,11 @@ const ContactForm = () => {
             form.reset();
         }
     };
+
     const onSubmit = (data, e) => {
         const form = e.target;
         setServerState({ submitting: true });
-       console.log(data);
+    //    console.log(data);
         axios({
             method: "post",
             url: "https://getform.io/f/7a6695a7-c8e3-442c-bc2f-d46d3b9a535e",
@@ -42,9 +43,10 @@ const ContactForm = () => {
             handleServerResponse(false, err.response.data.error, form);
         });
     };
+
     return (
         <div className="form-wrapper-one registration-area">
-            <h3 className="mb--30">Contact Us</h3>
+            <h3 className="mb--30">Xabar qoldirish</h3>
             <form
                 className="rwt-dynamic-form"
                 id="contact-form"
@@ -52,7 +54,7 @@ const ContactForm = () => {
             >
                 <div className="mb-5">
                     <label htmlFor="contact-name" className="form-label">
-                        Your Name
+                        Ismingiz
                     </label>
                     <input
                         id="contact-name"
@@ -67,7 +69,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-5">
                     <label htmlFor="contact-email" className="form-label">
-                        Email
+                        Elektron manzilingiz
                     </label>
                     <input
                         name="contact-email"
@@ -85,23 +87,8 @@ const ContactForm = () => {
                     )}
                 </div>
                 <div className="mb-5">
-                    <label htmlFor="subject" className="form-label">
-                        Subject
-                    </label>
-                    <input
-                        name="subject"
-                        type="text"
-                        {...register("subject", {
-                            required: "Subject is required",
-                        })}
-                    />
-                    {errors.subject && (
-                        <ErrorText>{errors.subject?.message}</ErrorText>
-                    )}
-                </div>
-                <div className="mb-5">
                     <label htmlFor="contact-message" className="form-label">
-                        Write Message
+                        Xabaringiz
                     </label>
                     <textarea
                         id="contact-message"
@@ -114,7 +101,7 @@ const ContactForm = () => {
                         <ErrorText>{errors.contactMessage?.message}</ErrorText>
                     )}
                 </div>
-                <div className="mb-5 rn-check-box">
+                {/* <div className="mb-5 rn-check-box">
                     <input
                         id="condition"
                         type="checkbox"
@@ -130,9 +117,9 @@ const ContactForm = () => {
                     {errors.condition && (
                         <ErrorText>{errors.condition?.message}</ErrorText>
                     )}
-                </div>
+                </div> */}
                 <Button type="submit" size="medium">
-                    Send Message
+                    Xabar yuborish
                 </Button>
                 {serverState.status && (
                     <p

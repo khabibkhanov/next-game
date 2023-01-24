@@ -3,7 +3,7 @@ import Anchor from "@ui/anchor";
 import { useMoralis } from "react-moralis";
 
 const UserDropdown = () => {
-    const { logout } = useMoralis();
+
     return (
         <div className="icon-box">
             <Anchor path="/author">
@@ -15,7 +15,7 @@ const UserDropdown = () => {
                     height={38}
                 />
             </Anchor>
-            <div className="rn-dropdown">
+            {/* <div className="rn-dropdown">
                 <div className="rn-inner-top">
                     <h4 className="title">
                         <Anchor path="/product">Christopher William</Anchor>
@@ -92,7 +92,7 @@ const UserDropdown = () => {
                         </button>
                     </li>
                 </ul>
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -9,10 +9,9 @@ import CommentsArea from "@containers/comments-area";
 import CommentForm from "@components/comment-form";
 import RelatedPostsArea from "@containers/related-posts";
 import BlogSidebar from "@containers/blog-sidebar";
-import { getAllPosts, getPostBySlug } from "../../lib/api";
+import { getAllReviews, getReviewsBySlugCustom } from "../../lib/api";
 
 const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => (
-
     <Wrapper>
         <SEO pageTitle="Game Details" />
         <Header />
@@ -45,41 +44,18 @@ const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => 
     </Wrapper>
 );
 
-export async function getStaticPaths() {
-    const posts = await getAllPosts([
-        "slug",
-        "title",
-        "genres",
-        "release_date",
-        "languages"
-    ]);
-
-    // map through to return post paths
-    const paths = posts?.map((post) => ({
-        params: {
-            slug: post?.slug
-        },
-    }));
-
-    return {
-        paths,
-        fallback: false,
-    };
-}
-
-export async function getStaticProps({ params }) {
-    const { slug } = params;
-    const posts = await getAllPosts([
+export async function getServerSideProps(res) {
+    const { slug } = res.params;
+    const fields = [
         "reviews",
         "slug",
         "title",
         "release_date",
         "publisher",
+        "createdAt",
         "developer",
         "age_restricts",
         "game_picture",
-        "createdAt",
-        "updatedAt",
         "purchase",
         "languages",
         "age_rating",
@@ -89,9 +65,18 @@ export async function getStaticProps({ params }) {
         "availables",
         "genres",
         "min_requirements",
-    ]);
+    ]
 
-    let poster = posts?.find((game) => game?.slug === slug);
+    const posts = await getAllReviews(fields);
+    let post = await getReviewsBySlugCustom(slug, fields )
+
+    if(!post[0]) {
+        return {
+            notFound: true
+        }
+    }
+
+    let poster = posts?.filter((game) => game?.slug === slug)
     const genres = posts?.map((game) => [...game?.genres]);
     const languages = posts?.map((game) => game?.languages);
     const availables = posts?.map((game) => game?.availables)
@@ -99,40 +84,25 @@ export async function getStaticProps({ params }) {
     const features = posts?.map((game) => game?.features)
     const game_pictures = posts?.map((game) => game?.game_picture);
     const age_rating = posts?.map((game) => game?.age_rating);
-    const recentPosts = posts.reverse().slice(0, 4);
 
-    let post = await getPostBySlug(poster, [
-        "reviews",
-        "title",
-        "release_date",
-        "publisher",
-        "developer",
-        "createdAt",
-        "updatedAt",
-        "languages",
-        "age_restricts",
-        "game_picture",
-        "timeToRead",
-        "publisher_notice",
-        "features",
-        "age_rating",
-        "availables",
-        "genres",
-        "min_reqirements",
-        "purchase",
-        "slug",
-    ]);
 
-    post = JSON.parse(JSON.stringify(post));
+    const recentPosts = posts.filter((post) => {
+        let recentPostsNotCurrent = false;
+        if (poster.slug !== post.slug) {
+            recentPostsNotCurrent = true
+            return recentPostsNotCurrent
+        }
+    }).reverse().slice(0, 4)
 
     let relatedPosts =  posts.filter((post) => {
         let isRelated = false;
+
         post.genres.forEach((genre) => {
-            if (poster.genres.find((g) => g.title === genre.title)) {
+            if (poster[0].genres.filter((g) => g.slug === genre.slug)) {
                 isRelated = true;
             }
         });
-        return isRelated && post.slug !== poster?.slug;
+        return isRelated
     }).slice(0, 3);
 
     return {

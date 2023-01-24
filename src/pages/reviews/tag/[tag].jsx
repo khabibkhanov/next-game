@@ -7,7 +7,7 @@ import Breadcrumb from "@components/breadcrumb";
 import BlogArea from "@containers/blog/layout-03";
 import BlogSidebar from "@containers/blog-sidebar";
 import { flatDeep } from "@utils/methods";
-import { getPostsByTag, getAllPosts } from "../../../lib/api";
+import { getPostsByTag, getAllReviews } from "../../../lib/api";
 
 const GamesList = ({ posts, title, categories, recentPosts, genres }) => (
     <Wrapper>
@@ -40,25 +40,7 @@ const GamesList = ({ posts, title, categories, recentPosts, genres }) => (
     </Wrapper>
 );
 
-export async function getStaticPaths() {
-    const posts = await getAllPosts(["genres"]);
-    const tagss = [
-        ...new Set(
-            flatDeep(posts.map(({ genres }) => genres.map((genres) => genres.slug)))
-        ),
-    ];
-    return {
-        paths: tagss.map((genres) => ({
-            params: {
-                genres,
-            },
-        })),
-        fallback: false,
-    };
-}
-
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const posts = await getPostsByTag(params.genres, [
         "title",
         "release_date",
@@ -68,7 +50,7 @@ export async function getStaticProps({ params }) {
         "timeToRead",
         "genres",
     ]);
-    const widgetPosts = getAllPosts(["title", "slug", "release_date", "genres"]);
+    const widgetPosts = getAllReviews(["title", "slug", "release_date", "genres"]);
     // const categories = widgetPosts.map((blog) => ({ ...blog.category }));
     const genres = widgetPosts.map((blog) => [...blog.genres]);
     const recentPosts = widgetPosts.slice(0, 4);

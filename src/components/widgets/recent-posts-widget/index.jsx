@@ -3,7 +3,7 @@ import Anchor from "@ui/anchor";
 
 const RecentPostsWidget = ({ recentPosts, rootPage }) => (
     <div className="rbt-single-widget widget_recent_entries mt--40">
-        <h3 className="title">So'nggi o'yinlar</h3>
+        <h3 className="title">So'nggi Maqolalar</h3>
 
         <div className="inner">
             <ul>
@@ -15,7 +15,7 @@ const RecentPostsWidget = ({ recentPosts, rootPage }) => (
                         >
                             {post.title}
                         </Anchor>
-                        <span className="cate">{post.slug}</span>
+                        <span className="cate">{post.title}</span>
                     </li>
                 ))}
             </ul>
@@ -27,7 +27,6 @@ RecentPostsWidget.propTypes = {
     recentPosts: PropTypes.arrayOf(
         PropTypes.shape({
             title: PropTypes.string,
-            slug: PropTypes.string,
             category: PropTypes.shape({
                 title: PropTypes.string,
             }),
@@ -37,7 +36,7 @@ RecentPostsWidget.propTypes = {
 };
 
 RecentPostsWidget.defaultProps = {
-    rootPage: "/blog",
+    rootPage: "/reviews",
 };
 
 export default RecentPostsWidget;

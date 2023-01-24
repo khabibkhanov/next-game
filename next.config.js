@@ -11,15 +11,11 @@ module.exports = {
         ignoreDuringBuilds: true,
       },
     images: {
-        domains: ["localhost"],
-        remotePatterns: [
-            {
-              protocol: 'https',
-              hostname: 'localhost',
-              port: '1337',
-              pathname: '',
-            },
-          ],
+        remotePatterns: {
+            protocol: 'http://',
+            hostname: '192.168.0.87',
+            port: '1337',
+        },
     },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         // eslint-disable-next-line no-param-reassign

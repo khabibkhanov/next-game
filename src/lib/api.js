@@ -1,11 +1,11 @@
 import { join } from "path";
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
-import { getGames, getMinRequirements, getGenres, getLanguages } from "./request";
+import { getGames, getOneGame, getMinRequirements, getGenres, getLanguages } from "./request";
 
 export async function getPostSlugs() {
     let slugs = await getGames();
-    slugs = slugs.data.map((slug) => slug.attributes["slug"]);
+    slugs = slugs.data.map((slug) => slug.attributes["title"]);
 
     return slugs;
 }
@@ -49,19 +49,16 @@ export function readingTime(text) {
     return Math.ceil(wordCounter(text) / wordsPerMinute);
 }
 
-export function getPostBySlug(posts, fields = []) {
+export function getReviewsBySlug(posts, fields = []) {
+    const id = posts.id
+    posts = posts.attributes
     let genres = posts?.genres?.data?.map((genre) => genre.attributes) || [];
     let languages = posts?.languages?.data?.map((language) => language.attributes) ?? [];
-
-    const realSlug = posts?.title?.replace(/\.md$/, "");
     const items = {};
 
     // Ensure only the minimal needed data is exposed
     // fields is an array of strings    
-    fields.forEach((field) => {
-        if (field === "slug" && field !== undefined) {
-            items[field] = realSlug;
-        }
+    fields.forEach((field) => { 
 
         if (field === "reviews" && field !== undefined){
             items[field] = marked(posts["reviews"]);
@@ -103,35 +100,35 @@ export function getPostBySlug(posts, fields = []) {
 
     }); // end of fields.forEach
 
+    // console.log("items: ", items);
     return items; // return items
-} // end of getPostBySlug
+} // end of getReviewsBySlug
 
-export async function getAllPosts(fields = []) {
+export async function getAllReviews(fields = []) {
     const games = await getGames();
-    // console.log('slugs: ',slugs);
-    // console.log('games: ',games.data);
 
     const posts = games?.data
-        // ?.sort((a, b) => b.id - a.id)
-        ?.map((game) => getPostBySlug(game.attributes, fields))
+        ?.sort((a, b) => b.id - a.id)
+        ?.map((game) => getReviewsBySlug(game, fields))
         // sort posts by date in descending order
     // console.log("posts: ", posts);
-
     return posts;
 }
 
-export function getPostBySlugcustom(slug, fields = []) {
-    const posts = getAllPosts(fields);
-    // console.log('posts: ', posts);
-    return posts.filter((post) => post.slug === slug);
+export async function getReviewsBySlugCustom(slug, fields = []) {
+    let posts = await getAllReviews(fields);
+    posts = posts.filter(game => game.slug === slug)
+    // let post = posts.data.map((game) => getReviewsBySlug(game, fields));
+    console.log(posts);
+    return posts
 }
 
-export function getPostsByCategory(cat, fields = []) {
-    const posts = getAllPosts(fields);
+export function getPostsByCategory(cat, fields) {
+    const posts = getAllReviews(fields);
     return posts.filter((post) => post.genres.genres_name === cat);
 }
 
 export function getPostsByTag(genres, fields = []) {
-    const posts = getAllPosts(fields);
+    const posts = getAllReviews(fields);
     return posts.filter((post) => post.tags.map((t) => t.slug).includes(genres));
 }

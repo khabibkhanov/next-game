@@ -9,7 +9,7 @@
 // import CommentForm from "@components/comment-form";
 // import RelatedPostsArea from "@containers/related-posts";
 // import BlogSidebar from "@containers/blog-sidebar";
-// import { getAllPosts, getPostBySlug } from "../../lib/api";
+// import { getAllReviews, getReviewsBySlug } from "../../lib/api";
 
 // const BlogDetails = ({ post, categories, recentPosts, genres, relatedPosts }) => (
 //     <Wrapper>
@@ -40,7 +40,7 @@
 // );
 
 // export async function getStaticPaths() {
-//     const posts = getAllPosts(["slug"]);
+//     const posts = getAllReviews(["slug"]);
 
 //     // map through to return post paths
 //     const paths = posts.map((post) => ({
@@ -58,7 +58,7 @@
 
 // export async function getStaticProps({ params }) {
 //     const { slug } = params;
-//     const post = getPostBySlug(slug, [
+//     const post = getReviewsBySlug(slug, [
 //         "content",
 //         "title",
 //         "date",
@@ -66,7 +66,7 @@
 //         "image",
 //         "category",
 //     ]);
-//     const posts = getAllPosts([
+//     const posts = getAllReviews([
 //         "category",
 //         "slug",
 //         "title",

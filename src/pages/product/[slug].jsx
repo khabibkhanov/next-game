@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
-import Footer from "@layout/footer/footer";
+import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
 import ProductDetailsArea from "@containers/product-details";
 import ProductArea from "@containers/product/layout-03";
@@ -38,18 +38,7 @@ const ProductDetails = ({ product, recentViewProducts, relatedProducts }) => (
     </Wrapper>
 );
 
-export async function getStaticPaths() {
-    return {
-        paths: productData.map(({ slug }) => ({
-            params: {
-                slug,
-            },
-        })),
-        fallback: false,
-    };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const product = productData.find(({ slug }) => slug === params.slug);
     const { categories } = product;
     const recentViewProducts = shuffleArray(productData).slice(0, 5);

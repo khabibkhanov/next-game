@@ -5,7 +5,7 @@
 // import Footer from "@layout/footer/footer-01";
 // import Breadcrumb from "@components/breadcrumb";
 // import BlogArea from "@containers/blog/layout-02";
-// import { getAllPosts } from "../../lib/api";
+// import { getAllReviews } from "../../lib/api";
 
 // const POSTS_PER_PAGE = 8;
 
@@ -21,7 +21,7 @@
 //     </Wrapper>
 // );
 // export async function getStaticProps() {
-//     const posts = getAllPosts([
+//     const posts = getAllReviews([
 //         "title",
 //         "date",
 //         "slug",

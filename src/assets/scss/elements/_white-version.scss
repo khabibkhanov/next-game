@@ -959,6 +959,10 @@ html[data-theme="light"] body {
         background: var(--color-white);
     }
 
+    .rn-blog-details-default .bd-thumbnail .large-img .offset {
+        background: linear-gradient(360deg, rgba(248,249,250,1) 0%, rgba(255,255,255,0.2329306722689075) 70%)
+    }
+
     // blog-details area
     .rn-blog-listen {
         .bd-thumbnail {
@@ -1276,6 +1280,7 @@ html[data-theme="light"] body {
     }
 
     .rn-header {
+        background: linear-gradient(360deg, rgba(245,248,250,0.7) 100%, rgba(245,248,250,0.5) 100%);
         &.sticky {
             .mainmenu-nav {
                 .mainmenu {

@@ -61,25 +61,25 @@ const Header = ({ className }) => {
                                 <FlyoutSearchForm isOpen={search} />
                             </div> */}
                             {
-                                // !token || token == undefined ?  (
-                                //     <div className="setting-option header-btn">
-                                //         <div className="icon-box">
-                                //             <Button
-                                //                 color="primary-alta"
-                                //                 className="connectBtn"
-                                //                 size="small"
-                                //                 // onClick={() => true}
-                                //                 path={"/sign-up"}
-                                //             >
-                                //                 Ro'yxatdan o'tish
-                                //             </Button>
-                                //         </div>
-                                //     </div>
-                                // ) : (
-                                //     <div className="setting-option rn-icon-list user-account">
-                                //         <UserDropdown />
-                                //     </div>
-                                // )
+                                !token || token == undefined ?  (
+                                    <div className="setting-option header-btn">
+                                        <div className="icon-box">
+                                            <Button
+                                                color="primary-alta"
+                                                className="connectBtn"
+                                                size="small"
+                                                // onClick={() => true}
+                                                path={"/sign-up"}
+                                            >
+                                                Ro'yxatdan o'tish
+                                            </Button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="setting-option rn-icon-list user-account">
+                                        {/* <UserDropdown /> */}
+                                    </div>
+                                )
                             }
                             {/* <div className="setting-option rn-icon-list notification-badge">
                                 <div className="icon-box">

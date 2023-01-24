@@ -2,6 +2,13 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import Image from "next/image";
 import { ImageType } from "@utils/types";
+import { images } from "next.config";
+
+const { protocol, hostname, port } = images.remotePatterns
+
+const myLoader = (({src}) => {
+    return src
+})
 
 const BannerGallery = ({ className, images }) => (
     <div className="banner-gallery-loop">
@@ -15,9 +22,11 @@ const BannerGallery = ({ className, images }) => (
                 )}
             >
                 <Image
-                    src={`http://localhost:1337${image.attributes.url}`}
+                    loader={myLoader}
+                    src={`${protocol}${hostname}:${port}${image.attributes?.url}`}
                     alt={image.attributes.alternativeText || "banner"}
                     width={300}
+                    unoptimized={true}
                     height={250}
                     className="mb-5"
                     priority

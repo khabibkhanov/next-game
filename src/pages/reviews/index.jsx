@@ -7,7 +7,7 @@ import Breadcrumb from "@components/breadcrumb";
 import BlogArea from "@containers/blog/layout-03";
 import BlogSidebar from "@containers/blog-sidebar";
 import Pagination from "@components/pagination";
-import { getAllPosts } from "../../lib/api";
+import { getAllReviews } from "../../lib/api";
 
 const POSTS_PER_PAGE = 4;
 
@@ -67,22 +67,21 @@ const GamesList = ({
     </Wrapper>
 );
 
-export async function getStaticProps() {
-    const posts = await getAllPosts([
+export async function getServerSideProps() {
+    const posts = await getAllReviews([
         "title",
-        "release_date",
-        "slug",
         "reviews",
         "publisher",
-        "developer",
         "age_restricts",
         "game_picture",
         "genres",
+        "slug",
         "timeToRead",
     ]);
 
     const genres = posts.map((blog) => [...blog.genres]);
     const recentPosts = posts.reverse().slice(0, 4);
+
 
     return {
         props: {

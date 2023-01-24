@@ -5,7 +5,7 @@ import BlogCard from "@components/blog/blog-card";
 const RelatedPostsArea = ({ space, className, relatedPosts, rootPage }) => (
     <div className={clsx("row g-5", space === 1 && "pt--60", className)}>
         <div className="col-lg-12">
-            <h3 className="title">O'qishga tavsiya qilinadi</h3>
+            <h3 className="title">Boshqa shu kabi maqolalar</h3>
         </div>
         {relatedPosts?.map((post) => (
             <div key={post.slug} className="col-xl-4 col-lg-6 col-md-6 col-12">
@@ -31,7 +31,7 @@ RelatedPostsArea.propTypes = {
 
 RelatedPostsArea.defaultProps = {
     space: 1,
-    rootPage: "/blog",
+    rootPage: "/reviews",
 };
 
 export default RelatedPostsArea;

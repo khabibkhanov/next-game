@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import Image from "next/image";
 import ContactForm from "@components/contact-form";
+import GoogleMapArea from "@containers/google-map";
+
 
 const ContactFormArea = ({ space, className }) => (
     <div
@@ -13,23 +15,15 @@ const ContactFormArea = ({ space, className }) => (
     >
         <div className="container">
             <div className="row g-5">
-                <div
+            <div
                     className="col-lg-6"
                     data-sal="slide-up"
-                    data-sal-delay="150"
+                    data-sal-delay="200"
                     data-sal-duration="800"
                 >
-                    <div className="connect-thumbnail">
-                        <div className="left-image">
-                            <Image
-                                src="/images/contact/contact1.png"
-                                alt="Nft_Profile"
-                                width={669}
-                                height={686}
-                            />
-                        </div>
-                    </div>
+                    <GoogleMapArea />
                 </div>
+                
                 <div
                     className="col-lg-6"
                     data-sal="slide-up"

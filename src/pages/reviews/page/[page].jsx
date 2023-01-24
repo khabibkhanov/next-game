@@ -7,7 +7,7 @@ import Breadcrumb from "@components/breadcrumb";
 import BlogArea from "@containers/blog/layout-03";
 import BlogSidebar from "@containers/blog-sidebar";
 import Pagination from "@components/pagination";
-import { getAllPosts, getPostSlugs } from "../../../lib/api";
+import { getAllReviews, getPostSlugs } from "../../../lib/api";
 
 const POSTS_PER_PAGE = 4;
 
@@ -84,9 +84,8 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({ params }) {
     const { page } = params;
-    const posts = await getAllPosts([
+    const posts = await getAllReviews([
         "reviews",
-        "slug",
         "title",
         "release_date",
         "publisher",

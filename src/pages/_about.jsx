@@ -9,7 +9,7 @@ import FunfactArea from "@containers/funfact";
 import CTAArea from "@containers/cta";
 import BlogArea from "@containers/blog/layout-01";
 import { normalizedData } from "@utils/methods";
-import { getAllPosts } from "../lib/api";
+import { getAllReviews } from "../lib/api";
 
 // Demo data
 import aboutData from "../data/innerpages/about.json";
@@ -34,7 +34,7 @@ const About = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-    const posts = await getAllPosts([
+    const posts = await getAllReviews([
         "title",
         "date",
         "slug",
@@ -42,7 +42,6 @@ export async function getStaticProps() {
         "category",
         "timeToRead",
     ]);
-    console.log(posts);
     return {
         props: {
             posts: posts.slice(0, 4),

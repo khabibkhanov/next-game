@@ -20,10 +20,10 @@ import homepageData from "../data/homepages/home-10.json";
 import productData from "../data/products.json";
 import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
-import { getAllPosts } from "src/lib/api";
+import { getAllReviews } from "src/lib/api";
 
 export async function getStaticProps() {
-    const games = await getAllPosts([
+    const games = await getAllReviews([
         "title",
         "release_date",
         "slug",
@@ -63,12 +63,8 @@ export async function getStaticProps() {
 
 const Home = ({
     games,
-    recentPosts,
-    genres,
     images
 }) => {
-    const content = normalizedData(homepageData?.content || []);
-
     return (
         <Wrapper>
             <SEO pageTitle="Home" />

@@ -8,6 +8,11 @@
         "id": 5,
         "text": "Maqolalar",
         "path": "/reviews"
-
+    },
+    {
+        "id": 6,
+        "text": "Biz bilan bog'lanish",
+        "path": "/contact"
     }
+
 ]

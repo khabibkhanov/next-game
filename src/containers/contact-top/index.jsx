@@ -19,11 +19,9 @@ const ContactTopArea = ({ space, className }) => (
                     data-sal-duration="800"
                 >
                     <div className="section-title mb--30 text-center">
-                        <h2 className="title">Quick Contact Address</h2>
+                        <h2 className="title">Biz bilan qanday bog'lanishingiz</h2>
                         <p className="description">
-                            There are many variations of passages of Lorem Ipsum
-                            available, <br /> but the majority have suffered
-                            alteration.
+                            Quyidagi manzillarga xabar yo'llash orqali biz bilan bog'lana olishingiz mumkin.
                         </p>
                     </div>
                 </div>
@@ -37,8 +35,8 @@ const ContactTopArea = ({ space, className }) => (
                 >
                     <AddressBox
                         icon="feather-headphones"
-                        title="Contact Phone Number"
-                        phoneNumbers={["+444 555 666 777", "+222 222 222 333"]}
+                        title="Bizning telefon raqamlarimiz"
+                        phoneNumbers={["+998 71 233 78 98"]}
                     />
                 </div>
                 <div
@@ -49,8 +47,8 @@ const ContactTopArea = ({ space, className }) => (
                 >
                     <AddressBox
                         icon="feather-mail"
-                        title="Our Email Address"
-                        emails={["admin@gmail.com", "example@gmail.com"]}
+                        title="Bizning elektron manzilimiz"
+                        emails={["programmsoftuz@gmail.com"]}
                     />
                 </div>
                 <div
@@ -61,8 +59,8 @@ const ContactTopArea = ({ space, className }) => (
                 >
                     <AddressBox
                         icon="feather-map-pin"
-                        title="Our Location"
-                        address="5678 Bangla Main Road, cities 580 <br> GBnagla, example 54786"
+                        title="Bizning Manzil"
+                        address="100047, Toshkent sh., Istiqbol ko‘chasi, 15"
                     />
                 </div>
             </div>

@@ -6,7 +6,7 @@
 // import Breadcrumb from "@components/breadcrumb";
 // import BlogArea from "@containers/blog/layout-02";
 // import { flatDeep } from "@utils/methods";
-// import { getPostsByTag, getAllPosts } from "../../../lib/api";
+// import { getPostsByTag, getAllReviews } from "../../../lib/api";
 
 // const Blog = ({ posts, title }) => (
 //     <Wrapper>
@@ -21,7 +21,7 @@
 // );
 
 // export async function getStaticPaths() {
-//     const posts = getAllPosts(["tags"]);
+//     const posts = getAllReviews(["tags"]);
 //     const tagss = [
 //         ...new Set(
 //             flatDeep(posts.map(({ tags }) => tags.map((tag) => tag.slug)))
