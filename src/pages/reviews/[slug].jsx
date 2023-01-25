@@ -92,13 +92,13 @@ export async function getServerSideProps(res) {
             recentPostsNotCurrent = true
             return recentPostsNotCurrent
         }
-    }).reverse().slice(0, 4)
+    }).slice(0, 4)
 
     let relatedPosts =  posts.filter((post) => {
         let isRelated = false;
 
         post.genres.forEach((genre) => {
-            if (poster[0].genres.filter((g) => g.slug === genre.slug)) {
+            if (poster[0].genres.find((g) => g.slug === genre.slug)) {
                 isRelated = true;
             }
         });
