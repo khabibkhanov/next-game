@@ -9,7 +9,7 @@ import AuthorProfileArea from "@containers/author-profile";
 import authorData from "../data/author.json";
 import productData from "../data/products.json";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     return { props: { className: "template-color-1" } };
 }
 
