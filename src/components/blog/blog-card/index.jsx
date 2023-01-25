@@ -5,7 +5,7 @@ import Anchor from "@ui/anchor";
 import { ImageType } from "@utils/types";
 import { images } from "next.config";
 
-const { protocol, hostname = '192.168.0.87', port } = images.remotePatterns
+const url = images.domains[0]
 
 const myLoader = (({src}) => {
     return src
@@ -35,7 +35,7 @@ const BlogCard = ({
                                         className="display-block"
                                         loader={myLoader}
                                         unoptimized={true}
-                                        src={`${protocol}${hostname}:${port}${img.attributes?.url}`}
+                                        src={`${url}${img.attributes?.url}`}
                                         layout={img?.attributes?.height ? "responsive" : "fill"}
                                         alt={img.attributes.alternativeText}
                                         width={img?.attributes?.width || 489}

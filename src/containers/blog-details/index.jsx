@@ -11,7 +11,7 @@ const BlogDetailsArea = ({ className, post }) => {
     post = post[0]
     const date = new Date(post.createdAt);
     const age_rating = post?.age_rating.data.attributes
-    const { protocol, hostname = '192.168.0.87', port } = images.remotePatterns
+    const url = images.domains[0]
 
     const myLoader = (({src}) => {
         return src
@@ -33,7 +33,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                     {
                                         age_rating && (
                                             <div className="age-rating d-flex">
-                                                <img src={`${protocol}${hostname}:${port}${age_rating.age_ratings_url}`} className="me-4" alt="age rating pic" />
+                                                <img src={`${url}${age_rating.age_ratings_url}`} className="me-4" alt="age rating pic" />
 
                                                 <div className="age-rating-text">
                                                     <h5 className="mb-1">
@@ -71,7 +71,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                         key={index}
                                         className="game-hero w-100"
                                         loader={myLoader}
-                                        src={`${protocol}${hostname}:${port}${img.attributes?.url}`}
+                                        src={`${url}${img.attributes?.url}`}
                                         width={img.attributes.width || "auto"}
                                         unoptimized={true}
                                         height={img.attributes.height || "auto"}
@@ -87,7 +87,7 @@ const BlogDetailsArea = ({ className, post }) => {
   
             <div
                 className="news-details mb-5"
-                dangerouslySetInnerHTML={{ __html: markdown.toHTML(post.reviews.replaceAll("/uploads", `${protocol}${hostname}:${port}/uploads`)) }}
+                dangerouslySetInnerHTML={{ __html: markdown.toHTML(post.reviews.replaceAll("/uploads", `${url}/uploads`)) }}
             />
             <div className="blog-content-bottom">
                 <GameDetails games = {post} />

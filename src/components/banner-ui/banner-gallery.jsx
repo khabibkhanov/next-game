@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ImageType } from "@utils/types";
 import { images } from "next.config";
 
-const { protocol, hostname = '192.168.0.87', port } = images.remotePatterns
+const url = images.domains[0]
 
 const myLoader = (({src}) => {
     return src
@@ -23,7 +23,7 @@ const BannerGallery = ({ className, images }) => (
             >
                 <Image
                     loader={myLoader}
-                    src={`${protocol}${hostname}:${port}${image.attributes?.url}`}
+                    src={`${url}${image.attributes?.url}`}
                     alt={image.attributes.alternativeText || "banner"}
                     width={300}
                     unoptimized={true}
