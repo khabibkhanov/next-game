@@ -3,7 +3,7 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ProductArea from "@containers/explore-product/layout-01/index";
+// import ProductArea from "@containers/explore-product/layout-01/index";
 
 // Demo Data
 import productData from "../data/products.json";
@@ -18,7 +18,7 @@ const Product = () => (
         <Header />
         <main id="main-content">
             <Breadcrumb pageTitle="Our Product" currentPage="Our Product" />
-            <ProductArea data={{ products: productData }} />
+            {/* <ProductArea data={{ products: productData }} /> */}
         </main>
         <Footer />
     </Wrapper>

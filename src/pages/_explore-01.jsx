@@ -3,7 +3,7 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer-01";
 import Breadcrumb from "@components/breadcrumb";
-import ExploreProductArea from "@containers/explore-product/layout-01";
+// import ExploreProductArea from "@containers/explore-product/layout-01";
 
 // Demo data
 import productData from "../data/products.json";
@@ -21,14 +21,14 @@ const Home02 = () => (
                 pageTitle="Explore Filter"
                 currentPage="Explore With Filter"
             />
-            <ExploreProductArea
+            {/* <ExploreProductArea
                 data={{
                     section_title: {
                         title: "Explore Product",
                     },
                     products: productData,
                 }}
-            />
+            /> */}
         </main>
         <Footer />
     </Wrapper>

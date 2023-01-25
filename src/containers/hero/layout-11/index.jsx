@@ -3,7 +3,7 @@ import Tilt from "react-parallax-tilt";
 import Button from "@ui/button";
 import BannerBadge02 from "@components/banner-ui/banner-badge-02";
 import FunFact from "@components/funfact/layout-02";
-import Product from "@components/product/layout-01";
+// import Product from "@components/product/layout-01";
 import {
     HeadingType,
     TextType,
@@ -90,7 +90,7 @@ const HeroArea = ({
                                 perspective={500}
                                 gyroscope
                             >
-                                <Product
+                                {/* <Product
                                     title={product.title}
                                     slug={product.slug}
                                     latestBid={product.latestBid}
@@ -100,7 +100,7 @@ const HeroArea = ({
                                     image={product.images?.[0]}
                                     authors={product.authors}
                                     bitCount={product.bitCount}
-                                />
+                                /> */}
                             </Tilt>
                         </div>
 

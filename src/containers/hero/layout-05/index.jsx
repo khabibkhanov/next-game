@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Button from "@ui/button";
-import Product from "@components/product/layout-01";
+// import Product from "@components/product/layout-01";
 import { ButtonType, ProductType } from "@utils/types";
 
 const HeroArea = ({ data }) => (
@@ -55,7 +55,7 @@ const HeroArea = ({ data }) => (
                 </div>
                 <div className="col-lg-6 order-1 order-lg-2">
                     <div className="row g-5">
-                        {data?.products?.map((prod) => (
+                        {/* {data?.products?.map((prod) => (
                             <div className="col-lg-6 col-md-6" key={prod.id}>
                                 <Product
                                     overlay
@@ -70,7 +70,7 @@ const HeroArea = ({ data }) => (
                                     bitCount={prod.bitCount}
                                 />
                             </div>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@ HeroArea.propTypes = {
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         buttons: PropTypes.arrayOf(ButtonType),
-        products: PropTypes.arrayOf(ProductType),
+        // products: PropTypes.arrayOf(ProductType),
     }),
 };
 export default HeroArea;

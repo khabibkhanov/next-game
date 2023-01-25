@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import SectionTitle from "@components/section-title/layout-01";
-import Product from "@components/product/layout-01";
+// import Product from "@components/product/layout-01";
 import { SectionTitleType, ProductType } from "@utils/types";
 
 const LiveExploreArea = ({ data, className, space, gap }) => (
@@ -30,7 +30,7 @@ const LiveExploreArea = ({ data, className, space, gap }) => (
                             data-sal="slide-up"
                             data-sal-duration="800"
                         >
-                            <Product
+                            {/* <Product
                                 overlay
                                 placeBid={!!data.placeBid}
                                 title={prod.title}
@@ -42,7 +42,7 @@ const LiveExploreArea = ({ data, className, space, gap }) => (
                                 image={prod.images?.[0]}
                                 authors={prod.authors}
                                 bitCount={prod.bitCount}
-                            />
+                            /> */}
                         </div>
                     ))}
                 </div>
