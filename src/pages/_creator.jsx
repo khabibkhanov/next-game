@@ -1,7 +1,7 @@
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
-import Footer from "@layout/footer-01";
+// import Footer from "@layout/footer-01";
 import CreatorArea from "@containers/creator/layout-03";
 
 // demo data
@@ -14,7 +14,7 @@ const Creator = () => (
         <main id="main-content">
             <CreatorArea data={{ creators: creatorData }} />
         </main>
-        <Footer />
+        {/* <Footer /> */}
     </Wrapper>
 );
 

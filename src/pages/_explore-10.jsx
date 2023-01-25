@@ -1,7 +1,7 @@
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
-import Footer from "@layout/footer-01";
+// import Footer from "@layout/footer-01";
 import Breadcrumb from "@components/breadcrumb";
 import ProductArea from "@containers/product/layout-02";
 
@@ -30,7 +30,7 @@ const Home02 = () => (
                 }}
             />
         </main>
-        <Footer />
+        {/* <Footer /> */}
     </Wrapper>
 );
 

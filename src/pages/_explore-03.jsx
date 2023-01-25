@@ -1,11 +1,11 @@
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
-import Footer from "@layout/footer-01";
+// import Footer from "@layout/footer-01";
 import Breadcrumb from "@components/breadcrumb";
-import ExploreCarouselArrowArea from "@containers/explore-product/layout-05";
-import ExploreCarouselDotsArea from "@containers/explore-product/layout-06";
-import ExploreCarouselBothArea from "@containers/explore-product/layout-07";
+// import ExploreCarouselArrowArea from "@containers/explore-product/layout-05";
+// import ExploreCarouselDotsArea from "@containers/explore-product/layout-06";
+// import ExploreCarouselBothArea from "@containers/explore-product/layout-07";
 
 // Demo data
 import productData from "../data/products.json";
@@ -23,7 +23,7 @@ const Home02 = () => (
                 pageTitle="Explore Carousel"
                 currentPage="Explore With Carousel"
             />
-            <ExploreCarouselArrowArea
+            {/* <ExploreCarouselArrowArea
                 space={2}
                 data={{
                     section_title: {
@@ -31,8 +31,8 @@ const Home02 = () => (
                     },
                     products: productData.slice(0, 8),
                 }}
-            />
-            <ExploreCarouselDotsArea
+            /> */}
+            {/* <ExploreCarouselDotsArea
                 space={3}
                 data={{
                     section_title: {
@@ -40,8 +40,8 @@ const Home02 = () => (
                     },
                     products: productData.slice(0, 8),
                 }}
-            />
-            <ExploreCarouselBothArea
+            /> */}
+            {/* <ExploreCarouselBothArea
                 space={4}
                 data={{
                     section_title: {
@@ -49,9 +49,9 @@ const Home02 = () => (
                     },
                     products: productData.slice(0, 8),
                 }}
-            />
+            /> */}
         </main>
-        <Footer />
+        {/* <Footer /> */}
     </Wrapper>
 );
 
