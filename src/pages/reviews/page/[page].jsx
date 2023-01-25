@@ -67,22 +67,7 @@ const GamesList = ({
     </Wrapper>
 );
 
-export const getStaticPaths = async () => {
-    const postSlugs = await getPostSlugs();
-    const pages = Math.ceil(postSlugs?.length / POSTS_PER_PAGE)
-
-
-    const paths = Array.from(Array(pages).keys()).map((page) => ({
-        params: { page: String(page + 1) },
-    }));
-
-    return {
-        paths,
-        fallback: true,
-    };
-};
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const { page } = params;
     const posts = await getAllReviews([
         "reviews",
