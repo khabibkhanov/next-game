@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import SectionTitle from "@components/section-title/layout-02";
-import Product from "@components/product/layout-01";
+// import Product from "@components/product/layout-01";
 import { flatDeep } from "@utils/methods";
 import FilterButtons from "@components/filter-buttons";
 import { SectionTitleType, ProductType } from "@utils/types";
@@ -67,7 +67,7 @@ const ExploreProductArea = ({ className, space, data, id }) => {
                                 className={clsx("grid-item")}
                                 layout
                             >
-                                <Product
+                                {/* <Product
                                     placeBid={!!data.placeBid}
                                     title={prod.title}
                                     slug={prod.slug}
@@ -77,7 +77,7 @@ const ExploreProductArea = ({ className, space, data, id }) => {
                                     image={prod.images?.[0]}
                                     authors={prod.authors}
                                     bitCount={prod.bitCount}
-                                />
+                                /> */}
                             </motion.div>
                         ))}
                     </motion.div>

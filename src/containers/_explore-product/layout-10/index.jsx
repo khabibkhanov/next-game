@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import SectionTitle from "@components/section-title/layout-02";
 import ProductFilter from "@components/product-filter/layout-03";
-import Product from "@components/product/layout-01";
+// import Product from "@components/product/layout-01";
 import Pagination from "@components/pagination-02";
 import { SectionTitleType, ProductType } from "@utils/types";
 import { flatDeep } from "@utils/methods";
@@ -201,7 +201,7 @@ const ExploreProductArea = ({
                 </div>
                 <div className="row g-5">
                     <div className="col-lg-3 order-2 order-lg-1">
-                        <ProductFilter
+                        {/* <ProductFilter
                             sortHandler={sortHandler}
                             inputs={state.inputs}
                             sort={state.sort}
@@ -210,7 +210,7 @@ const ExploreProductArea = ({
                             languages={languages}
                             filterHandler={filterHandler}
                             priceHandler={priceHandler}
-                        />
+                        /> */}
                     </div>
                     <div className="col-lg-9 order-1 order-lg-2">
                         <div className="row g-5">

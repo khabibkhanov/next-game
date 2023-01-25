@@ -5,7 +5,7 @@ import Header from "@layout/header/header-01";
 import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
 import ProductDetailsArea from "@containers/product-details";
-import ProductArea from "@containers/product/layout-03";
+// import ProductArea from "@containers/product/layout-03";
 import { shuffleArray } from "@utils/methods";
 
 // demo data
@@ -21,7 +21,7 @@ const ProductDetails = ({ product, recentViewProducts, relatedProducts }) => (
                 currentPage="Product Details"
             />
             <ProductDetailsArea product={product} />
-            <ProductArea
+            {/* <ProductArea
                 data={{
                     section_title: { title: "Recent View" },
                     products: recentViewProducts,
@@ -32,7 +32,7 @@ const ProductDetails = ({ product, recentViewProducts, relatedProducts }) => (
                     section_title: { title: "Related Item" },
                     products: relatedProducts,
                 }}
-            />
+            /> */}
         </main>
         <Footer />
     </Wrapper>
