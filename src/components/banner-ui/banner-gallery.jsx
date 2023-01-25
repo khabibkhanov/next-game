@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ImageType } from "@utils/types";
 import { images } from "next.config";
 
-const { protocol, hostname, port } = images.remotePatterns
+const { protocol, hostname = '192.168.0.87', port } = images.remotePatterns
 
 const myLoader = (({src}) => {
     return src

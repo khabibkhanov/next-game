@@ -11,7 +11,7 @@ const BlogDetailsArea = ({ className, post }) => {
     post = post[0]
     const date = new Date(post.createdAt);
     const age_rating = post?.age_rating.data.attributes
-    const { protocol, hostname, port } = images.remotePatterns
+    const { protocol, hostname = '192.168.0.87', port } = images.remotePatterns
 
     const myLoader = (({src}) => {
         return src

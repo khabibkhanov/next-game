@@ -20,7 +20,7 @@ const LoginForm = ({ className }) => {
 
         axios({
             method: "post",
-            url: "http://localhost:1337/api/auth/local",
+            url: "http://192.168.0.87:1337/api/auth/local",
             data,
         })
         .then((_res) => {
