@@ -33,7 +33,7 @@ const About = ({ posts }) => {
     );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const posts = await getAllReviews([
         "title",
         "date",
