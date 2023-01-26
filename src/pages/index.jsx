@@ -22,7 +22,7 @@ import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
 import { getAllReviews } from "src/lib/api";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const games = await getAllReviews([
         "title",
         "release_date",
@@ -37,7 +37,7 @@ export async function getServerSideProps() {
     ]);
 
     const genres = games.map((blog) => [...blog.genres]);
-    const recentPosts = games.reverse().slice(0, 9);
+    const recentPosts = games.slice(0, 9);
 
     const  game_picture = recentPosts.map(game => game.game_picture.data.reduce((acc, val) => {
         acc[val] = game.game_picture
@@ -49,7 +49,6 @@ export async function getServerSideProps() {
     }
 
     const images = iages(game_picture)
-
     return { 
         props: { 
             games: games,
