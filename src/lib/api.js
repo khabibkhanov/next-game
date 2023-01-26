@@ -1,6 +1,7 @@
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
 import { getGames, getOneGame, getGamePicture } from "./request";
+import handler from "src/pages/api/games";
 
 export async function getPostSlugs() {
     let slugs = await getGames();
@@ -103,20 +104,8 @@ export async function getAllReviews(fields = []) {
 
 
 export async function getHomeBannerPictures() {
-    let games = await getGamePicture()
-
-    games = games?.data?.map(post => post.attributes).reverse();
-
-    const  game_pictures = games.map(game => game?.game_picture?.data.reduce((acc, val) => {
-        acc[val] = game.game_picture.data[0].attributes.game_picture.data[0].attributes.formats.thumbnail
-    }))
-
-    const hero_image_gen = function ([a,b,c,...rest]) {
-        if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
-        return [[a,b,c]].concat(hero_image_gen(rest))
-    }
-
-    return hero_image_gen(game_pictures)
+    let games = await handler()
+    return games
 }
 
 export async function getOneReview(slug, fields) {

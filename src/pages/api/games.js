@@ -4,11 +4,12 @@ import axios from "axios";
 
 const baseUrl = 'http://192.168.0.87:1337/api'
 
-export default async function handler(req, res) {
-    let data
-    await axios.get(`${baseUrl}/names?populate=%2A`)
+export default async function handler() {
+    let games
+
+    await axios.get(`${baseUrl}/names?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
     .then(response => {
-        data = response.data
+        games = response?.data
     }) 
-    return data
+    return games
 }
