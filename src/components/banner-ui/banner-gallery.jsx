@@ -29,8 +29,8 @@ const BannerGallery = ({ className, pictures }) => (
                     width={300}
                     unoptimized={true}
                     height={250}
+                    loading="lazy"
                     className="mb-5"
-                    priority
                 />
             </div>
         ))}

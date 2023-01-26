@@ -14,18 +14,18 @@ function slideUp(element, duration = 500) {
         element.style.paddingBottom = 0;
         element.style.marginTop = 0;
         element.style.marginBottom = 0;
-        window.setTimeout(() => {
-            element.style.display = "none";
-            element.style.removeProperty("height");
-            element.style.removeProperty("padding-top");
-            element.style.removeProperty("padding-bottom");
-            element.style.removeProperty("margin-top");
-            element.style.removeProperty("margin-bottom");
-            element.style.removeProperty("overflow");
-            element.style.removeProperty("transition-duration");
-            element.style.removeProperty("transition-property");
-            resolve(false);
-        }, duration);
+        // window.setTimeout(() => {
+        //     element.style.display = "none";
+        //     element.style.removeProperty("height");
+        //     element.style.removeProperty("padding-top");
+        //     element.style.removeProperty("padding-bottom");
+        //     element.style.removeProperty("margin-top");
+        //     element.style.removeProperty("margin-bottom");
+        //     element.style.removeProperty("overflow");
+        //     element.style.removeProperty("transition-duration");
+        //     element.style.removeProperty("transition-property");
+        //     resolve(false);
+        // }, duration);
     });
 }
 
@@ -52,12 +52,12 @@ function slideDown(element, duration = 500) {
         element.style.removeProperty("padding-bottom");
         element.style.removeProperty("margin-top");
         element.style.removeProperty("margin-bottom");
-        window.setTimeout(() => {
-            element.style.removeProperty("height");
-            element.style.removeProperty("overflow");
-            element.style.removeProperty("transition-duration");
-            element.style.removeProperty("transition-property");
-        }, duration);
+        // window.setTimeout(() => {
+        //     element.style.removeProperty("height");
+        //     element.style.removeProperty("overflow");
+        //     element.style.removeProperty("transition-duration");
+        //     element.style.removeProperty("transition-property");
+        // }, duration);
     });
 }
 
