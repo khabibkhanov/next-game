@@ -1,4 +1,3 @@
-import { join } from "path";
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
 import { getGames, getOneGame, getGamePicture } from "./request";
@@ -9,11 +8,6 @@ export async function getPostSlugs() {
 
     return slugs;
 }
-
-// export async function getLanguagesByGame(game) {
-//     let languages = await getLanguages()
-//     languages = languages.data.filter((language) => game.id === language.
-// }
 
 const wordsPerMinute = 225;
 
@@ -50,14 +44,11 @@ export function readingTime(text) {
 }
 
 export function getReviewsBySlug(posts, fields = []) {
-    const id = posts.id
     posts = posts.attributes
     let genres = posts?.genres?.data?.map((genre) => genre.attributes) || [];
     let languages = posts?.languages?.data?.map((language) => language.attributes) ?? [];
     const items = {};
 
-    // Ensure only the minimal needed data is exposed
-    // fields is an array of strings    
     fields.forEach((field) => { 
 
         if (field === "reviews" && field !== undefined){
@@ -69,9 +60,8 @@ export function getReviewsBySlug(posts, fields = []) {
             items[field] = readTime;
         }
 
-        // if languages is not undefined
         if ( field === "languages" && field !== undefined) {
-            // langueges is an array of objects
+
             items[field] = languages.map((language) => (
                 {
                     title: language?.title,
@@ -79,7 +69,7 @@ export function getReviewsBySlug(posts, fields = []) {
                     slug: slugify(language?.title),
                 }
             ));
-        } // end of language 
+        }
 
         if (field === "genres" && field !== undefined) {
             items[field] = genres?.map((genres) => (
@@ -90,19 +80,17 @@ export function getReviewsBySlug(posts, fields = []) {
             ));
         }
 
-        // if genres is not undefined
         if (
             field !== "genres" &&
             typeof posts[field] !== "undefined" 
         ) {
             items[field] = posts[field];
-        } // end of if genres is not undefined
+        }
 
-    }); // end of fields.forEach
+    });
 
-    // console.log("items: ", items);
-    return items; // return items
-} // end of getReviewsBySlug
+    return items;
+}
 
 export async function getAllReviews(fields = []) {
     const games = await getGames(fields);
@@ -110,8 +98,6 @@ export async function getAllReviews(fields = []) {
     const posts = games?.data
         ?.sort((a, b) => b.id - a.id)
         ?.map((game) => getReviewsBySlug(game, fields))
-        // sort posts by date in descending order
-    // console.log("posts: ", posts);
     return posts;
 }
 
@@ -133,20 +119,9 @@ export async function getHomeBannerPictures() {
     return hero_image_gen(game_pictures)
 }
 
-export async function getReviewsBySlugCustom(slug, fields = []) {
-    let posts = await getOneGame(fields);
-    posts = posts.filter(game => game.slug === slug)
-    // let post = posts.data.map((game) => getReviewsBySlug(game, fields));
-    console.log(posts);
-    return posts
-}
+export async function getOneReview(slug, fields) {
+    let games = await getOneGame(slug, fields);
 
-export function getPostsByCategory(cat, fields) {
-    const posts = getAllReviews(fields);
-    return posts.filter((post) => post.genres.genres_name === cat);
-}
-
-export function getPostsByTag(genres, fields = []) {
-    const posts = getAllReviews(fields);
-    return posts.filter((post) => post.tags.map((t) => t.slug).includes(genres));
+    games = games?.data?.find(game => game?.attributes?.slug === slug)
+    return games?.attributes
 }

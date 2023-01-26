@@ -1,24 +1,18 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { useMoralis } from "react-moralis";
 import Logo from "@components/logo";
 import MainMenu from "@components/menu/main-menu";
 import MobileMenu from "@components/menu/mobile-menu";
-import SearchForm from "@components/search-form/layout-01";
-import FlyoutSearchForm from "@components/search-form/layout-02";
-import UserDropdown from "@components/user-dropdown";
 import ColorSwitcher from "@components/color-switcher";
 import BurgerButton from "@ui/burger-button";
-import Anchor from "@ui/anchor";
 import Button from "@ui/button";
-import { useOffcanvas, useSticky, useFlyoutSearch } from "@hooks";
+import { useOffcanvas, useSticky } from "@hooks";
 import headerData from "../../data/general/header-01.json";
 import menuData from "../../data/general/menu-01.json";
 
 const Header = ({ className }) => {
     const sticky = useSticky();
     const { offcanvas, offcanvasHandler } = useOffcanvas();
-    const { search, searchHandler } = useFlyoutSearch();
     const token = typeof window !== "undefined" && window.localStorage.getItem('access_token');
 
 
@@ -45,50 +39,19 @@ const Header = ({ className }) => {
                             </div>
                         </div>
                         <div className="header-right">
-                            <div className="setting-option d-none d-lg-block">
-                                {/* <SearchForm /> */}
-                            </div>
-                            {/* <div className="setting-option rn-icon-list d-block d-lg-none">
-                                <div className="icon-box search-mobile-icon">
-                                    <button
-                                        type="button"
-                                        aria-label="Click here to open search form"
-                                        onClick={searchHandler}
-                                    >
-                                        <i className="feather-search" />
-                                    </button>
-                                </div>
-                                <FlyoutSearchForm isOpen={search} />
-                            </div> */}
-                            {
-                                !token || token == undefined ?  (
-                                    <div className="setting-option header-btn">
-                                        <div className="icon-box">
-                                            <Button
-                                                color="primary-alta"
-                                                className="connectBtn"
-                                                size="small"
-                                                // onClick={() => true}
-                                                path={"/sign-up"}
-                                            >
-                                                Ro'yxatdan o'tish
-                                            </Button>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className="setting-option rn-icon-list user-account">
-                                        {/* <UserDropdown /> */}
-                                    </div>
-                                )
-                            }
-                            {/* <div className="setting-option rn-icon-list notification-badge">
+                            <div className="setting-option header-btn">
                                 <div className="icon-box">
-                                    <Anchor path={headerData.activity_link}>
-                                        <i className="feather-bell" />
-                                        <span className="badge">6</span>
-                                    </Anchor>
+                                    <Button
+                                        color="primary-alta"
+                                        className="connectBtn"
+                                        size="small"
+                                        // onClick={() => true}
+                                        path={"/sign-up"}
+                                    >
+                                        Ro'yxatdan o'tish
+                                    </Button>
                                 </div>
-                            </div> */}
+                            </div>
                             <div className="setting-option mobile-menu-bar d-block d-xl-none">
                                 <div className="hamberger">
                                     <BurgerButton onClick={offcanvasHandler} />

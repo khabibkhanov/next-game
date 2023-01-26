@@ -1,14 +1,13 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import Image from "next/image";
-import { getMonth, slugify } from "@utils/methods";
+import { getMonth } from "@utils/methods";
 import { ImageType } from "@utils/types";
 import { markdown } from "markdown"
 import GameDetails from "@containers/blog/game-details";
 import { images } from "next.config";
 
 const BlogDetailsArea = ({ className, post }) => {
-    post = post[0]
     const date = new Date(post.createdAt);
     const age_rating = post?.age_rating.data.attributes
     const url = images.domains[0]
@@ -56,7 +55,7 @@ const BlogDetailsArea = ({ className, post }) => {
 
                                     <p className="date mb-5">
                                         {
-                                            `${date.getDate().toString().padStart(2, "0")} ${" "}
+                                            `${date.getDate().toString().padStart(2, "0")} ${"-"}
                                             ${getMonth(date)}, ${date.getFullYear()}`
                                         }
                                     </p>

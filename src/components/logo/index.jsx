@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Anchor from "@ui/anchor";
 import PropTypes from "prop-types";
 import clsx from "clsx";

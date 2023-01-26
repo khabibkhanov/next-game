@@ -24,14 +24,10 @@ export async function getGamePicture() {
 }
 
 export async function getOneGame(slug, fields) {
-    // console.log(fields.join('%2C%20')); 
-
     fields = fields.join('%2C%20')
-    const requestUrl = `${baseUrl}/names?filters%5Bslug%5D=${slug}&populate=${fields}`
-    let data = await axios.get(requestUrl)
+
+    let data = await axios.get(`${baseUrl}/names?filters%5Bslug%5D=${slug}&populate=${fields}`)
     .then(response => {
-// `?populate=genres%2C%20languages%2C%20features&filters%5Bslug%5D=${slug}`
-        // console.log(response.data);
         return response.data
     })
     return data

@@ -115,18 +115,18 @@ function normalizedData(data, key = "section") {
 }
 
 const months = [
-    "jan",
-    "feb",
-    "mar",
-    "apr",
-    "may",
-    "jun",
-    "jul",
-    "aug",
-    "sep",
-    "oct",
-    "nov",
-    "dec",
+    "Yanvar",
+    "Fevral",
+    "Mart",
+    "Aprel",
+    "May",
+    "Iyun",
+    "Iyul",
+    "Avgust",
+    "Sentabr",
+    "Oktyabr",
+    "Noyabr",
+    "Dekabr",
 ];
 
 const getMonth = (date) => months[date.getMonth()];

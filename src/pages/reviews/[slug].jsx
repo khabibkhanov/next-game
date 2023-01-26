@@ -3,20 +3,16 @@ import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
-import Breadcrumb from "@components/breadcrumb";
 import BlogDetailsArea from "@containers/blog-details";
-import CommentsArea from "@containers/comments-area";
-import CommentForm from "@components/comment-form";
 import RelatedPostsArea from "@containers/related-posts";
 import BlogSidebar from "@containers/blog-sidebar";
-import { getAllReviews, getReviewsBySlugCustom } from "../../lib/api";
+import { getAllReviews, getOneReview } from "../../lib/api";
 
 const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => (
     <Wrapper>
         <SEO pageTitle="Game Details" />
         <Header />
         <main id="main-content main-content-style position-relative">
-            {/* <Breadcrumb pageTitle="Game Details" currentPage="Game Details" /> */}
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6 game-site-header">
@@ -46,6 +42,7 @@ const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => 
 
 export async function getServerSideProps(res) {
     const { slug } = res.params;
+
     const fields = [
         "reviews",
         "slug",
@@ -68,9 +65,9 @@ export async function getServerSideProps(res) {
     ]
 
     const posts = await getAllReviews(fields);
-    let post = await getReviewsBySlugCustom(slug, fields )
+    let post = await getOneReview(slug, fields)
 
-    if(!post[0]) {
+    if(!post) {
         return {
             notFound: true
         }
