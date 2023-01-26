@@ -22,7 +22,7 @@ import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
 import { getAllReviews } from "src/lib/api";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const games = await getAllReviews([
         "title",
         "release_date",
@@ -49,7 +49,7 @@ export async function getStaticProps() {
     }
 
     const images = iages(game_picture)
-    return { 
+    return {
         props: { 
             games: games,
             recentPosts,

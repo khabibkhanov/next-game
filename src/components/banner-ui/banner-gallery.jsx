@@ -12,6 +12,7 @@ const myLoader = (({src}) => {
 
 const BannerGallery = ({ className, images }) => (
     <div className="banner-gallery-loop">
+        {console.log(images)}
         {images.map((image, index, arr) => (
             <div
                 key={image.attributes.url}
