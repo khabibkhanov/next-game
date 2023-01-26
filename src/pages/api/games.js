@@ -2,9 +2,13 @@
 
 import axios from "axios";
 
+const baseUrl = 'http://192.168.0.87:1337/api'
+
 export default async function handler(req, res) {
-
-    console.log('Entered the serverless function')
-
-    return { "dummy": "data"}
+    let data
+    await axios.get(`${baseUrl}/names?populate=%2A`)
+    .then(response => {
+        data = response.data
+    }) 
+    return data
 }

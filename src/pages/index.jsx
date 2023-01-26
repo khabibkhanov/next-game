@@ -20,40 +20,13 @@ import homepageData from "../data/homepages/home-10.json";
 import productData from "../data/products.json";
 import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
-import { getAllReviews } from "src/lib/api";
+import { getAllReviews, getHomeBannerPictures } from "src/lib/api";
 
 export async function getServerSideProps() {
-    const games = await getAllReviews([
-        "title",
-        "release_date",
-        "slug",
-        "reviews",
-        "publisher",
-        "developer",
-        "age_restricts",
-        "game_picture",
-        "genres",
-        "timeToRead",
-    ]);
+    const images = await getHomeBannerPictures();
 
-    const genres = games.map((blog) => [...blog.genres]);
-    const recentPosts = games.slice(0, 9);
-
-    const  game_picture = recentPosts.map(game => game.game_picture.data.reduce((acc, val) => {
-        acc[val] = game.game_picture
-    }))
-
-    const iages = function ([a,b,c,...rest]) {
-        if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
-        return [[a,b,c]].concat(iages(rest))
-    }
-
-    const images = iages(game_picture)
     return {
-        props: { 
-            games: games,
-            recentPosts,
-            genres,
+        props: {
             images,
             className: "template-color-1",
         } 
@@ -61,7 +34,6 @@ export async function getServerSideProps() {
 }
 
 const Home = ({
-    games,
     images
 }) => {
     return (
@@ -69,7 +41,7 @@ const Home = ({
             <SEO pageTitle="Home" />
             <Header />
             <main id="main-content">
-                <HeroArea data={games} game_picture={images} />
+                <HeroArea game_picture={images} />
             </main>
             <Footer />
         </Wrapper>

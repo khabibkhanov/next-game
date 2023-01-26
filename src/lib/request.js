@@ -2,13 +2,25 @@ import axios from "axios"
 
 const baseUrl = 'http://192.168.0.87:1337/api'
 
-export async function getGames() {
+export async function getGames(fields) {
     let data
-    await axios.get(`${baseUrl}/names?populate=%2A`)
+    fields = fields.join('%2C%20')
+
+    await axios.get(`${baseUrl}/names?populate=${fields}`)
     .then(response => {
         data = response.data
     }) 
     return data
+}
+
+export async function getGamePicture() {
+    let games
+
+    await axios.get(`${baseUrl}/names?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
+    .then(response => {
+        games = response?.data?.data?.map(post => post.attributes).reverse();
+    }) 
+    return games
 }
 
 export async function getOneGame(slug, fields) {

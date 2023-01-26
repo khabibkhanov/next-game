@@ -5,7 +5,7 @@ import BannerGallery from "@components/banner-ui/banner-gallery";
 import { HeadingType, TextType, ImageType, ButtonType } from "@utils/types";
 import clsx from "clsx";
 
-const HeroArea = ({ data, game_picture }) => (
+const HeroArea = ({ game_picture }) => (
     <div className="slider-area ptb--60">
         <div className="container-fluid padding-contorler-am-slide">
             <div className="row d-flex align-items-center">
@@ -40,7 +40,7 @@ const HeroArea = ({ data, game_picture }) => (
                 <div className="col-lg-12 col-xl-6 order-1 order-xl-2">
                     <div className={clsx("banner-gallery-wrapper")}>
                         {
-                            game_picture?.map(( picture, index ) => (
+                            game_picture?.map(( picture ) => (
                                 picture && <BannerGallery images={picture} />
                             ))
                         }

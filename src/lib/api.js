@@ -1,7 +1,7 @@
 import { join } from "path";
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
-import { getGames, getOneGame, getMinRequirements, getGenres, getLanguages } from "./request";
+import { getGames, getOneGame, getGamePicture } from "./request";
 
 export async function getPostSlugs() {
     let slugs = await getGames();
@@ -105,7 +105,7 @@ export function getReviewsBySlug(posts, fields = []) {
 } // end of getReviewsBySlug
 
 export async function getAllReviews(fields = []) {
-    const games = await getGames();
+    const games = await getGames(fields);
 
     const posts = games?.data
         ?.sort((a, b) => b.id - a.id)
@@ -115,8 +115,26 @@ export async function getAllReviews(fields = []) {
     return posts;
 }
 
+
+export async function getHomeBannerPictures() {
+    const response = await getGamePicture()
+
+    const  game_pictures = response.map(game => game?.game_picture?.data.reduce((acc, val) => {
+        acc[val] = game.game_picture
+    }))
+
+    const iages = function ([a,b,c,...rest]) {
+        if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
+        return [[a,b,c]].concat(iages(rest))
+    }
+
+    const images = iages(game_pictures)
+
+    return images
+}
+
 export async function getReviewsBySlugCustom(slug, fields = []) {
-    let posts = await getAllReviews(fields);
+    let posts = await getOneGame(fields);
     posts = posts.filter(game => game.slug === slug)
     // let post = posts.data.map((game) => getReviewsBySlug(game, fields));
     console.log(posts);
