@@ -1,6 +1,4 @@
 import PropTypes from "prop-types";
-import Anchor from "@ui/anchor";
-import { flatDeep, slugify } from "@utils/methods";
 
 const DetailsWidget = ({ details, heading }) => {
     return (

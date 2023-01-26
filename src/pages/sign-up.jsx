@@ -1,6 +1,6 @@
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
-import Header from "@layout/header/header-01";
+import Header from "@layout/header";
 import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
 import SignUpArea from "@containers/signup";
