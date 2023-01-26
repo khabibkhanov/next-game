@@ -122,7 +122,7 @@ export async function getHomeBannerPictures() {
     games = games?.data?.map(post => post.attributes).reverse();
 
     const  game_pictures = games.map(game => game?.game_picture?.data.reduce((acc, val) => {
-        acc[val] = game.game_picture
+        acc[val] = game.game_picture.data[0].attributes.game_picture.data[0].attributes.formats.thumbnail
     }))
 
     const hero_image_gen = function ([a,b,c,...rest]) {

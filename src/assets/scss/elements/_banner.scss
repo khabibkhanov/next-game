@@ -859,11 +859,11 @@
         img {
             transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
             display: block;
-            // height: 180px;
+            width: 250px;
             // height: 180px;
             object-fit: cover;
             border-radius: 20px;    
-            object-position: center;
+            // object-position: center;
             margin: 0 !important;
         }
     }

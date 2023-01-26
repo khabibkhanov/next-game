@@ -10,10 +10,10 @@ const myLoader = (({src}) => {
     return src
 })
 
-const BannerGallery = ({ className, images }) => (
+const BannerGallery = ({ className, pictures }) => (
     <div className="banner-gallery-loop">
         
-        {images.map((image, index, arr) => (
+        {pictures.map((image, index, arr) => (
             <div
                 key={image.attributes.url}
                 className={clsx(

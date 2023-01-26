@@ -33,10 +33,7 @@ const Home = ({
 };
 
 Home.propTypes = {
-    games: PropTypes.arrayOf(PropTypes.shape({})),
-    recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
-    images: PropTypes.arrayOf(PropTypes.shape({})),
-    genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    images: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
 };
 
 export default Home

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import BannerBadge from "@components/banner-ui/banner-badge";
 import Button from "@ui/button";
 import BannerGallery from "@components/banner-ui/banner-gallery";
 import { HeadingType, TextType, ImageType, ButtonType } from "@utils/types";
@@ -40,8 +39,8 @@ const HeroArea = ({ game_picture }) => (
                 <div className="col-lg-12 col-xl-6 order-1 order-xl-2">
                     <div className={clsx("banner-gallery-wrapper")}>
                         {
-                            game_picture?.map(( picture ) => (
-                                picture && <BannerGallery images={picture} />
+                            game_picture?.map(( picture, index ) => (
+                                picture && <BannerGallery key={index} pictures={picture} />
                             ))
                         }
                     </div>
