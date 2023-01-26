@@ -18,7 +18,7 @@ export async function getGamePicture() {
 
     await axios.get(`${baseUrl}/names?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
     .then(response => {
-        games = response?.data?.data?.map(post => post.attributes).reverse();
+        games = response?.data
     }) 
     return games
 }

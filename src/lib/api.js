@@ -117,20 +117,20 @@ export async function getAllReviews(fields = []) {
 
 
 export async function getHomeBannerPictures() {
-    const response = await getGamePicture()
+    let games = await getGamePicture()
 
-    const  game_pictures = response.map(game => game?.game_picture?.data.reduce((acc, val) => {
+    games = games?.data?.map(post => post.attributes).reverse();
+
+    const  game_pictures = games.map(game => game?.game_picture?.data.reduce((acc, val) => {
         acc[val] = game.game_picture
     }))
 
-    const iages = function ([a,b,c,...rest]) {
+    const hero_image_gen = function ([a,b,c,...rest]) {
         if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
-        return [[a,b,c]].concat(iages(rest))
+        return [[a,b,c]].concat(hero_image_gen(rest))
     }
 
-    const images = iages(game_pictures)
-
-    return images
+    return hero_image_gen(game_pictures)
 }
 
 export async function getReviewsBySlugCustom(slug, fields = []) {
