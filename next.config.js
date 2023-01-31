@@ -15,14 +15,16 @@ module.exports = {
             'http://192.168.0.87:1337'
         ]
     },
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    webpack: (config) => {
         // eslint-disable-next-line no-param-reassign
-        config.ignoreWarnings = [
-            {
-                message:
-                    /(magic-sdk|@walletconnect\/web3-provider|@web3auth\/web3auth)/,
-            },
-        ];
+        // config.ignoreWarnings = [
+        //     {
+        //         message:
+        //             /(magic-sdk|@walletconnect\/web3-provider|@web3auth\/web3auth)/,
+        //     },
+        // ],
+        config.devServer = { hot: false };
         return config;
+    
     },
 };
