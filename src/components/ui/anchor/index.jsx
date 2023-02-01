@@ -44,7 +44,7 @@ const Anchor = ({
     }
 
     return (
-        <Link rel="preload" href={path} passHref>
+        <Link legacyBehavior rel="preload" href={path} passHref>
             <a
                 href="passRef"
                 className={className}
