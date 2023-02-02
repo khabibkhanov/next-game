@@ -11,5 +11,6 @@ export default async function handler() {
     .then(response => {
         games = response?.data
     }) 
+    console.log(games);
     return games
 }

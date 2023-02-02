@@ -9,16 +9,19 @@ import handler from "./api/games";
 export async function getServerSideProps() {
     let games = await handler();
     games = games?.data?.map(post => post.attributes).reverse();
-
-    const  game_pictures = games.map(game => game?.game_picture?.data.reduce((acc, val) => {
-        acc[val] = game.game_picture.data[0].attributes.game_picture.data[0].attributes.formats.thumbnail
-    }))
-
+    const game_pictures = games.reduce((acc, game) => {
+        const picture = game?.game_picture?.data[0].attributes.formats.small;
+        if (picture !== undefined) {
+          acc.push(picture);
+        }
+        return acc;
+      }, []);
+    
     const hero_image_gen = function ([a,b,c,...rest]) {
         if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
         return [[a,b,c]].concat(hero_image_gen(rest))
     }
-
+    
     const images = hero_image_gen(game_pictures)
 
     return {
@@ -42,10 +45,6 @@ const Home = ({
             <Footer />
         </Wrapper>
     );
-};
-
-Home.propTypes = {
-    images: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
 };
 
 export default Home

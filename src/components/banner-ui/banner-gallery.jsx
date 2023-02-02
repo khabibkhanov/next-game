@@ -15,7 +15,7 @@ const BannerGallery = ({ className, pictures }) => (
         
         {pictures.map((image, index, arr) => (
             <div
-                key={image.attributes.url}
+                key={image.url}
                 className={clsx(
                     "banner-gallery",
                     `banner-gallery-${index + 2}`,
@@ -23,13 +23,14 @@ const BannerGallery = ({ className, pictures }) => (
                 )}
             >
                 <Image
+                    priority
+                    rel="preload"
                     loader={myLoader}
-                    src={`${url}${image.attributes?.url}`}
-                    alt={image.attributes.alternativeText || "banner"}
+                    src={`${url}${image?.url}`}
+                    alt={image.alternativeText || "banner"}
                     width={300}
                     unoptimized={true}
                     height={250}
-                    loading="lazy"
                     className="mb-5"
                 />
             </div>

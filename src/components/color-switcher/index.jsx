@@ -14,7 +14,8 @@ const ColorSwitcher = () => {
                 <Image
                     src="/images/icons/sun-01.svg"
                     alt="Sun images"
-                    layout="fixed"
+                    loading="lazy"
+                    unoptimized={true}
                     width={16}
                     height={16}
                 />
@@ -27,7 +28,8 @@ const ColorSwitcher = () => {
                 <Image
                     src="/images/icons/vector.svg"
                     alt="Vector Images"
-                    layout="fixed"
+                    loading="lazy"
+                    unoptimized={true}
                     width={16}
                     height={16}
                 />
