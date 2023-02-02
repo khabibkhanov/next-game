@@ -1,6 +1,7 @@
 const path = require("path");
+const withOptimizedImages = require("next-optimized-images");
 
-module.exports = {
+module.exports = withOptimizedImages({
     reactStrictMode: true,
     sassOptions: {
         includePaths: [path.join(__dirname, "./src/assets/scss")],
@@ -11,6 +12,12 @@ module.exports = {
         ignoreDuringBuilds: true,
       },
     images: {
+        // Add caching configuration for server-side rendered pages
+        generateEtags: false,
+        onDemandEntries: {
+            // Set a cache lifetime of 1 day (in seconds)
+            maxInactiveAge: 24 * 60 * 60,
+        },
         domains: [
             'http://192.168.0.87:1337'
         ]
@@ -27,4 +34,4 @@ module.exports = {
         return config;
     
     },
-};
+});
