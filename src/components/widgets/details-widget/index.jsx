@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 const DetailsWidget = ({ details, heading }) => {
     return (
         <div className="rbt-single-widget widget_tag_cloud mt--40 mb--40">
@@ -14,10 +12,6 @@ const DetailsWidget = ({ details, heading }) => {
         </div>
     </div>
     );
-};
-
-DetailsWidget.propTypes = {
-    details: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
 };
 
 export default DetailsWidget;

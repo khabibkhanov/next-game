@@ -1,7 +1,3 @@
-import PropTypes from "prop-types";
-import Anchor from "@ui/anchor";
-import { flatDeep, slugify } from "@utils/methods";
-
 const PublisherDetailsWidget = ({ details, heading }) => {
     return (
         <div className="rbt-single-widget widget_tag_cloud mt--40 mb--40">
@@ -25,10 +21,6 @@ const PublisherDetailsWidget = ({ details, heading }) => {
         </div>
     </div>
     );
-};
-
-PublisherDetailsWidget.propTypes = {
-    details: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
 };
 
 export default PublisherDetailsWidget;

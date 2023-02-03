@@ -24,6 +24,7 @@ const TagWidget = ({ genres, rootPage }) => {
     );
 };
 
+
 TagWidget.propTypes = {
     genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     rootPage: PropTypes.string,
