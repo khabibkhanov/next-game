@@ -6,9 +6,9 @@ import { images } from "next.config";
 
 const url = images.domains[0]
 
-const myLoader = (({src}) => {
-    return src
-})
+// const myLoader = (({src}) => {
+//     return src
+// })
 
 const BannerGallery = ({ className, pictures }) => (
     <div className="banner-gallery-loop">
@@ -25,7 +25,7 @@ const BannerGallery = ({ className, pictures }) => (
                 <Image
                     priority
                     rel="preload"
-                    loader={myLoader}
+                    // loader={myLoader}
                     src={`${url}${image?.url}`}
                     alt={image.alternativeText || "banner"}
                     width={300}
