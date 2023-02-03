@@ -1,7 +1,5 @@
-import PropTypes from "prop-types";
 import Button from "@ui/button";
 import BannerGallery from "@components/banner-ui/banner-gallery";
-import { HeadingType, TextType, ImageType, ButtonType } from "@utils/types";
 import clsx from "clsx";
 
 const HeroArea = ({ game_picture }) => (
@@ -49,20 +47,5 @@ const HeroArea = ({ game_picture }) => (
         </div>
     </div>
 );
-
-HeroArea.propTypes = {
-    data: PropTypes.shape({
-        badges: PropTypes.arrayOf(
-            PropTypes.shape({
-                title: PropTypes.string.isRequired,
-                image: ImageType.isRequired,
-            })
-        ),
-        headings: HeadingType,
-        texts: TextType,
-        images: PropTypes.arrayOf(ImageType),
-        buttons: PropTypes.arrayOf(ButtonType),
-    }),
-};
 
 export default HeroArea;
