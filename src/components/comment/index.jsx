@@ -10,6 +10,7 @@ const Comment = ({ image, username, time, text }) => (
                     <Image
                         src={image.src}
                         alt={image?.alt || "Comment Image"}
+                        loading="lazy"
                         width={image?.width || 50}
                         height={image?.height || 50}
                         layout="fixed"

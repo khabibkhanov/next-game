@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Anchor from "@ui/anchor";
 
-const RecentPostsWidget = ({ recentPosts, rootPage }) => (
+const RecentReviewssWidget = ({ recentPosts, rootPage }) => (
     <div className="rbt-single-widget widget_recent_entries mt--40">
         <h3 className="title">So'nggi Maqolalar</h3>
 
@@ -23,7 +23,7 @@ const RecentPostsWidget = ({ recentPosts, rootPage }) => (
     </div>
 );
 
-RecentPostsWidget.propTypes = {
+RecentReviewssWidget.propTypes = {
     recentPosts: PropTypes.arrayOf(
         PropTypes.shape({
             title: PropTypes.string,
@@ -35,8 +35,8 @@ RecentPostsWidget.propTypes = {
     rootPage: PropTypes.string,
 };
 
-RecentPostsWidget.defaultProps = {
+RecentReviewssWidget.defaultProps = {
     rootPage: "/reviews",
 };
 
-export default RecentPostsWidget;
+export default RecentReviewssWidget;

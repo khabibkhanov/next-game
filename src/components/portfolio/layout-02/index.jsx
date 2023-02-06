@@ -9,6 +9,7 @@ const Portfolio = ({ title, author, path, image }) => (
             <Anchor path={path}>
                 <Image
                     className="w-100"
+                    loading="lazy"
                     src={image.src}
                     alt={image?.alt || "Nft_Profile"}
                     width={image?.width || 658}

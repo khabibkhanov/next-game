@@ -11,6 +11,7 @@ const TopSeller = ({ name, time, path, image, eth, isVarified }) => (
                     <Anchor path={path}>
                         <Image
                             src={image.src}
+                            loading="lazy"
                             alt={image?.alt || "Nft_Profile"}
                             width={image?.width || 50}
                             height={image?.height || 50}

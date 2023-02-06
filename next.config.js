@@ -1,6 +1,23 @@
 const path = require("path");
 
 module.exports = {
+    async headers() {
+        return [
+          {
+            source: '/:all*(svg|jpg|png)',
+            locale: false,
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=9999999999, must-revalidate',
+              }
+            ],
+          },
+        ]
+    },
+    experimental: {
+      webVitalsAttribution: ['CLS', 'LCP']
+    },
     reactStrictMode: true,
     swcMinify: true,
     sassOptions: {
@@ -25,12 +42,37 @@ module.exports = {
             maxInactiveAge: 24 * 60 * 60,
         }
     },
-    // Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    plugins: [
+      "postcss-flexbugs-fixes",
+      [
+        "postcss-preset-env",
+        {
+          "autoprefixer": {
+            "flexbox": "no-2009"
+          },
+          "stage": 3,
+          "features": {
+            "custom-properties": false
+          }
+        }
+      ],
+      [
+        '@fullhuman/postcss-purgecss',
+        {
+          content: [
+              './pages/**/*.{js,jsx,ts,tsx}',
+              './components/**/*.{js,jsx,ts,tsx}'
+          ],
+          defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+          safelist: ["html", "body"]
+        }
+      ],
+    ],
+
     webpack: (config) => {
         // eslint-disable-next-line no-param-reassign
         // config.ignoreWarnings = [
         //     {
-            formats: ['image/webp'],
         //         message:
         //             /(magic-sdk|@walletconnect\/web3-provider|@web3auth\/web3auth)/,
         //     },

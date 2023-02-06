@@ -11,7 +11,6 @@ const myLoader = (({src}) => {
     return src
 })
 
-
 const BlogCard = ({
     className,
     title,
@@ -33,6 +32,7 @@ const BlogCard = ({
                                     <Image
                                         key={index}
                                         className="display-block"
+                                        loading="lazy"
                                         loader={myLoader}
                                         unoptimized={true}
                                         src={`${url}${img.attributes?.url}`}

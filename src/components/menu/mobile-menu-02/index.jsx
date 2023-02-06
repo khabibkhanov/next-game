@@ -14,6 +14,7 @@ const MobileMenu = ({ isOpen, onClick, menu, logo }) => (
                     {menu?.map((nav) => (
                         <li id={nav.id} key={nav.id}>
                             <Link
+                                // rel="dns-prefetch"
                                 activeClass="active"
                                 className="nav-link smoth-animation"
                                 href={`#${nav.path}`}

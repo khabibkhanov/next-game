@@ -33,14 +33,14 @@ export async function getOneGame(slug, fields) {
     return data
 }
 
-export async function getGenres() {
-    let data
-    await axios.get(`http://localhost:1337/api/genres?populate[0]=names`)
-    .then(response => {
-        data = response.data
-    }  )
-    return data;
-}
+// export async function getGenres() {
+//     let data
+//     await axios.get(`http://localhost:1337/api/genres?populate[0]=names`)
+//     .then(response => {
+//         data = response.data
+//     }  )
+//     return data;
+// }
 
 // export async function getMinRequirements () {
 //     let data
@@ -51,23 +51,23 @@ export async function getGenres() {
 //     return data;
 // }
 
-export async function getLanguages () {
-    let data
-    await axios.get(`http://localhost:1337/api/languages?populate=%2A`)
-    .then(response => {
-        data = response.data
-    })
-    return data;
-}
+// export async function getLanguages () {
+//     let data
+//     await axios.get(`http://localhost:1337/api/languages?populate=%2A`)
+//     .then(response => {
+//         data = response.data
+//     })
+//     return data;
+// }
 
-export async function getMinRequirements () {
-    let data
-    await axios.get(`http://localhost:1337/api/min-requirements?populate=%2A`)
-    .then(response => {
-        data = response.data
-    })
-    return data;
-}
+// export async function getMinRequirements () {
+//     let data
+//     await axios.get(`http://localhost:1337/api/min-requirements?populate=%2A`)
+//     .then(response => {
+//         data = response.data
+//     })
+//     return data;
+// }
 
 export async function Register(data) { 
     data = {

@@ -20,6 +20,7 @@ const TopSeller = ({
                     <Anchor path={slug}>
                         <Image
                             src={image.src}
+                            loading="lazy"
                             alt={image?.alt || name}
                             width={image?.width || 54}
                             height={image?.height || 54}

@@ -9,6 +9,7 @@ const Portfolio = ({ title, author, path, image }) => (
             <div className="thumbnail thumbnail-overlay">
                 <Anchor path={path}>
                     <Image
+                        loading="lazy"
                         className="w-100"
                         src={image.src}
                         alt={image?.alt || "Nft_Profile"}

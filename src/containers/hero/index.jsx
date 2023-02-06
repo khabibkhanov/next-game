@@ -1,21 +1,29 @@
+import dynamic from 'next/dynamic';
 import Button from "@ui/button";
-import BannerGallery from "@components/banner-ui/banner-gallery";
+// import BannerGallery from "@components/banner-ui/banner-gallery";
 import clsx from "clsx";
 
-const HeroArea = ({ game_picture }) => (
+const BannerGallery = dynamic(() => import("@components/banner-ui/banner-gallery"), {
+    loading: () => <p>Loading...</p>,
+    ssr: false,
+});
+
+  const HeroArea = ({ game_picture }) => (
     <div className="slider-area ptb--60">
         <div className="container-fluid padding-contorler-am-slide">
             <div className="row d-flex align-items-center">
                 <div className="col-lg-12 col-xl-6 order-2 order-xl-1 padding-contorler-am-slide-right">
-                        <h1
+                        <h1 
                             className="title large-height theme-color"
                             data-sal-delay="200"
                             data-sal="slide-up"
                             data-sal-duration="800"
-                            dangerouslySetInnerHTML={{
-                                __html: "O'yinlar olamiga xush kelibsiz",
-                            }}
-                        />
+                            // dangerouslySetInnerHTML={{
+                            //     __html: "O'yinlar olamiga xush kelibsiz",
+                            // }}
+                        >
+                            O'yinlar olamiga xush kelibsiz
+                        </h1>
                         <p
                             className="slide-disc"
                             data-sal-delay="300"

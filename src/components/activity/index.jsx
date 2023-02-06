@@ -21,6 +21,7 @@ const Activity = ({
                     <div className="thumbnail">
                         <Anchor path={path}>
                             <Image
+                                loading="lazy"
                                 src={image.src}
                                 alt={image?.alt || "Nft_Profile"}
                                 width={image?.width || 500}

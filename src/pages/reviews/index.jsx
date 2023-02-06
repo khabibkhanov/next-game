@@ -3,8 +3,8 @@ import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
-import BlogArea from "@containers/blog/layout-03";
-import BlogSidebar from "@containers/blog-sidebar";
+import BlogArea from "@containers/review/layout";
+import ReviewSidebar from "@containers/blog-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews } from "../../lib/api";
 
@@ -20,10 +20,7 @@ const GamesList = ({
         <SEO pageTitle="Barcha Maqolalar" />
         <Header />
         <main id="main-content">
-            {/* <Breadcrumb
-                pageTitle="Barcha Maqolalar"
-                currentPage="Barcha Maqolalar"
-            /> */}
+
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">
@@ -34,7 +31,7 @@ const GamesList = ({
                             />
                         </div>
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
-                            <BlogSidebar
+                            <ReviewSidebar
                                 recentPosts={recentPosts}
                                 genres={genres}
                                 rootPage="/reviews"

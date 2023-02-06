@@ -11,6 +11,7 @@ const NoticeCard = ({ title, description, path, date, time, image }) => (
                     <Image
                         src={image.src}
                         alt={image?.alt || "Nft_Profile"}
+                        loading="lazy"
                         width={44}
                         height={44}
                         layout="fixed"

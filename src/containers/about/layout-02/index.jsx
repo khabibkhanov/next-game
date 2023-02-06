@@ -32,8 +32,11 @@ const AboutArea = ({ space, className, data }) => (
                     {data?.image?.src && (
                         <Image
                             src={data.image.src}
+                            loading="lazy"
                             alt={data.image?.alt || "Slider BG"}
                             layout="fill"
+                            width={data?.image?.width || 100}
+                            height={data?.image?.height || 100}
                             objectFit="cover"
                             quality={100}
                             priority

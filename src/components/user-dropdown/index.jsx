@@ -10,6 +10,7 @@ const UserDropdown = () => {
                 <Image
                     src="/images/icons/boy-avater.png"
                     alt="Images"
+                    loading="lazy"
                     layout="fixed"
                     width={38}
                     height={38}

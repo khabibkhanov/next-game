@@ -6,7 +6,8 @@ const SideMenu = ({ menu }) => (
         <ul className="mainmenu list-group">
             {menu?.map((nav) => (
                 <li key={nav.id} className="nav-item">
-                    <Link                    
+                    <Link         
+                        // rel="preconnect"           
                         activeClass="active"
                         className="nav-link smoth-animation"
                         href={`#${nav.path}`}

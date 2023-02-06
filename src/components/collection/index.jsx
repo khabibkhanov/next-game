@@ -16,6 +16,7 @@ const Collection = ({
                 <div className="collection-big-thumbnail">
                     <Image
                         src={image.src}
+                        loading="lazy"
                         alt={image?.alt || "Nft_Profile"}
                         width={507}
                         height={339}
@@ -29,6 +30,7 @@ const Collection = ({
                         <Image
                             src={thumb?.src}
                             alt={thumb?.alt || "Nft_Profile"}
+                            loading="lazy"
                             width={164}
                             height={110}
                         />
@@ -40,6 +42,7 @@ const Collection = ({
                     <Image
                         src={profile_image.src}
                         alt={profile_image?.alt || "Nft_Profile"}
+                        loading="lazy"
                         width={80}
                         height={80}
                     />

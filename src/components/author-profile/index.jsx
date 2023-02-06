@@ -7,6 +7,7 @@ const AuthorProfile = ({ name, image, balance }) => (
         <div className="thumbnail">
             {image?.src && (
                 <Image
+                    loading="lazy"
                     src={image.src}
                     alt={image?.alt || name}
                     width={60}

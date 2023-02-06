@@ -11,6 +11,7 @@ const SocialAuth = ({ className, title }) => (
                 <Image
                     src="/images/icons/google.png"
                     alt="google login"
+                    loading="lazy"
                     width={26}
                     height={27}
                     layout="fixed"
@@ -23,6 +24,7 @@ const SocialAuth = ({ className, title }) => (
                 <Image
                     src="/images/icons/facebook.png"
                     alt="facebook login"
+                    loading="lazy"
                     width={26}
                     height={27}
                     layout="fixed"
@@ -35,6 +37,7 @@ const SocialAuth = ({ className, title }) => (
                 <Image
                     src="/images/icons/tweeter.png"
                     alt="tweeter login"
+                    loading="lazy"
                     width={26}
                     height={27}
                     layout="fixed"
@@ -47,6 +50,7 @@ const SocialAuth = ({ className, title }) => (
                 <Image
                     src="/images/icons/linkedin.png"
                     alt="linkedin login"
+                    loading="lazy"
                     width={26}
                     height={27}
                     layout="fixed"

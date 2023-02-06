@@ -9,6 +9,7 @@ const ClientAvatar = ({ slug, name, image }) => (
             <Image
                 src={image.src}
                 alt={image?.alt || name}
+                loading="lazy"
                 layout="fixed"
                 width={image?.width || 30}
                 height={image?.height || 30}

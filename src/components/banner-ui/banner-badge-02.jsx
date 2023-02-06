@@ -12,6 +12,8 @@ const BannerBadge02 = ({ className, image }) => (
     >
         <Image
             className="image-1"
+            loading="lazy"
+
             src={image.src}
             alt={image?.alt || "Badge"}
             width={image.width || 180}

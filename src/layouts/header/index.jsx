@@ -13,8 +13,6 @@ import menuData from "../../data/general/menu-01.json";
 const Header = ({ className }) => {
     const sticky = useSticky();
     const { offcanvas, offcanvasHandler } = useOffcanvas();
-    const token = typeof window !== "undefined" && window.localStorage.getItem('access_token');
-
 
     return (
         <>

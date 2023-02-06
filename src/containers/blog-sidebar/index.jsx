@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import CategoryWidget from "@widgets/category-widget";
-import RecentPostsWidget from "@widgets/recent-posts-widget";
+import RecentReviewssWidget from "@widgets/recent-reviews-widget";
 import TagWidget from "@widgets/tag-widget";
 
-
-
-const BlogSidebar = ({
+const ReviewSidebar = ({
     className,
     categories,
     recentPosts,
@@ -18,13 +16,13 @@ const BlogSidebar = ({
             <CategoryWidget categories={categories} rootPage={rootPage} />
         )}
         {recentPosts?.length > 0 && (
-            <RecentPostsWidget recentPosts={recentPosts} rootPage={rootPage} />
+            <RecentReviewssWidget recentPosts={recentPosts} rootPage={rootPage} />
         )}
         {genres?.length > 0 && <TagWidget genres={genres} rootPage={rootPage} />}
     </aside>
 );
 
-BlogSidebar.propTypes = {
+ReviewSidebar.propTypes = {
     className: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
@@ -32,4 +30,4 @@ BlogSidebar.propTypes = {
     rootPage: PropTypes.string,
 };
 
-export default BlogSidebar;
+export default ReviewSidebar;

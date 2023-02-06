@@ -42,6 +42,7 @@ const CommingSoonArea = () => (
                             <Image
                                 src="/images/bg/bg-image-14.jpg"
                                 alt="Slider BG"
+                                loading="lazy"
                                 layout="fill"
                                 priority
                                 objectFit="cover"
@@ -50,6 +51,7 @@ const CommingSoonArea = () => (
                         <SliderItem className="single-rn-slider position-relative">
                             <Image
                                 src="/images/bg/bg-image-15.jpg"
+                                loading="lazy"
                                 alt="Slider BG"
                                 layout="fill"
                                 priority
@@ -60,6 +62,7 @@ const CommingSoonArea = () => (
                             <Image
                                 src="/images/bg/bg-image-16.jpg"
                                 alt="Slider BG"
+                                loading="lazy"
                                 layout="fill"
                                 priority
                                 objectFit="cover"

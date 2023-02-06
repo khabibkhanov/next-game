@@ -23,8 +23,8 @@ const BannerGallery = ({ className, pictures }) => (
                 )}
             >
                 <Image
-                    priority
-                    rel="preload"
+                    fetchpriority="high"
+                    loading="lazy"
                     // loader={myLoader}
                     src={`${url}${image?.url}`}
                     alt={image.alternativeText || "banner"}

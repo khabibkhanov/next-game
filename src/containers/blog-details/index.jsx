@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getMonth } from "@utils/methods";
 import { ImageType } from "@utils/types";
 import { markdown } from "markdown"
-import GameDetails from "@containers/blog/game-details";
+import GameDetails from "@containers/review/game-details";
 import { images } from "next.config";
 
 const BlogDetailsArea = ({ className, post }) => {
@@ -70,10 +70,11 @@ const BlogDetailsArea = ({ className, post }) => {
                                         key={index}
                                         className="game-hero w-100"
                                         loader={myLoader}
+                                        loading="lazy"
                                         src={`${url}${img.attributes?.url}`}
-                                        width={img.attributes.width || "auto"}
+                                        width={img.attributes.width || 100}
                                         unoptimized={true}
-                                        height={img.attributes.height || "auto"}
+                                        height={img.attributes.height || 100}
                                         alt={img.attributes.alternativeText}
                                         layout="responsive"
                                     />

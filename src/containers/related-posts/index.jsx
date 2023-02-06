@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import BlogCard from "@components/blog/blog-card";
+import ReviewCard from "@components/review/review-card";
 
 const RelatedPostsArea = ({ space, className, relatedPosts, rootPage }) => (
     <div className={clsx("row g-5", space === 1 && "pt--60", className)}>
@@ -9,7 +9,7 @@ const RelatedPostsArea = ({ space, className, relatedPosts, rootPage }) => (
         </div>
         {relatedPosts?.map((post) => (
             <div key={post.slug} className="col-xl-4 col-lg-6 col-md-6 col-12">
-                <BlogCard
+                <ReviewCard
                     title={post.title}
                     slug={post.slug}
                     genres={post.genres}

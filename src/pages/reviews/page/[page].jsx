@@ -4,8 +4,8 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
-import BlogArea from "@containers/blog/layout-03";
-import BlogSidebar from "@containers/blog-sidebar";
+import BlogArea from "@containers/review/layout";
+import ReviewSidebar from "@containers/blog-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews, getPostSlugs } from "../../../lib/api";
 
@@ -36,7 +36,7 @@ const GamesList = ({
                             />
                         </div>
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
-                            <BlogSidebar
+                            <ReviewSidebar
                                 recentPosts={recentPosts}
                                 genres={genres}
                                 rootPage="/reviews"

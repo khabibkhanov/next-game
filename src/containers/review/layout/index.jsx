@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import BlogCard from "@components/blog/blog-card";
+import ReviewCard from "@components/review/review-card";
 
 const BlogArea = ({ className, data, rootPage }) => (
     <div className={clsx("blog-wrapper", className)}>
         {data?.posts?.map((post) => (
-            <BlogCard
+            <ReviewCard
                 key={post.slug}
                 data-sal="slide-up"
                 data-sal-duration="800"

@@ -8,10 +8,11 @@ const BannerBadge = ({ className, image, title, ...rest }) => (
         {image?.src && (
             <div className="icon">
                 <Image
+                    loading="lazy"
                     src={image.src}
                     alt={image?.alt || title}
-                    width={image?.width}
-                    height={image?.height}
+                    width={image?.width || 20}
+                    height={image?.height || 20}
                     priority
                 />
             </div>
