@@ -15,9 +15,9 @@ module.exports = {
           },
         ]
     },
-    experimental: {
-      webVitalsAttribution: ['CLS', 'LCP']
-    },
+    // experimental: {
+    //   webVitalsAttribution: ['CLS', 'LCP']
+    // },
     reactStrictMode: true,
     swcMinify: true,
     sassOptions: {

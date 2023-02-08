@@ -111,7 +111,7 @@ const PrivacyPolicyArea = ({ className, space }) => (
                                 6.3. Foydalanuvchining shaxsiy ma’lumotlari hech qachon, hech qanday holatda uchinchi shaxslarga berilmaydi, amaldagi qonunlarni bajarish bilan bog‘liq hollar bundan mustasno.
                             </li>
                             <li>
-                                6.4. Shaxsiy ma’lumotlarda noaniqliklar aniqlanganda, Foydalanuvchi Operatorga info@ittime.uz elektron manzil orqali «Shaxsiy ma’lumotlarni yangilash» belgisiga ega xabarni yuborish orqali ularni mustaqil ravishda yangilashi mumkin.
+                                6.4. Shaxsiy ma’lumotlarda noaniqliklar aniqlanganda, Foydalanuvchi Operatorga infom@ittie.uz elektron manzil orqali «Shaxsiy ma’lumotlarni yangilash» belgisiga ega xabarni yuborish orqali ularni mustaqil ravishda yangilashi mumkin.
                             </li>
                             <li>
                                 6.5. Shaxsiy ma’lumotlarni qayta ishlash muddati cheklanmagan. Foydalanuvchi istalgan vaqtda Operatorga info@ittime.uz elektron manzil orqali «Shaxsiy ma’lumotlarni qayta ishlashga rozilikni bekor qilish» belgisiga ega xabarni yuborish orqali shaxsiy ma’lumotlarining qayta ishlanishiga o‘z roziligini qaytarib olishi mumkin.
@@ -143,7 +143,7 @@ const PrivacyPolicyArea = ({ className, space }) => (
                                 8.3. Ushbu hujjatda Operator tomonidan shaxsiy ma’lumotlarni qayta ishlash siyosatidagi har qanday o‘zgarishlar aks ettiriladi. Siyosat yangi tahriri bilan almashtirilgunga qadar muddatsiz amal qiladi.
                             </li>
                             <li>
-                                8.4. Siyosatning amaldagi tahriri Internet tarmog’ida https://ittime.uz/policy-policy manzilda unga erkin kirish imkoniyati berilgan holda joylashtirilgan.
+                                8.4. Siyosatning amaldagi tahriri Internet tarmog’ida https://{baseUrl}/policy-policy manzilda unga erkin kirish imkoniyati berilgan holda joylashtirilgan.
                             </li>
                         </ul>
                         <h4>Operator</h4>
@@ -161,7 +161,7 @@ const PrivacyPolicyArea = ({ className, space }) => (
                                 Telefon: +998 71 233-78-98
                             </li>
                             <li>
-                                Elektron manzil: info@ittime.uz
+                                Elektron manzil: programmsoftuz@gmail.com
                             </li>
                         </ul>
                     </div>

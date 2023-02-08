@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Anchor from "@ui/anchor";
-import { useMoralis } from "react-moralis";
 
 const UserDropdown = () => {
 

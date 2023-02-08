@@ -1,4 +1,4 @@
-import { useMoralis } from "react-moralis";
+
 import SearchForm from "@components/search-form/layout-03";
 import Anchor from "@ui/anchor";
 import Button from "@ui/button";
@@ -15,7 +15,6 @@ import sideMenuData from "../../data/general/menu-02.json";
 const TopBarArea = () => {
     const { search, searchHandler } = useFlyoutSearch();
     const { offcanvas, offcanvasHandler } = useOffcanvas();
-    const { authenticate, isAuthenticated } = useMoralis();
     return (
         <>
             <div className="rn-top-bar-area">

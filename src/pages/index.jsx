@@ -20,25 +20,8 @@ const Home = ({
     );
 };
 
-export async function getServerSideProps(ctx) {
-    ctx.res.setHeader('Cache-Control', 'no-cache', 'no-store', 'max-age=0', 'must-revalidate')
-
-    let games = await handler();
-    games = games?.data?.map(post => post.attributes).reverse();
-    const game_pictures = games.reduce((acc, game) => {
-        const picture = game?.game_picture?.data[0].attributes.formats.thumbnail;
-        if (picture !== undefined) {
-          acc.push(picture);
-        }
-        return acc;
-      }, []);
-    
-    const hero_image_gen = function ([a,b,c,...rest]) {
-        if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
-        return [[a,b,c]].concat(hero_image_gen(rest))
-    }
-    
-    const images = hero_image_gen(game_pictures)
+export async function getServerSideProps() {
+    let images = await handler();
 
     return {
         props: {
