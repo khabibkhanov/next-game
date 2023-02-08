@@ -143,7 +143,7 @@ const PrivacyPolicyArea = ({ className, space }) => (
                                 8.3. Ushbu hujjatda Operator tomonidan shaxsiy ma’lumotlarni qayta ishlash siyosatidagi har qanday o‘zgarishlar aks ettiriladi. Siyosat yangi tahriri bilan almashtirilgunga qadar muddatsiz amal qiladi.
                             </li>
                             <li>
-                                8.4. Siyosatning amaldagi tahriri Internet tarmog’ida https://{baseUrl}/policy-policy manzilda unga erkin kirish imkoniyati berilgan holda joylashtirilgan.
+                                8.4. Siyosatning amaldagi tahriri Internet tarmog’ida https:///policy-policy manzilda unga erkin kirish imkoniyati berilgan holda joylashtirilgan.
                             </li>
                         </ul>
                         <h4>Operator</h4>
