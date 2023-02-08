@@ -15,9 +15,9 @@ module.exports = {
           },
         ]
     },
-    // experimental: {
-    //   webVitalsAttribution: ['CLS', 'LCP']
-    // },
+    experimental: {
+      webVitalsAttribution: ['CLS', 'LCP']
+    },
     reactStrictMode: true,
     swcMinify: true,
     sassOptions: {
@@ -42,32 +42,6 @@ module.exports = {
             maxInactiveAge: 24 * 60 * 60,
         }
     },
-    plugins: [
-      "postcss-flexbugs-fixes",
-      [
-        "postcss-preset-env",
-        {
-          "autoprefixer": {
-            "flexbox": "no-2009"
-          },
-          "stage": 3,
-          "features": {
-            "custom-properties": false
-          }
-        }
-      ],
-      [
-        '@fullhuman/postcss-purgecss',
-        {
-          content: [
-              './pages/**/*.{js,jsx,ts,tsx}',
-              './components/**/*.{js,jsx,ts,tsx}'
-          ],
-          defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-          safelist: ["html", "body"]
-        }
-      ],
-    ],
 
     webpack: (config) => {
         // eslint-disable-next-line no-param-reassign
