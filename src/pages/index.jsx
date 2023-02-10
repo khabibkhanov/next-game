@@ -20,7 +20,7 @@ const Home = ({
     );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     let images = await handler();
 
     return {

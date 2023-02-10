@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = 'http://192.168.0.87:1337/api'
+const baseUrl = 'https://strapi-game-production.up.railway.app/api'
 
 export async function getGames(fields) {
     let data

@@ -30,7 +30,7 @@ module.exports = {
       },
     images: {
         domains: [
-            'http://192.168.0.87:1337'
+            'https://strapi-game-production.up.railway.app'
         ],
         // Add caching configuration for server-side rendered pages
         // generateEtags: false,
