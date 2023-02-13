@@ -20,7 +20,7 @@ const LoginForm = ({ className }) => {
 
         axios({
             method: "post",
-            url: "https://strapi-game-production.up.railway.app/api/auth/local",
+            url: "https://game-backend-production.up.railway.app/api/auth/local",
             data,
         })
         .then((_res) => {
