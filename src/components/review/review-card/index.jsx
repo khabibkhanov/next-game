@@ -25,26 +25,27 @@ const BlogCard = ({
         <div className={clsx("rn-blog", className)} {...rest}>
             <div className="inner">
                 {
-                    image?.data?.map((img, index) => (
-                        img.attributes.url && (
+                    // console.log(image)
+                    // image?.data?.map((img, index) => (
+                        image.data.attributes.url && (
                             <div className="thumbnail">
+                                {console.log(image.data.attributes.url)}
                                 <Anchor path={`${rootPage}/${slug}`}>
                                     <Image
-                                        key={index}
                                         className="display-block"
                                         loading="lazy"
                                         loader={myLoader}
                                         unoptimized={true}
-                                        src={`${url}${img.attributes?.url}`}
-                                        layout={img?.attributes?.height ? "responsive" : "fill"}
-                                        alt={img.attributes.alternativeText}
-                                        width={img?.attributes?.width || 489}
-                                        height={img?.attributes?.height || 366}
+                                        src={`${url}${image.data.attributes.url}`}
+                                        layout={image.data.attributes?.height ? "responsive" : "fill"}
+                                        alt={image.data.attributes.alternativeText}
+                                        width={image.data.attributes?.width || 489}
+                                        height={image.data.attributes?.height || 366}
                                     />
                                 </Anchor>
                             </div>
                         )
-                    ))
+                    // ))
                 }
                 <div className="content">
                         <div className="category-info">

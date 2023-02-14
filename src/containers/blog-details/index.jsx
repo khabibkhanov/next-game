@@ -9,7 +9,7 @@ import { images } from "next.config";
 
 const BlogDetailsArea = ({ className, post }) => {
     const date = new Date(post.createdAt);
-    const age_rating = post?.age_rating.data.attributes
+    // const age_rating = post?.age_rating.data.attributes
     const url = images.domains[0]
 
     const myLoader = (({src}) => {
@@ -29,7 +29,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                 <div className="game-headings d-flex mb-5">
                                     <h1 className="title mb-2">{post.title}</h1>
 
-                                    {
+                                    {/* {
                                         age_rating && (
                                             <div className="age-rating d-flex">
                                                 <img src={`${url}${age_rating.age_ratings_url}`} className="me-4" alt="age rating pic" />
@@ -46,7 +46,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                                 </div>
                                             </div>
                                         )
-                                    }
+                                    } */}
                                 </div>
                                 <div className="d-flex mb-0">
                                     <p className="reading-time    mb-3 me-5"> 
@@ -64,22 +64,22 @@ const BlogDetailsArea = ({ className, post }) => {
                         </div>
 
                         {
-                            post?.game_picture?.data.map((img, index) => (
-                                img.attributes.url && (
+                            // post?.game_picture?.data.map((img, index) => (
+                                post?.game_picture?.data.attributes.url && (
                                     <Image
-                                        key={index}
+                                       
                                         className="game-hero w-100"
                                         loader={myLoader}
                                         loading="lazy"
-                                        src={`${url}${img.attributes?.url}`}
-                                        width={img.attributes.width || 100}
+                                        src={`${url}${post?.game_picture?.data.attributes?.url}`}
+                                        width={post?.game_picture?.data.attributes.width || 100}
                                         unoptimized={true}
-                                        height={img.attributes.height || 100}
-                                        alt={img.attributes.alternativeText}
+                                        height={post?.game_picture?.data.attributes.height || 100}
+                                        alt={post?.game_picture?.data.attributes.alternativeText}
                                         layout="responsive"
                                     />
                                 )
-                            ))
+                            // ))
                         }
                     </div>
                 </div>  
@@ -100,7 +100,7 @@ BlogDetailsArea.propTypes = {
     className: PropTypes.string,
     post: PropTypes.shape({
         title: PropTypes.string,
-        age_restricts: PropTypes.string,
+        // age_restricts: PropTypes.string,
         release_date: PropTypes.string,
         game_picture: ImageType,
         reviews: PropTypes.string,

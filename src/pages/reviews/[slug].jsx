@@ -76,11 +76,11 @@ export async function getServerSideProps(res) {
     let poster = posts?.filter((game) => game?.slug === slug)
     const genres = posts?.map((game) => [...game?.genres]);
     const languages = posts?.map((game) => game?.languages);
-    const availables = posts?.map((game) => game?.availables)
-    const publisher_notice = posts?.map((game) => game?.publisher_notice)
-    const features = posts?.map((game) => game?.features)
+    // const availables = posts?.map((game) => game?.availables)
+    // const publisher_notice = posts?.map((game) => game?.publisher_notice)
+    // const features = posts?.map((game) => game?.features)
     const game_pictures = posts?.map((game) => game?.game_picture);
-    const age_rating = posts?.map((game) => game?.age_rating);
+    // const age_rating = posts?.map((game) => game?.age_rating);
 
 
     const recentPosts = posts.filter((post) => {
@@ -106,14 +106,14 @@ export async function getServerSideProps(res) {
         props: {
             post,
             slug,
-            availables,
-            publisher_notice,
-            features,
+            // availables,
+            // publisher_notice,
+            // features,
             recentPosts,
             languages,
             game_pictures,
             relatedPosts,
-            age_rating,
+            // age_rating,
             genres,
             className: "template-color-1",
         },
@@ -124,12 +124,12 @@ BlogDetails.propTypes = {
     post: PropTypes.shape({}),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
     game_picture: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    age_rating: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    // age_rating: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     languages: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    publisher_notice: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    features: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    availables: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    // publisher_notice: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    // features: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    // availables: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     relatedPosts: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
