@@ -6,7 +6,7 @@ export async function getGames(fields) {
     let data
     fields = fields.join('%2C%20')
 
-    await axios.get(`${baseUrl}/names?populate=${fields}`)
+    await axios.get(`${baseUrl}/games?populate=${fields}`)
     .then(response => {
         data = response.data
     }) 
@@ -16,7 +16,7 @@ export async function getGames(fields) {
 export async function getGamePicture() {
     let games
 
-    await axios.get(`${baseUrl}/names?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
+    await axios.get(`${baseUrl}/games?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
     .then(response => {
         games = response?.data
     }) 
@@ -26,7 +26,7 @@ export async function getGamePicture() {
 export async function getOneGame(slug, fields) {
     fields = fields.join('%2C%20')
 
-    let data = await axios.get(`${baseUrl}/names?filters%5Bslug%5D=${slug}&populate=${fields}`)
+    let data = await axios.get(`${baseUrl}/games?filters%5Bslug%5D=${slug}&populate=${fields}`)
     .then(response => {
         return response.data
     })

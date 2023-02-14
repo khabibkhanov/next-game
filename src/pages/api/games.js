@@ -8,13 +8,14 @@ export default async function handler(res, req) {
     let games
     // res.setHeader('Cache-Control', 'no-cache', 'no-store', 'max-age=0', 'must-revalidate')
 
-    await axios.get(`${baseUrl}/names?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
+    await axios.get(`${baseUrl}/games?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
     .then(response => {
         games = response?.data
 
         games = games?.data?.map(post => post.attributes).reverse();
         const game_pictures = games.reduce((acc, game) => {
-            const picture = game?.game_picture?.data[0].attributes.formats.thumbnail;
+          console.log(game.game_picture);
+            const picture = game?.game_picture?.data.attributes.formats.thumbnail;
             if (picture !== undefined) {
               acc.push(picture);
             }
