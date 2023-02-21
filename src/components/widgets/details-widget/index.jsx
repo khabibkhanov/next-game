@@ -6,7 +6,7 @@ const DetailsWidget = ({ details, heading }) => {
         <div className="inner mt--20">
             <div className="tagcloud">
                 <span className="fs-3">
-                    {details.map((item) => (item["attributes"].title)).join(", ")}
+                    {details.map((item) => (item["attributes"] ? item["attributes"].title : item )).join(", ")}
                 </span> 
             </div>
         </div>

@@ -10,7 +10,7 @@ const GameDetails = ({
 }) => (
     <section className={clsx("rwt-sidebar", className)}>
         {games?.publisher_notice !== undefined  && <PublisherDetailsWidget details={games?.publisher_notice?.data.attributes} heading="Ishlab chiqaruvchi xaqida" />}
-        {games?.languages?.data?.length > 0 && <DetailsWidget details={games?.languages?.data}  heading="O'yindagi mavjud tillar" />}
+        {games?.languages?.length > 0 && <DetailsWidget details={games?.languages}  heading="O'yindagi mavjud tillar" />}
         {games?.features?.data?.length > 0 && <DetailsWidget details={games?.features?.data}  heading="O'yinning xususiyatlari" />}
         {games?.availables?.data?.length > 0 && <DetailsWidget details={games?.availables?.data}  heading="O'yin mavjud bo'lgan davlatlar" />}
     </section>

@@ -77,7 +77,7 @@ export async function getServerSideProps(res) {
     const languages = posts?.map((game) => game?.languages);
     const game_pictures = posts?.map((game) => game?.game_picture);
     const genres = posts?.map((game) => [...game?.genres]);
-   
+
     const recentPosts = posts.filter((post) => {
         let recentPostsNotCurrent = false;
         if (poster.slug !== post.slug) {

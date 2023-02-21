@@ -11,7 +11,7 @@ const BlogDetailsArea = ({ className, post }) => {
     const date = new Date(post.createdAt);
     const age_rating = post.age_rating.data.attributes
     const url = images.domains[0]
-console.log(post.age_rating.data);
+
     const myLoader = (({src}) => {
         return src
     })
@@ -33,7 +33,7 @@ console.log(post.age_rating.data);
                                         age_rating && (
                                             <div className="age-rating d-flex">
                                                 <img src={`${age_rating.img_rating_url}`} className="me-4" alt="age rating pic" />
-                                            {console.log(age_rating.img_rating_url)}
+
                                                 <div className="age-rating-text">
                                                     <h5 className="mb-1">
                                                         {age_rating.title}
