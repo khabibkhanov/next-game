@@ -49,7 +49,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                     }
                                 </div>
                                 <div className="d-flex mb-0">
-                                    <p className="reading-time    mb-3 me-5"> 
+                                    <p className="reading-time mb-3 me-5"> 
                                         O'qish vaqti {post?.timeToRead} minut
                                     </p>
 

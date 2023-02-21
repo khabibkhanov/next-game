@@ -74,6 +74,7 @@ export async function getServerSideProps({ params }) {
         "title",
         "release_date",
         "game_picture",
+        "slug",
         "genres",
     ])
 
