@@ -77,7 +77,7 @@ export async function getServerSideProps(res) {
     const languages = posts?.map((game) => game?.languages);
     const game_pictures = posts?.map((game) => game?.game_picture);
     const genres = posts?.map((game) => [...game?.genres]);
-
+    
     const recentPosts = posts.filter((post) => {
         let recentPostsNotCurrent = false;
         if (poster.slug !== post.slug) {
@@ -92,9 +92,9 @@ export async function getServerSideProps(res) {
         }
     
         let isRelated = false;
-    
-        filterPost.genres.forEach((genre) => {
-            if (post.genres.find((g) => g.title === genre.title)) {
+
+        post.genres.data.forEach((genre) => {
+            if (filterPost.genres.find((g) => g.title === genre.attributes.title)) {
                 isRelated = true;
             }
         });
@@ -126,7 +126,6 @@ BlogDetails.propTypes = {
     game_picture: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     // age_rating: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    languages: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     // publisher_notice: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     // features: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     // availables: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),

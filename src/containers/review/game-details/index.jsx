@@ -18,7 +18,6 @@ const GameDetails = ({
 
 GameDetails.propTypes = {
     className: PropTypes.string,
-    games: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
 };
 
 export default GameDetails;

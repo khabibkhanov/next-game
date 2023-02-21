@@ -31,6 +31,7 @@ const BlogCard = ({
                             <div className="thumbnail">
                                 {/* {console.log(image.data.attributes.url)} */}
                                 <Anchor path={`${rootPage}/${slug}`}>
+                                    {console.log(image)}
                                     <Image
                                         className="display-block"
                                         loading="lazy"
@@ -73,7 +74,6 @@ BlogCard.propTypes = {
     title: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     timeToRead: PropTypes.number.isRequired,
-    image: ImageType,
     rootPage: PropTypes.string,
 };
 

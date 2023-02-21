@@ -26,7 +26,6 @@ ReviewSidebar.propTypes = {
     className: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
-    genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     rootPage: PropTypes.string,
 };
 

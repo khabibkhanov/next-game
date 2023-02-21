@@ -67,10 +67,9 @@ const BlogDetailsArea = ({ className, post }) => {
                             // post?.game_picture?.data.map((img, index) => (
                                 post?.game_picture?.data.attributes.url && (
                                     <Image
-                                       
+                                        priority="high"
                                         className="game-hero w-100"
                                         loader={myLoader}
-                                        loading="lazy"
                                         src={`${post?.game_picture?.data.attributes?.url}`}
                                         width={post?.game_picture?.data.attributes.width || 100}
                                         unoptimized={true}
@@ -98,13 +97,7 @@ const BlogDetailsArea = ({ className, post }) => {
 
 BlogDetailsArea.propTypes = {
     className: PropTypes.string,
-    post: PropTypes.shape({
-        title: PropTypes.string,
-        // age_restricts: PropTypes.string,
-        release_date: PropTypes.string,
-        game_picture: ImageType,
-        reviews: PropTypes.string,
-    }),
+    post: PropTypes.shape({})
 };
 
 export default BlogDetailsArea;
