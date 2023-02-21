@@ -8,7 +8,7 @@ import RelatedPostsArea from "@containers/related-posts";
 import BlogSidebar from "@containers/blog-sidebar";
 import { getAllReviews, getOneReview } from "../../lib/api";
 
-const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => (
+const BlogDetails = ({ post, relatedPosts, recentPosts, languages }) => (
     <Wrapper>
         <SEO pageTitle="Game Details" />
         <Header />
@@ -27,7 +27,7 @@ const BlogDetails = ({ post, genres, relatedPosts, recentPosts, languages }) => 
 
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                             <BlogSidebar
-                                genres={genres}
+                                genres={post.genres}
                                 recentPosts={recentPosts}
                                 rootPage="/reviews"
                             />
@@ -74,15 +74,10 @@ export async function getServerSideProps(res) {
     }
 
     let poster = posts?.filter((game) => game?.slug === slug)
-    const genres = posts?.map((game) => [...game?.genres]);
     const languages = posts?.map((game) => game?.languages);
-    // const availables = posts?.map((game) => game?.availables)
-    // const publisher_notice = posts?.map((game) => game?.publisher_notice)
-    // const features = posts?.map((game) => game?.features)
     const game_pictures = posts?.map((game) => game?.game_picture);
-    // const age_rating = posts?.map((game) => game?.age_rating);
-
-
+    const genres = posts?.map((game) => [...game?.genres]);
+   
     const recentPosts = posts.filter((post) => {
         let recentPostsNotCurrent = false;
         if (poster.slug !== post.slug) {
@@ -91,15 +86,20 @@ export async function getServerSideProps(res) {
         }
     }).slice(0, 4)
 
-    let relatedPosts =  posts.filter((post) => {
+    let relatedPosts = posts.filter((filterPost) => {
+        if (filterPost.slug === post.slug) {
+            return false; // exclude current post
+        }
+    
         let isRelated = false;
-
-        post.genres.forEach((genre) => {
-            if (poster[0].genres.find((g) => g.slug === genre.slug)) {
+    
+        filterPost.genres.forEach((genre) => {
+            if (post.genres.find((g) => g.title === genre.title)) {
                 isRelated = true;
             }
         });
-        return isRelated
+    
+        return isRelated;
     }).slice(0, 3);
 
     return {

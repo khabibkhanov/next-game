@@ -9,9 +9,9 @@ import { images } from "next.config";
 
 const BlogDetailsArea = ({ className, post }) => {
     const date = new Date(post.createdAt);
-    // const age_rating = post?.age_rating.data.attributes
+    const age_rating = post.age_rating.data.attributes
     const url = images.domains[0]
-
+console.log(post.age_rating.data);
     const myLoader = (({src}) => {
         return src
     })
@@ -29,11 +29,11 @@ const BlogDetailsArea = ({ className, post }) => {
                                 <div className="game-headings d-flex mb-5">
                                     <h1 className="title mb-2">{post.title}</h1>
 
-                                    {/* {
+                                    {
                                         age_rating && (
                                             <div className="age-rating d-flex">
-                                                <img src={`${url}${age_rating.age_ratings_url}`} className="me-4" alt="age rating pic" />
-
+                                                <img src={`${age_rating.img_rating_url}`} className="me-4" alt="age rating pic" />
+                                            {console.log(age_rating.img_rating_url)}
                                                 <div className="age-rating-text">
                                                     <h5 className="mb-1">
                                                         {age_rating.title}
@@ -46,7 +46,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                                 </div>
                                             </div>
                                         )
-                                    } */}
+                                    }
                                 </div>
                                 <div className="d-flex mb-0">
                                     <p className="reading-time    mb-3 me-5"> 
@@ -71,7 +71,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                         className="game-hero w-100"
                                         loader={myLoader}
                                         loading="lazy"
-                                        src={`${url}${post?.game_picture?.data.attributes?.url}`}
+                                        src={`${post?.game_picture?.data.attributes?.url}`}
                                         width={post?.game_picture?.data.attributes.width || 100}
                                         unoptimized={true}
                                         height={post?.game_picture?.data.attributes.height || 100}
@@ -87,7 +87,7 @@ const BlogDetailsArea = ({ className, post }) => {
   
             <div
                 className="news-details mb-5"
-                dangerouslySetInnerHTML={{ __html: markdown.toHTML(post.reviews.replaceAll("/uploads", `${url}/uploads`)) }}
+                dangerouslySetInnerHTML={{ __html: markdown.toHTML(post.reviews )}}
             />
             <div className="blog-content-bottom">
                 <GameDetails games = {post} />

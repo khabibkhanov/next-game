@@ -29,14 +29,14 @@ const BlogCard = ({
                     // image?.data?.map((img, index) => (
                         image.data.attributes.url && (
                             <div className="thumbnail">
-                                {console.log(image.data.attributes.url)}
+                                {/* {console.log(image.data.attributes.url)} */}
                                 <Anchor path={`${rootPage}/${slug}`}>
                                     <Image
                                         className="display-block"
                                         loading="lazy"
                                         loader={myLoader}
                                         unoptimized={true}
-                                        src={`${url}${image.data.attributes.url}`}
+                                        src={`${image.data.attributes.url}`}
                                         layout={image.data.attributes?.height ? "responsive" : "fill"}
                                         alt={image.data.attributes.alternativeText}
                                         width={image.data.attributes?.width || 489}

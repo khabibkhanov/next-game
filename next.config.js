@@ -30,7 +30,7 @@ module.exports = {
       },
     images: {
         domains: [
-            'https://game-backend-production.up.railway.app'
+            // 'res.cloudinary.com'
         ],
         // Add caching configuration for server-side rendered pages
         // generateEtags: false,

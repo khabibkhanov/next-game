@@ -26,7 +26,7 @@ const BannerGallery = ({ className, pictures }) => (
                     fetchpriority="high"
                     loading="lazy"
                     // loader={myLoader}
-                    src={`${url}${image?.url}`}
+                    src={`${image?.url}`}
                     alt={image.alternativeText || "banner"}
                     width={300}
                     unoptimized={true}

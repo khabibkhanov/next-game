@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import CategoryWidget from "@widgets/category-widget";
 import RecentReviewssWidget from "@widgets/recent-reviews-widget";
-import TagWidget from "@widgets/tag-widget";
+import GenreWidget from "@widgets/genre-widget";
 
 const ReviewSidebar = ({
     className,
@@ -18,7 +18,7 @@ const ReviewSidebar = ({
         {recentPosts?.length > 0 && (
             <RecentReviewssWidget recentPosts={recentPosts} rootPage={rootPage} />
         )}
-        {genres?.length > 0 && <TagWidget genres={genres} rootPage={rootPage} />}
+        {genres?.length > 0 && <GenreWidget genres={genres} rootPage={rootPage} />}
     </aside>
 );
 

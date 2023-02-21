@@ -14,7 +14,7 @@ export default async function handler(res, req) {
 
         games = games?.data?.map(post => post.attributes).reverse();
         const game_pictures = games.reduce((acc, game) => {
-          console.log(game.game_picture);
+          // console.log(game.game_picture);
             const picture = game?.game_picture?.data.attributes.formats.thumbnail;
             if (picture !== undefined) {
               acc.push(picture);
