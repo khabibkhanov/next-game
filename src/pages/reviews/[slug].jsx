@@ -86,7 +86,7 @@ export async function getServerSideProps(res) {
         }
     }).slice(0, 4)
 
-    let relatedPosts = posts.filter((filterPost) => {
+    const relatedPosts = posts.filter((filterPost) => {
         if (filterPost.slug === post.slug) {
             return false; // exclude current post
         }

@@ -88,7 +88,8 @@ export async function getAllReviews(fields = []) {
     const posts = games?.data
         ?.sort((a, b) => b.id - a.id)
         ?.map((game) => getReviewsBySlug(game, fields))
-    return posts;
+    console.log(posts);
+        return posts;
 }
 
 

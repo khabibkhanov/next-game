@@ -64,7 +64,7 @@ const GamesList = ({
 );
 
 export async function getServerSideProps() {
-    const posts = await getAllReviews([
+    const fields = [
         "title",
         "reviews",
         "publisher",
@@ -73,10 +73,12 @@ export async function getServerSideProps() {
         "genres",
         "slug",
         "timeToRead",
-    ]);
+    ]
+
+    const posts = await getAllReviews(fields);
 
     const genres = posts.map((blog) => [...blog.genres]);
-    const recentPosts = posts.reverse().slice(0, 4);
+    const recentPosts = posts.slice(0, 4);
 
 
     return {
