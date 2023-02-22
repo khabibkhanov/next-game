@@ -13197,7 +13197,8 @@ figcaption {
   width: 100%;
   height: 30%;
   left: 0;
-  bottom: 0;
+  bottom: 0;  
+  background-image: linear-gradient(to bottom, rgba(12, 12, 33, 0) 0%, #171721 95%);
   content: "";
   z-index: 1;
   pointer-events: none;

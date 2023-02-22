@@ -34,7 +34,6 @@ const SignupForm = ({ className }) => {
         .catch((errors) => {
             return errors.error
         });
-        // console.log('res', res);
     };
 
     return (

@@ -78,7 +78,6 @@ export function getReviewsBySlug(posts, fields = []) {
         }
 
     });
-
     return items;
 }
 
@@ -88,7 +87,7 @@ export async function getAllReviews(fields = []) {
     const posts = games?.data
         ?.sort((a, b) => b.id - a.id)
         ?.map((game) => getReviewsBySlug(game, fields))
-    console.log(posts);
+    
         return posts;
 }
 

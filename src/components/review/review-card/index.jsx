@@ -25,34 +25,29 @@ const BlogCard = ({
         <div className={clsx("rn-blog", className)} {...rest}>
             <div className="inner">
                 {
-                    // console.log(image)
-                    // image?.data?.map((img, index) => (
-                        image.data.attributes.url && (
-                            <div className="thumbnail">
-                                {/* {console.log(image.data.attributes.url)} */}
-                                <Anchor path={`${rootPage}/${slug}`}>
-                                    {console.log(image)}
-                                    <Image
-                                        className="display-block"
-                                        loading="lazy"
-                                        loader={myLoader}
-                                        unoptimized={true}
-                                        src={`${image.data.attributes.url}`}
-                                        layout={image.data.attributes?.height ? "responsive" : "fill"}
-                                        alt={image.data.attributes.alternativeText}
-                                        width={image.data.attributes?.width || 489}
-                                        height={image.data.attributes?.height || 366}
-                                    />
-                                </Anchor>
-                            </div>
-                        )
-                    // ))
+                    image.data.attributes.url && (
+                        <div className="thumbnail">
+                            <Anchor path={`${rootPage}/${slug}`}>
+                                <Image
+                                    className="display-block"
+                                    loading="lazy"
+                                    loader={myLoader}
+                                    unoptimized={true}
+                                    src={`${image.data.attributes.url}`}
+                                    layout={image.data.attributes?.height ? "responsive" : "fill"}
+                                    alt={image.data.attributes.alternativeText}
+                                    width={image.data.attributes?.width || 489}
+                                    height={image.data.attributes?.height || 366}
+                                />
+                            </Anchor>
+                        </div>
+                    )
                 }
                 <div className="content">
                         <div className="category-info">
                             <div className="meta">
                                 <span>
-                                    <i className="feather-clock" /> O'qish davomiyligi {timeToRead} minut
+                                    <i className="feather-clock" /> O'qish davomiyligi {timeToRead} daqiqa
                                 </span>
                             </div>
                         </div>

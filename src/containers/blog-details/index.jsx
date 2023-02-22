@@ -8,7 +8,9 @@ import GameDetails from "@containers/review/game-details";
 import { images } from "next.config";
 
 const BlogDetailsArea = ({ className, post }) => {
+    post = post[0]
     const date = new Date(post.createdAt);
+
     const age_rating = post.age_rating.data.attributes
     const url = images.domains[0]
 
@@ -50,7 +52,7 @@ const BlogDetailsArea = ({ className, post }) => {
                                 </div>
                                 <div className="d-flex mb-0">
                                     <p className="reading-time mb-3 me-5"> 
-                                        O'qish vaqti {post?.timeToRead} minut
+                                        O'qish vaqti {post?.timeToRead} daqiqa
                                     </p>
 
                                     <p className="date mb-5">

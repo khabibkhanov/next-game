@@ -65,7 +65,7 @@ export async function getServerSideProps(res) {
     ]
 
     const posts = await getAllReviews(fields);
-    let post = await getOneReview(slug, fields)
+    let post = posts?.filter((game) => game?.slug === slug)
 
     if(!post) {
         return {
@@ -73,14 +73,13 @@ export async function getServerSideProps(res) {
         }
     }
 
-    let poster = posts?.filter((game) => game?.slug === slug)
     const languages = posts?.map((game) => game?.languages);
     const game_pictures = posts?.map((game) => game?.game_picture);
     const genres = posts?.map((game) => [...game?.genres]);
     
-    const recentPosts = posts.filter((post) => {
+    const recentPosts = posts.filter((filteredPost) => {
         let recentPostsNotCurrent = false;
-        if (poster.slug !== post.slug) {
+        if (post.slug !== filteredPost.slug) {
             recentPostsNotCurrent = true
             return recentPostsNotCurrent
         }
@@ -93,8 +92,8 @@ export async function getServerSideProps(res) {
     
         let isRelated = false;
 
-        post.genres.data.forEach((genre) => {
-            if (filterPost.genres.find((g) => g.title === genre.attributes.title)) {
+        post[0].genres.forEach((genre) => {
+            if (filterPost.genres.find((g) => g.title === genre.title)) {
                 isRelated = true;
             }
         });

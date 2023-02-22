@@ -37,7 +37,7 @@ const Header = ({ className }) => {
                             </div>
                         </div>
                         <div className="header-right">
-                            <div className="setting-option header-btn">
+                            {/* <div className="setting-option header-btn">
                                 <div className="icon-box">
                                     <Button
                                         color="primary-alta"
@@ -49,7 +49,7 @@ const Header = ({ className }) => {
                                         Ro'yxatdan o'tish
                                     </Button>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="setting-option mobile-menu-bar d-block d-xl-none">
                                 <div className="hamberger">
                                     <BurgerButton onClick={offcanvasHandler} />
