@@ -11,7 +11,7 @@ const myLoader = (({src}) => {
     return src
 })
 
-const BlogCard = ({
+const ReviewCard = ({
     className,
     title,
     slug,
@@ -64,7 +64,7 @@ const BlogCard = ({
     </div>
 );
 
-BlogCard.propTypes = {
+ReviewCard.propTypes = {
     className: PropTypes.string,
     title: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
@@ -72,8 +72,8 @@ BlogCard.propTypes = {
     rootPage: PropTypes.string,
 };
 
-BlogCard.defaultProps = {
-    rootPage: "/blog",
+ReviewCard.defaultProps = {
+    rootPage: "/reviews",
 };
 
-export default BlogCard;
+export default ReviewCard;

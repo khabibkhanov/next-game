@@ -4,7 +4,7 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
-import BlogArea from "@containers/review/layout";
+import ReviewArea from "@containers/review/layout";
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews, getPostSlugs } from "../../../lib/api";
@@ -30,7 +30,7 @@ const GamesList = ({
                 <div className="container">
                     <div className="row g-6">
                         <div className="col-xl-8 col-lg-8">
-                            <BlogArea
+                            <ReviewArea
                                 data={{ posts }}
                                 rootPage="/reviews"
                             />

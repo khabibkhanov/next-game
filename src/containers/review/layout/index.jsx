@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import ReviewCard from "@components/review/review-card";
 
-const BlogArea = ({ className, data, rootPage }) => (
+const ReviewArea = ({ className, data, rootPage }) => (
     <div className={clsx("blog-wrapper", className)}>
         {data?.posts?.map((post) => (
             <ReviewCard
@@ -23,7 +23,7 @@ const BlogArea = ({ className, data, rootPage }) => (
     </div>
 );
 
-BlogArea.propTypes = {
+ReviewArea.propTypes = {
     className: PropTypes.string,
     data: PropTypes.shape({
         posts: PropTypes.arrayOf(PropTypes.shape({})),
@@ -31,4 +31,4 @@ BlogArea.propTypes = {
     rootPage: PropTypes.string,
 };
 
-export default BlogArea;
+export default ReviewArea;

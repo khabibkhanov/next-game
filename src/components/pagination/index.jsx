@@ -11,6 +11,7 @@ const Pagination = ({ className, currentPage, numberOfPages, rootPage }) => {
             ? rootPage
             : `${rootPage}/page/${(currentPage - 1).toString()}`;
     const nextPage = `${rootPage}/page/${(currentPage + 1).toString()}`;
+ 
     return (
         <nav
             className={clsx("pagination-wrapper", className)}
@@ -78,7 +79,7 @@ Pagination.propTypes = {
 };
 
 Pagination.defaultProps = {
-    rootPage: "/blog",
+    rootPage: "/reviews",
 };
 
 export default Pagination;

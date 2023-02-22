@@ -5,10 +5,10 @@ import Header from "@layout/header";
 import Footer from "@layout/footer";
 import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
-import BlogSidebar from "@containers/review-sidebar";
+import ReviewSidebar from "@containers/review-sidebar";
 import { getAllReviews, getOneReview } from "../../lib/api";
 
-const BlogDetails = ({ post, relatedPosts, recentPosts, languages }) => (
+const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => (
     <Wrapper>
         <SEO pageTitle="Game Details" />
         <Header />
@@ -26,7 +26,7 @@ const BlogDetails = ({ post, relatedPosts, recentPosts, languages }) => (
                         </div>
 
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
-                            <BlogSidebar
+                            <ReviewSidebar
                                 genres={post.genres}
                                 recentPosts={recentPosts}
                                 rootPage="/reviews"
@@ -119,8 +119,8 @@ export async function getServerSideProps(res) {
     };
 }
 
-BlogDetails.propTypes = {
-    post: PropTypes.shape({}),
+ReviewSlug.propTypes = {
+    post: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
     game_picture: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     // age_rating: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
@@ -131,4 +131,4 @@ BlogDetails.propTypes = {
     relatedPosts: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-export default BlogDetails;
+export default ReviewSlug;
