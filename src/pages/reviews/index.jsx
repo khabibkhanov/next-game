@@ -4,7 +4,7 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
 import BlogArea from "@containers/review/layout";
-import ReviewSidebar from "@containers/blog-sidebar";
+import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews } from "../../lib/api";
 

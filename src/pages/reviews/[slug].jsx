@@ -3,9 +3,9 @@ import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
-import BlogDetailsArea from "@containers/blog-details";
+import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
-import BlogSidebar from "@containers/blog-sidebar";
+import BlogSidebar from "@containers/review-sidebar";
 import { getAllReviews, getOneReview } from "../../lib/api";
 
 const BlogDetails = ({ post, relatedPosts, recentPosts, languages }) => (
@@ -18,7 +18,7 @@ const BlogDetails = ({ post, relatedPosts, recentPosts, languages }) => (
                     <div className="row g-6 game-site-header">
                         <div className="header-offset"></div>
                         <div className="col-xl-8 col-lg-8">
-                            <BlogDetailsArea post={post} languages={languages} />
+                            <ReviewDetailsArea post={post} languages={languages} />
                             <RelatedPostsArea
                                 relatedPosts={relatedPosts}
                                 rootPage="/reviews"

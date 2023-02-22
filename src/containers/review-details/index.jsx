@@ -7,7 +7,7 @@ import { markdown } from "markdown"
 import GameDetails from "@containers/review/game-details";
 import { images } from "next.config";
 
-const BlogDetailsArea = ({ className, post }) => {
+const ReviewDetailsArea = ({ className, post }) => {
     post = post[0]
     const date = new Date(post.createdAt);
 
@@ -23,7 +23,6 @@ const BlogDetailsArea = ({ className, post }) => {
 
             <div className="blog-content-top">
                 <div className="bd-thumbnail">
-
                     <div className="large-img mb--30">
 
                         <div className="offset">
@@ -83,7 +82,7 @@ const BlogDetailsArea = ({ className, post }) => {
                             // ))
                         }
                     </div>
-                </div>  
+                </div>
             </div>
   
             <div
@@ -97,9 +96,9 @@ const BlogDetailsArea = ({ className, post }) => {
     );
 };
 
-BlogDetailsArea.propTypes = {
+ReviewDetailsArea.propTypes = {
     className: PropTypes.string,
     post: PropTypes.shape({})
 };
 
-export default BlogDetailsArea;
+export default ReviewDetailsArea;

@@ -5,7 +5,7 @@ import Header from "@layout/header";
 import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
 import BlogArea from "@containers/review/layout";
-import ReviewSidebar from "@containers/blog-sidebar";
+import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews, getPostSlugs } from "../../../lib/api";
 
