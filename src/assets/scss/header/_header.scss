@@ -710,7 +710,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .rn-header.header--sticky {
-    position: sticky !important;
+    position: fixed !important;
     top: 0;
     z-index: 999;
     width: 100%;

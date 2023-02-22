@@ -77,7 +77,7 @@ export async function getServerSideProps() {
 
     const posts = await getAllReviews(fields);
 
-    const genres = posts.map((blog) => [...blog.genres]);
+    const genres = posts.map((post) => [...post.genres]);
     const recentPosts = posts.slice(0, 4);
 
 
