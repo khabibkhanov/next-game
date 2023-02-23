@@ -9,7 +9,7 @@ const BannerGallery = dynamic(() => import("@components/banner-ui/banner-gallery
 });
 
   const HeroArea = ({ game_picture }) => (
-    <div className="slider-area ptb--60">
+    <div className="slider-area mt-5 ptb--60">
         <div className="container-fluid padding-contorler-am-slide">
             <div className="row d-flex align-items-center">
                 <div className="col-lg-12 col-xl-6 order-2 order-xl-1 padding-contorler-am-slide-right">
@@ -18,12 +18,12 @@ const BannerGallery = dynamic(() => import("@components/banner-ui/banner-gallery
                             data-sal-delay="200"
                             data-sal="slide-up"
                             data-sal-duration="800"
-                            // dangerouslySetInnerHTML={{
-                            //     __html: "O'yinlar olamiga xush kelibsiz",
-                            // }}
-                        >
-                            O'yinlar olamiga xush kelibsiz
-                        </h1>
+                            dangerouslySetInnerHTML={{
+                                __html: "O'yinlar olamiga xush kelibsiz",
+                            }}
+                        />
+                            {/* O'yinlar olamiga xush kelibsiz */}
+                        {/* </h1> */}
                         <p
                             className="slide-disc"
                             data-sal-delay="300"

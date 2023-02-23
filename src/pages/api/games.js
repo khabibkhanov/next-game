@@ -12,23 +12,8 @@ export default async function handler(res, req) {
   .then(response => {
       games = response?.data
 
-      games = games?.data?.map(post => post.attributes).reverse();
-      const game_pictures = games.reduce((acc, game) => {
-
-          const picture = game?.game_picture?.data?.attributes?.formats?.thumbnail ? game?.game_picture?.data?.attributes?.formats?.thumbnail : game?.game_picture?.data?.attributes;
-          if (picture !== undefined) {
-            acc.push(picture);
-          }
-          return acc;
-        }, []);
-      
-      const hero_image_gen = function ([a,b,c, ...rest]) {
-          if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
-          return [[a,b,c]].concat(hero_image_gen(rest))
-      }
-      
-      games = hero_image_gen(game_pictures)
+      games = games?.data?.map(post => post.attributes)
   }) 
 
-  return games.reverse()
+  return games
 }

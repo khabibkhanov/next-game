@@ -21,6 +21,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => (
                             <ReviewDetailsArea post={post} languages={languages} />
                             <RelatedPostsArea
                                 relatedPosts={relatedPosts}
+                                title="Boshqa shu kabi maqolalar"
                                 rootPage="/reviews"
                             />
                         </div>
