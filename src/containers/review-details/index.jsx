@@ -22,7 +22,7 @@ const ReviewDetailsArea = ({ className, post }) => {
 
             <div className="blog-content-bottom">
                 <GameDetails games = {post} />
-            </div>    
+            </div>
         </div>
     );
 };

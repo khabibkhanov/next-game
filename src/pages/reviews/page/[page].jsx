@@ -76,6 +76,7 @@ export async function getServerSideProps({ params }) {
         "game_picture",
         "slug",
         "genres",
+        "timeToRead"
     ])
 
     const genres = posts.map((post) => [...post.genres]);
