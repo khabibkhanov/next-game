@@ -36,7 +36,7 @@ RecentReviewssWidget.propTypes = {
 };
 
 RecentReviewssWidget.defaultProps = {
-    rootPage: "/reviews",
+    rootPage: "/info",
 };
 
 export default RecentReviewssWidget;

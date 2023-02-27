@@ -12,7 +12,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => (
     <Wrapper>
         <SEO pageTitle="Game Details" />
         <Header />
-        <main id="main-content main-content-style position-relative">
+        <main id="main-content main-content-style position-relative" className="mt--85">
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6 game-site-header">
@@ -22,7 +22,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => (
                             <RelatedPostsArea
                                 relatedPosts={relatedPosts}
                                 title="Boshqa shu kabi maqolalar"
-                                rootPage="/reviews"
+                                rootPage="/info"
                             />
                         </div>
 
@@ -30,7 +30,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => (
                             <ReviewSidebar
                                 genres={post.genres}
                                 recentPosts={recentPosts}
-                                rootPage="/reviews"
+                                rootPage="/info"
                             />
                         </div>
                     </div>

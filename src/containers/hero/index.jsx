@@ -36,7 +36,7 @@ const BannerGallery = dynamic(() => import("@components/banner-ui/banner-gallery
                                 <Button
                                     data-sal="slide-up"
                                     data-sal-duration="800"
-                                    path={"/reviews"}
+                                    path={"/info"}
                                 >
                                     Maqolalarni o'qish
                                 </Button>

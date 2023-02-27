@@ -9,7 +9,7 @@ const ReviewDetailsArea = ({ className, post }) => {
     post = post[0]
     const date = new Date(post.createdAt);
 
-    const age_rating = post.age_rating.data.attributes
+    const age_rating = post?.age_rating?.data?.attributes
 
     return (
         <div className={clsx("blog-details-area", className)}>

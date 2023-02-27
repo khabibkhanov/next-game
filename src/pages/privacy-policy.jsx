@@ -13,7 +13,7 @@ const PrivacyPolicy = () => (
     <Wrapper>
         <SEO pageTitle="Mahfiylik siyosati" />
         <Header />
-        <main id="main-content">
+        <main id="main-content" className="mt--85">
             <Breadcrumb
                 pageTitle="Maxfiylik siyosati"
                 currentPage="Maxfiylik siyosati"

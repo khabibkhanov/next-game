@@ -15,7 +15,7 @@ export async function getStaticProps() {
         <Wrapper>
             <SEO pageTitle="Sign Up" />
             <Header />
-            <main id="main-content">
+            <main id="main-content" className="mt--85">
                 <Breadcrumb pageTitle="Sign Up" currentPage="Sign Up" />
                 <SignUpArea />
             </main>

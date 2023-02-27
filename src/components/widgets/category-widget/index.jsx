@@ -48,7 +48,7 @@ CategoryWidget.propTypes = {
 };
 
 CategoryWidget.defaultProps = {
-    rootPage: "/reviews",
+    rootPage: "/info",
 };
 
 export default CategoryWidget;

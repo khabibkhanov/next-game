@@ -13,7 +13,7 @@ const Forget = () => (
     <Wrapper>
         <SEO pageTitle="Forget Page" />
         <Header />
-        <main id="main-content">
+        <main id="main-content" className="mt--85">
             <Breadcrumb
                 pageTitle="Forget Password?"
                 currentPage="Forget Password?"

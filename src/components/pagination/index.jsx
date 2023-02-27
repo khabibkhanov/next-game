@@ -79,7 +79,7 @@ Pagination.propTypes = {
 };
 
 Pagination.defaultProps = {
-    rootPage: "/reviews",
+    rootPage: "/info",
 };
 
 export default Pagination;

@@ -73,7 +73,7 @@ ReviewCard.propTypes = {
 };
 
 ReviewCard.defaultProps = {
-    rootPage: "/reviews",
+    rootPage: "/info",
 };
 
 export default ReviewCard;

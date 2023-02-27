@@ -14,7 +14,7 @@ const Contact = () => (
     <Wrapper>
         <SEO pageTitle="Contact" />
         <Header />
-        <main id="main-content">
+        <main id="main-content" className="mt--85">
             <Breadcrumb
                 pageTitle="Biz Bilan Bog'lanish"
                 currentPage="Biz Bilan Bog'lanish"

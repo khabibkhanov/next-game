@@ -31,7 +31,7 @@ RelatedPostsArea.propTypes = {
 
 RelatedPostsArea.defaultProps = {
     space: 1,
-    rootPage: "/reviews",
+    rootPage: "/info",
 };
 
 export default RelatedPostsArea;

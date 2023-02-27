@@ -13,7 +13,7 @@ const Home = ({
         <Wrapper>
             <SEO pageTitle="Home" />
             <Header />
-            <main id="main-content">
+            <main id="main-content" className="mt--85">
                 <HeroArea game_picture={images} />
                 <RelatedPostsArea />
             </main>

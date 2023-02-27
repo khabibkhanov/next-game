@@ -16,7 +16,7 @@ const RequirementDetails = ({details, heading}) => (
                                     .filter(([key, value]) => value && key !== "id" && key !== "__component" && key !== "bit64" && key !== "heading")
                                     .map(([key, value]) => (
                                         <li key={key}>
-                                            <b>{key}:</b> {value}
+                                            <b>{key.replace('_', ' ')}:</b> {value}
                                         </li>
                                     ))
                                 }

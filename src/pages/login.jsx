@@ -14,7 +14,7 @@ const Login = () => (
     <Wrapper>
         <SEO pageTitle="Log In" />
         <Header />
-        <main id="main-content">
+        <main id="main-content" className="mt--85">
             <Breadcrumb pageTitle="Nuron Login" currentPage="Nuron Login" />
             <LoginArea />
         </main>

@@ -21,7 +21,7 @@ const GamesList = ({
     <Wrapper>
         <SEO pageTitle={`Barcha Maqolalar - Page: ${page}`} />
         <Header />
-        <main id="main-content">
+        <main id="main-content" className="mt--85">
             <Breadcrumb
                 pageTitle="Barcha Maqolalar"
                 currentPage="Barcha Maqolalar"
@@ -32,14 +32,14 @@ const GamesList = ({
                         <div className="col-xl-8 col-lg-8">
                             <ReviewArea
                                 data={{ posts }}
-                                rootPage="/reviews"
+                                rootPage="/info"
                             />
                         </div>
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                             <ReviewSidebar
                                 recentPosts={recentPosts}
                                 genres={genres}
-                                rootPage="/reviews"
+                                rootPage="/info"
                             />
                         </div>
                     </div>
@@ -54,7 +54,7 @@ const GamesList = ({
                                 <Pagination
                                     currentPage={pagiData.currentPage}
                                     numberOfPages={pagiData.numberOfPages}
-                                    rootPage="/reviews"
+                                    rootPage="/info"
                                     className="single-column-blog"
                                 />
                             )}

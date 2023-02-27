@@ -31,6 +31,6 @@ GenreWidget.propTypes = {
 };
 
 GenreWidget.defaultProps = {
-    rootPage: "/reviews",
+    rootPage: "/info",
 };
 export default GenreWidget;
