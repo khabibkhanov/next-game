@@ -30,10 +30,10 @@ const ContactForm = () => {
     const onSubmit = (data, e) => {
         const form = e.target;
         setServerState({ submitting: true });
-    //    console.log(data);
+
         axios({
             method: "post",
-            url: "https://getform.io/f/7a6695a7-c8e3-442c-bc2f-d46d3b9a535e",
+            url: "https://getform.io/f/2c9150c2-202a-4e63-b1b1-b9e666d1b582",
             data,
         })
         .then((_res) => {
