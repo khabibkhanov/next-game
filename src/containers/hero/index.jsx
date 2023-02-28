@@ -45,8 +45,8 @@ const BannerGallery = dynamic(() => import("@components/banner-ui/banner-gallery
                 <div className="col-lg-12 col-xl-6 order-1 order-xl-2">
                     <div className={clsx("banner-gallery-wrapper")}>
                         {
-                            game_picture?.images?.map(( picture, index ) => (
-                                picture && <BannerGallery key={index} url={game_picture.url} pictures={picture} />
+                            game_picture?.map(( picture, index ) => (
+                                picture && <BannerGallery key={index} pictures={picture} />
                             ))
                         }
                     </div>

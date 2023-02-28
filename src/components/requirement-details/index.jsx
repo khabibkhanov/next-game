@@ -6,10 +6,10 @@ const RequirementDetails = ({details, heading}) => (
         <div className="rbt-single-widget widget_tag_cloud mb--40 col-50">
             <h5 className="title align-text-center">{heading}</h5>
 
-            <div className="inner mt--20 d-flex justify-content-between">
+            <div className="inner mt--20  d-flex justify-content-between">
                 {
                     details.map((detail, index) => (
-                        <div className="tagcloud p-4" key={index}>
+                        <div className={details.length >= 3 ? `tagcloud col-sm-4 p-4` : `tagcloud p-4`} key={index}>
                             <h6>{detail.heading}</h6>
                             <ul>
                                 {Object.entries(detail)

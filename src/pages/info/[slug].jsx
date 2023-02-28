@@ -28,7 +28,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => (
 
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                             <ReviewSidebar
-                                genres={post.genres}
+                                genres={post[0].genres}
                                 recentPosts={recentPosts}
                                 rootPage="/info"
                             />
@@ -87,22 +87,20 @@ export async function getServerSideProps(res) {
     }).slice(0, 4)
 
     const relatedPosts = posts.filter((filterPost) => {
-        if (filterPost.slug === post.slug) {
+        if (filterPost.slug === post[0].slug) {
             return false; // exclude current post
         }
-
+    
         let isRelated = false;
-
+    
         post[0].genres.forEach((genre) => {
             if (filterPost.genres.find((g) => g.title === genre.title)) {
                 isRelated = true;
             }
         });
-
+    
         return isRelated;
-    }).slice(0, 3)
-
-    console.log(relatedPosts);
+    }).sort(() => 0.5 - Math.random()).slice(0, 3);
 
     return {
         props: {

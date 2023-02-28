@@ -20,7 +20,6 @@ const GamesList = ({
         <SEO pageTitle="Barcha Maqolalar" />
         <Header />
         <main id="main-content" className="mt--85">
-
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">

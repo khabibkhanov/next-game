@@ -4,7 +4,7 @@ import { flatDeep } from "@utils/methods";
 
 const GenreWidget = ({ genres, rootPage }) => {
     const settingGenres = [...new Set(flatDeep(genres).map((genres) => genres.title))];
-
+    console.log(genres);
     return (
         <div className="rbt-single-widget widget_tag_cloud mt--40">
             <h3 className="title">Janrlar</h3>
