@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import sal from "sal.js";
 import { ThemeProvider } from "next-themes";
 import { SSRProvider } from 'react-bootstrap';
+import { Analytics } from '@vercel/analytics/react';
 import "../assets/css/bootstrap.min.css";
 import "../assets/css/feather.css";
 import "../assets/scss/style.scss";
@@ -29,8 +30,10 @@ const MyApp = ({ Component, pageProps } ) => {
             {getLayout(
                <ThemeProvider defaultTheme="dark">
                    <Component {...pageProps} />
+                   
                </ThemeProvider>
             )}
+            <Analytics />
         </SSRProvider>
     );
 };
