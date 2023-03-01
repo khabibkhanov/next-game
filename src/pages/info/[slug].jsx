@@ -7,39 +7,48 @@ import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
 import ReviewSidebar from "@containers/review-sidebar";
 import { getAllReviews, getOneReview } from "../../lib/api";
+import ReviewHero from "@components/review/review-hero";
 
-const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => (
-    <Wrapper>
-        <SEO pageTitle="Game Details" />
-        <Header />
-        <main id="main-content main-content-style position-relative" className="mt--85">
-            <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
-                <div className="container">
-                    <div className="row g-6 game-site-header">
-                        <div className="header-offset"></div>
-                        <div className="col-xl-8 col-lg-8">
-                            <ReviewDetailsArea post={post} languages={languages} />
-                            <RelatedPostsArea
-                                relatedPosts={relatedPosts}
-                                title="Boshqa shu kabi maqolalar"
-                                rootPage="/info"
-                            />
-                        </div>
 
-                        <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
-                            <ReviewSidebar
-                                genres={post[0].genres}
-                                recentPosts={recentPosts}
-                                rootPage="/info"
-                            />
+const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => {
+    post = post[0]
+    const date = new Date(post.createdAt);
+    const age_rating = post?.age_rating?.data?.attributes
+
+    return (
+        <Wrapper>
+            <SEO pageTitle="Game Details" />
+            <Header />
+            <main id="main-content main-content-style position-relative" className="mt--85">
+                <div className="rn-blog-area rn-blog-details-default">
+                    <div className="container">
+                        <div className="row g-6 game-site-header">
+                            <ReviewHero age_rating={age_rating} date={date} post={post} />
+
+                            <div className="col-xl-8 col-lg-10">
+                                <ReviewDetailsArea post={post} languages={languages} />
+                                <RelatedPostsArea
+                                    relatedPosts={relatedPosts}
+                                    title="Boshqa shu kabi maqolalar"
+                                    rootPage="/info"
+                                />
+                            </div>
+
+                            <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
+                                <ReviewSidebar
+                                    genres={post.genres}
+                                    recentPosts={recentPosts}
+                                    rootPage="/info"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-        <Footer />
-    </Wrapper>
-);
+            </main>
+            <Footer />
+        </Wrapper>
+    )
+};
 
 export async function getServerSideProps(res) {
     const { slug } = res.params;

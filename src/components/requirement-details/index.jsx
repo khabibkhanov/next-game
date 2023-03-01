@@ -1,15 +1,13 @@
 import PropTypes from "prop-types";
-import clsx from "clsx";
-import RequirementDetailsCard from "./card";
 
 const RequirementDetails = ({details, heading}) => (
         <div className="rbt-single-widget widget_tag_cloud mb--40 col-50">
             <h5 className="title align-text-center">{heading}</h5>
 
-            <div className="inner mt--20  d-flex justify-content-between">
+            <div className="requirement inner mt--20">
                 {
                     details.map((detail, index) => (
-                        <div className={details.length >= 3 ? `tagcloud col-sm-4 p-4` : `tagcloud p-4`} key={index}>
+                        <div className={details.length >= 3 ? `tagcloud col-sm-12 p-4` : `tagcloud p-4`} key={index}>
                             <h6>{detail.heading}</h6>
                             <ul>
                                 {Object.entries(detail)
@@ -29,7 +27,8 @@ const RequirementDetails = ({details, heading}) => (
 );
 
 RequirementDetails.propTypes = {
-
+    heading: PropTypes.string,
+    details: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 export default RequirementDetails;

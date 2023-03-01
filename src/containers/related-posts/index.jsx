@@ -3,7 +3,7 @@ import clsx from "clsx";
 import ReviewCard from "@components/review/review-card";
 
 const RelatedPostsArea = ({title, space, className, relatedPosts, rootPage }) => (
-    <div className={clsx("row g-5", space === 1 && "pt--60", className)}>
+    <div className={clsx("row g-5 mb-5", space === 1 && "pt--60", className)}>
         <div className="col-lg-12">
             <h3 className="title">{title}</h3>
         </div>

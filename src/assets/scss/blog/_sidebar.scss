@@ -34,6 +34,27 @@
     padding-top: 0;
     background: var(--background-color-1);
 
+    .requirement {
+        display: flex;
+        justify-content: space-between;
+
+
+        @media #{$lg-layout} {
+            // flex-direction: column;
+            // .tagcloud {
+
+            // }
+        }
+
+        @media #{$sm-layout} {
+            flex-direction: column;
+
+            .tagcloud {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
     &:first-child {
         margin-top: 0 !important;
     }
