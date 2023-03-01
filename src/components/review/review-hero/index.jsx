@@ -21,8 +21,22 @@ const ReviewHero = ({
             <div className="offset">
                 <div className="container">
                     <div className="game-headings d-flex mb-5">
-                        <h1 className="title mb-2">{post.title}</h1>
+                        <div>
+                            <h1 className="title mb-2">{post.title}</h1>
 
+                            <div className="d-flex mb-0">
+                                <p className="reading-time mb-3 me-5"> 
+                                    O'qish vaqti {post?.timeToRead} daqiqa
+                                </p>
+
+                                <p className="date mb-5">
+                                    {
+                                        `${date.getDate().toString().padStart(2, "0")} ${"-"}
+                                        ${getMonth(date)}, ${date.getFullYear()}`
+                                    }
+                                </p>
+                            </div>
+                        </div>
                         {
                             age_rating && (
                                 <div className="age-rating d-flex">
@@ -42,18 +56,7 @@ const ReviewHero = ({
                             )
                         }
                     </div>
-                    <div className="d-flex mb-0">
-                        <p className="reading-time mb-3 me-5"> 
-                            O'qish vaqti {post?.timeToRead} daqiqa
-                        </p>
 
-                        <p className="date mb-5">
-                            {
-                                `${date.getDate().toString().padStart(2, "0")} ${"-"}
-                                ${getMonth(date)}, ${date.getFullYear()}`
-                            }
-                        </p>
-                    </div>
                 </div>
             </div>
 
