@@ -7,7 +7,7 @@ const RequirementDetails = ({details, heading}) => (
             <div className="requirement inner mt--20">
                 {
                     details.map((detail, index) => (
-                        <div className={details.length >= 3 ? `tagcloud col-sm-12 p-4` : `tagcloud p-4`} key={index}>
+                        <div className={details.length >= 3 ? `tagcloud col-sm-4 p-4` : `tagcloud p-4`} key={index}>
                             <h6>{detail.heading}</h6>
                             <ul>
                                 {Object.entries(detail)
