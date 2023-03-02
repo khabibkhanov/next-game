@@ -30,7 +30,6 @@ const MyApp = ({ Component, pageProps } ) => {
             {getLayout(
                <ThemeProvider defaultTheme="dark">
                    <Component {...pageProps} />
-                   
                </ThemeProvider>
             )}
             <Analytics />

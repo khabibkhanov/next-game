@@ -8,7 +8,7 @@ const RequirementDetails = ({details, heading}) => (
                 {
                     details.map((detail, index) => (
                         <div className={details.length >= 3 ? `tagcloud col-sm-4 p-4` : `tagcloud p-4`} key={index}>
-                            <h6>{detail.heading}</h6>
+                            <h6 className="white">{detail.heading}</h6>
                             <ul>
                                 {Object.entries(detail)
                                     .filter(([key, value]) => value && key !== "id" && key !== "__component" && key !== "bit64" && key !== "heading")

@@ -15,11 +15,7 @@ module.exports = {
           },
         ]
     },
-    experimental: {
-      webVitalsAttribution: ['CLS', 'LCP']
-    },
     reactStrictMode: true,
-    swcMinify: true,
     sassOptions: {
         includePaths: [path.join(__dirname, "./src/assets/scss")],
     },
