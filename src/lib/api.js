@@ -125,8 +125,5 @@ export async function getGamesByCategory(category, fields = [] ) {
 export async function getCategories(fields = [] ) {
     let categories = await getGenres()
 
-    categories = categories
-        ?.map((cat) => getReviewsBySlug(cat.attributes.games.data, fields))
-
-    return categories
+    return categories.data
 }

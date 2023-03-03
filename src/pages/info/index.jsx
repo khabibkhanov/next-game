@@ -6,7 +6,7 @@ import Footer from "@layout/footer";
 import ReviewArea from "@containers/review/layout";
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
-import { getAllReviews } from "../../lib/api";
+import { getAllReviews, getCategories } from "../../lib/api";
 
 const POSTS_PER_PAGE = 4;
 
@@ -14,6 +14,7 @@ const GamesList = ({
     posts,
     recentPosts,
     genres,
+    categories,
     pagiData,
 }) => (
     <Wrapper>
@@ -32,6 +33,7 @@ const GamesList = ({
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                             <ReviewSidebar
                                 recentPosts={recentPosts}
+                                categories={categories}
                                 genres={genres}
                                 rootPage="/info"
                             />
@@ -66,9 +68,6 @@ export async function getServerSideProps() {
     const fields = [
         "title",
         "reviews",
-        "publisher",
-        "game_id",
-        "age_restricts",
         "game_picture",
         "genres",
         "slug",
@@ -76,7 +75,7 @@ export async function getServerSideProps() {
     ]
 
     const posts = await getAllReviews(fields);
-
+    const categories = await getCategories(['title'])
     const genres = posts.map((post) => [...post.genres]);
     const recentPosts = posts.slice(0, 4);
 
@@ -85,6 +84,7 @@ export async function getServerSideProps() {
             posts: posts.slice(0, POSTS_PER_PAGE),
             recentPosts,
             genres,
+            categories,
             className: "template-color-1",
             pagiData: {
                 currentPage: 1,
@@ -98,6 +98,7 @@ GamesList.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
     genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    categories: PropTypes.arrayOf(PropTypes.shape({})),
     pagiData: PropTypes.shape({
         currentPage: PropTypes.number.isRequired,
         numberOfPages: PropTypes.number.isRequired,

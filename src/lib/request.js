@@ -39,7 +39,7 @@ export async function getGenres() {
     let data 
     await axios.get(`${baseUrl}/genres?populate=games`)
     .then(response => {
-        data = response.data.data
+        data = response.data
     })
 
     return data;
@@ -50,7 +50,6 @@ export async function getGamesByGenre(id) {
     await axios.get(`${baseUrl}/genres/${id}?populate[games][populate]=%2A`)
     .then(response => {
         data = response.data
-    }  )
-
+    })
     return data;
 }

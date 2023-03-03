@@ -6,11 +6,11 @@ import Footer from "@layout/footer";
 import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
 import ReviewSidebar from "@containers/review-sidebar";
-import { getAllReviews } from "../../lib/api";
+import { getAllReviews, getCategories } from "../../lib/api";
 import ReviewHero from "@components/review/review-hero";
 
 
-const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => {
+const ReviewSlug = ({ post, relatedPosts, recentPosts, categories }) => {
     post = post[0]
     const date = new Date(post.createdAt);
     const age_rating = post?.age_rating?.data?.attributes
@@ -26,7 +26,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => {
                             <ReviewHero age_rating={age_rating} date={date} post={post} />
 
                             <div className="col-xl-8 col-lg-10">
-                                <ReviewDetailsArea post={post} languages={languages} />
+                                <ReviewDetailsArea post={post} />
                                 <RelatedPostsArea
                                     relatedPosts={relatedPosts}
                                     title="Boshqa shu kabi maqolalar"
@@ -36,6 +36,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, languages }) => {
 
                             <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                                 <ReviewSidebar
+                                    categories={categories}
                                     genres={post.genres}
                                     recentPosts={recentPosts}
                                     rootPage="/info"
@@ -58,24 +59,19 @@ export async function getServerSideProps(res) {
         "slug",
         "title",
         "release_date",
-        "publisher",
-        "createdAt",
-        "developer",
+        "publisher_name",
         "age_restricts",
         "game_picture",
         "purchase",
         "languages",
         "age_rating",
         "timeToRead",
-        "publisher_notice",
-        "features",
-        "availables",
         "system_requirements",
         "genres",
-        "id"
     ]
 
     const posts = await getAllReviews(fields);
+    const categories = await getCategories(['title'])
     let post = posts?.filter((game) => game?.slug === slug)
 
     if(!post) {
@@ -83,10 +79,6 @@ export async function getServerSideProps(res) {
             notFound: true
         }
     }
-
-    const languages = posts?.map((game) => game?.languages);
-    const game_pictures = posts?.map((game) => game?.game_picture);
-    const genres = posts?.map((game) => [...game?.genres]);
 
     const recentPosts = posts.filter((filteredPost) => {
         let recentPostsNotCurrent = false;
@@ -115,16 +107,9 @@ export async function getServerSideProps(res) {
     return {
         props: {
             post,
-            slug,
-            // availables,
-            // publisher_notice,
-            // features,
+            categories,
             recentPosts,
-            languages,
-            game_pictures,
             relatedPosts,
-            // age_rating,
-            genres,
             className: "template-color-1",
         },
     };
@@ -133,12 +118,7 @@ export async function getServerSideProps(res) {
 ReviewSlug.propTypes = {
     post: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
-    game_picture: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    // age_rating: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    // publisher_notice: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    // features: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    // availables: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
+    categories: PropTypes.arrayOf(PropTypes.shape({})),
     relatedPosts: PropTypes.arrayOf(PropTypes.shape({})),
 };
 

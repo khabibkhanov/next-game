@@ -15,6 +15,9 @@ module.exports = {
           },
         ]
     },
+    experimental: {
+      largePageDataBytes: 800 * 1000,
+    },
     reactStrictMode: true,
     sassOptions: {
         includePaths: [path.join(__dirname, "./src/assets/scss")],
