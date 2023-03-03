@@ -20,7 +20,7 @@ const ReviewDetailsArea = ({ className, post }) => {
 
 ReviewDetailsArea.propTypes = {
     className: PropTypes.string,
-    post: PropTypes.arrayOf(PropTypes.shape({})),
+    post: PropTypes.shape({}),
 };
 
 export default ReviewDetailsArea;

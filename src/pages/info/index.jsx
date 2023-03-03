@@ -67,6 +67,7 @@ export async function getServerSideProps() {
         "title",
         "reviews",
         "publisher",
+        "game_id",
         "age_restricts",
         "game_picture",
         "genres",
@@ -78,7 +79,6 @@ export async function getServerSideProps() {
 
     const genres = posts.map((post) => [...post.genres]);
     const recentPosts = posts.slice(0, 4);
-
 
     return {
         props: {

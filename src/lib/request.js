@@ -16,10 +16,12 @@ export async function getGames(fields) {
 export async function getGamePicture() {
     let games
 
-    await axios.get(`${baseUrl}/games?pagination%5BpageSize%5D=9&fields=title&populate=game_picture`)
+    await axios.get(`${baseUrl}/games?sort=id:desc&pagination%5BpageSize%5D=12&fields=title%2C%20slug&populate=game_picture`)
     .then(response => {
         games = response?.data
+        games = games?.data?.map(post => post.attributes)
     }) 
+
     return games
 }
 
@@ -33,54 +35,22 @@ export async function getOneGame(slug, fields) {
     return data
 }
 
-// export async function getGenres() {
-//     let data
-//     await axios.get(`http://localhost:1337/api/genres?populate[0]=names`)
-//     .then(response => {
-//         data = response.data
-//     }  )
-//     return data;
-// }
+export async function getGenres() {
+    let data 
+    await axios.get(`${baseUrl}/genres?populate=games`)
+    .then(response => {
+        data = response.data.data
+    })
 
-// export async function getMinRequirements () {
-//     let data
-//     await axios.get("http://localhost:1337/api/min-requirements?populate=%2A")
-//     .then(response => {
-//         data = response.data
-//     })
-//     return data;
-// }
+    return data;
+}
 
-// export async function getLanguages () {
-//     let data
-//     await axios.get(`http://localhost:1337/api/languages?populate=%2A`)
-//     .then(response => {
-//         data = response.data
-//     })
-//     return data;
-// }
+export async function getGamesByGenre(id) {
+    let data
+    await axios.get(`${baseUrl}/genres/${id}?populate[games][populate]=%2A`)
+    .then(response => {
+        data = response.data
+    }  )
 
-// export async function getMinRequirements () {
-//     let data
-//     await axios.get(`http://localhost:1337/api/min-requirements?populate=%2A`)
-//     .then(response => {
-//         data = response.data
-//     })
-//     return data;
-// }
-
-// export async function Register(data) { 
-//     data = {
-//         headers: {
-//             "Accept": "application/json",
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(data)
-//     }
-
-//     await axios.post(`http://localhost:1337/api/auth/local/register`, data)
-//     .then((response) => {
-//         console.log(response);
-//     });
-// }
-
+    return data;
+}

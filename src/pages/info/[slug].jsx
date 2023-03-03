@@ -6,7 +6,7 @@ import Footer from "@layout/footer";
 import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
 import ReviewSidebar from "@containers/review-sidebar";
-import { getAllReviews, getOneReview } from "../../lib/api";
+import { getAllReviews } from "../../lib/api";
 import ReviewHero from "@components/review/review-hero";
 
 
@@ -72,6 +72,7 @@ export async function getServerSideProps(res) {
         "availables",
         "system_requirements",
         "genres",
+        "id"
     ]
 
     const posts = await getAllReviews(fields);

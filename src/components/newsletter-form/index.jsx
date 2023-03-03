@@ -9,10 +9,6 @@ const NewsletterForm = ({ className }) => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) => {
-        // eslint-disable-next-line no-console
-        // console.log(data);
-    };
     return (
         <form
             className={clsx("subscribe-input-wrapper", className)}

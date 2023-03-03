@@ -27,9 +27,6 @@ const LoginForm = ({ className }) => {
             window.localStorage.setItem("access_token",_res.data.jwt)   
             router.replace('/')
         })
-        .catch((err) => {
-            console.log(err)
-        });
     };
 
     return (

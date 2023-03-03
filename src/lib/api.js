@@ -1,14 +1,6 @@
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
-import { getGames, getOneGame, getGamePicture } from "./request";
-import handler from "src/pages/api/games";
-
-export async function getPostSlugs() {
-    let slugs = await getGames();
-    slugs = slugs.data.map((slug) => slug.attributes["title"]);
-
-    return slugs;
-}
+import { getGames, getGamePicture, getGamesByGenre, getGenres } from "./request";
 
 const wordsPerMinute = 225;
 
@@ -45,39 +37,44 @@ export function readingTime(text) {
 }
 
 export function getReviewsBySlug(posts, fields = []) {
-    posts = posts.attributes
-    let genres = posts?.genres?.data?.map((genre) => genre.attributes) || [];
-    let languages = posts?.languages?.data?.map((language) => language.attributes) ?? [];
+    const post = posts?.attributes
+
+    let genres = post?.genres?.data?.map((genre) => genre) || [];
     const items = {};
 
     fields.forEach((field) => { 
+        if (field === "game_id") {
+            const id = posts.id;
+            items[field] = id;
+        }
 
         if (field === "reviews" && field !== undefined){
-            items[field] = marked(posts["reviews"]);
+
+            const markedPost = marked(post["reviews"])
+            items[fields] = markedPost
         }
 
         if (field === "timeToRead") {
-            const readTime = readingTime(posts["reviews"]);
+            const readTime = readingTime(post["reviews"]);
             items[field] = readTime;
         }
 
         if (field === "genres" && field !== undefined) {
             items[field] = genres?.map((genres) => (
                 {
-                    title: genres?.title,
-                    slug: slugify(genres?.title),
+                    genre_id: genres?.id,
+                    title: genres?.attributes?.title,
+                    slug: slugify(genres?.attributes?.title),
                 }
             ));
         }
-
-        if (
-            field !== "genres" &&
-            typeof posts[field] !== "undefined" 
+        if ( field !== "genres" &&
+            typeof post[field] !== "undefined" 
         ) {
-            items[field] = posts[field];
+            items[field] = post[field];
         }
-
     });
+
     return items;
 }
 
@@ -87,19 +84,49 @@ export async function getAllReviews(fields = []) {
     const posts = games?.data
         ?.sort((a, b) => b.id - a.id)
         ?.map((game) => getReviewsBySlug(game, fields))
-    
-        return posts;
+
+    return posts;
 }
 
-
 export async function getHomeBannerPictures() {
-    let games = await handler()
+    let games = await getGamePicture()
+
+    const game_pictures = games.reduce((acc, game) => {
+        const picture = game?.game_picture?.data?.attributes?.formats?.thumbnail ? game?.game_picture?.data?.attributes?.formats?.thumbnail : game?.game_picture?.data?.attributes;
+        const game_slug = game.slug
+        if (picture !== undefined) {
+          acc.push({picture, game_slug});
+        }
+
+        return acc;
+    }, []);
+
+    const hero_image_gen = function ([a,b,c, ...rest]) {
+        if (rest.length === 0) return [[a,b,c].filter(x => x!==undefined)]
+        return [[a,b,c]].concat(hero_image_gen(rest))
+    }
+
+    const images = hero_image_gen(game_pictures)
+
+    return images
+}
+
+export async function getGamesByCategory(category, fields = [] ) {
+    const categories = await getGamesByGenre(category)
+
+
+    const games = categories.data.attributes.games.data
+        ?.sort((a, b) => b.id - a.id)
+        ?.map((game) => getReviewsBySlug(game, fields))
+
     return games
 }
 
-export async function getOneReview(slug, fields) {
-    let games = await getOneGame(slug, fields);
+export async function getCategories(fields = [] ) {
+    let categories = await getGenres()
 
-    games = games?.data?.find(game => game?.attributes?.slug === slug)
-    return games?.attributes
+    categories = categories
+        ?.map((cat) => getReviewsBySlug(cat.attributes.games.data, fields))
+
+    return categories
 }

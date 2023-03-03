@@ -51,11 +51,8 @@ const SignupForm = ({ className }) => {
                             required: "username is required",
                         })}
                     />
-                    {
-                        console.log(errors)
-                    }
                     {errors?.username && (
-                        <ErrorText>{console.log(errors)}</ErrorText>
+                        <ErrorText>{errors.username.message}</ErrorText>
                     )}
                 </div>
                 <div className="mb-5">

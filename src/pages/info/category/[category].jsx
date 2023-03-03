@@ -8,7 +8,7 @@ import BlogArea from "@containers/blog/layout-03";
 import BlogSidebar from "@containers/blog-sidebar";
 import { getPostsByCategory, getAllPosts } from "../../../lib/api";
 
-const GamesList = ({ posts, title, categories, recentPosts, tags }) => (
+const BlogSingleColumn = ({ posts, title, categories, recentPosts, tags }) => (
     <Wrapper>
         <SEO pageTitle="Blog Single Column" />
         <Header />
@@ -39,32 +39,50 @@ const GamesList = ({ posts, title, categories, recentPosts, tags }) => (
     </Wrapper>
 );
 
-export async function getServerSideProps() {
-    const posts = getAllReviews(params.genres, [
+export async function getStaticPaths() {
+    const posts = getAllPosts(["category"]);
+    return {
+        paths: posts.map(({ category }) => ({
+            params: {
+                category: category.slug,
+            },
+        })),
+        fallback: false,
+    };
+}
+
+export async function getStaticProps({ params }) {
+    const posts = getPostsByCategory(params.category, [
+        "title",
+        "date",
         "slug",
         "image",
-        "genres",
+        "category",
         "timeToRead",
-    ])
-
-    const widgetPosts = getAllPosts(["title", "slug", "genres"]);
-    const categories = widgetPosts.map((blog) => ({ ...blog.genres }));
+    ]);
+    const widgetPosts = getAllPosts(["title", "slug", "category", "tags"]);
+    const categories = widgetPosts.map((blog) => ({ ...blog.category }));
+    const tags = widgetPosts.map((blog) => [...blog.tags]);
+    const recentPosts = widgetPosts.slice(0, 4);
 
     return {
         props: {
             posts,
             categories,
+            recentPosts,
+            tags,
             title: params.category,
             className: "template-color-1",
         },
     };
 }
 
-GamesList.propTypes = {
+BlogSingleColumn.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape({})),
     categories: PropTypes.arrayOf(PropTypes.shape({})),
+    recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
     tags: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     title: PropTypes.string,
 };
 
-export default GamesList;
+export default BlogSingleColumn;

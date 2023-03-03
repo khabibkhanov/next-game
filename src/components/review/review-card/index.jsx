@@ -25,7 +25,7 @@ const ReviewCard = ({
         <div className={clsx("rn-blog", className)} {...rest}>
             <div className="inner">
                 {
-                    image.data.attributes.url && (
+                    image?.data?.attributes?.url && (
                         <div className="thumbnail">
                             <Anchor path={`${rootPage}/${slug}`}>
                                 <Image

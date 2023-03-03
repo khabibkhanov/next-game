@@ -12,7 +12,6 @@ const ReviewSidebar = ({
     rootPage,
 }) => (
     <aside className={clsx("rwt-sidebar", className)}>
-        {console.log(genres)}
         {categories?.length > 0 && (
             <CategoryWidget categories={categories} rootPage={rootPage} />
         )}

@@ -7,7 +7,7 @@ import Breadcrumb from "@components/breadcrumb";
 import ReviewArea from "@containers/review/layout";
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
-import { getAllReviews, getPostSlugs } from "../../../lib/api";
+import { getAllReviews, getGamesByCategory } from "../../../lib/api";
 
 const POSTS_PER_PAGE = 4;
 
@@ -81,7 +81,6 @@ export async function getServerSideProps({ params }) {
 
     const genres = posts.map((post) => [...post.genres]);
     const recentPosts = posts.slice(0, 4);
-
     return {
         props: {
             posts: posts.slice(
