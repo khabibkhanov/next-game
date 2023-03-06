@@ -9,16 +9,16 @@ const RequirementDetails = ({details, heading}) => (
                     details.map((detail, index) => (
                         <div className={details.length >= 3 ? `tagcloud col-sm-4 p-4` : `tagcloud p-4`} key={index}>
                             <h6 className="white">{detail.heading}</h6>
-                            <ul>
+                            <div>
                                 {Object.entries(detail)
                                     .filter(([key, value]) => value && key !== "id" && key !== "__component" && key !== "bit64" && key !== "heading")
                                     .map(([key, value]) => (
-                                        <li key={key}>
+                                        <p className="mb-2" key={key}>
                                             <b>{key.replace('_', ' ')}:</b> {value}
-                                        </li>
+                                        </p>
                                     ))
                                 }
-                            </ul>
+                            </div>
                         </div>
                     ))
                 }

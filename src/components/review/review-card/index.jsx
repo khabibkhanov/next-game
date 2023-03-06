@@ -18,6 +18,7 @@ const ReviewCard = ({
     timeToRead,
     image,
     rootPage,
+    category,
     layout,
     ...rest
 }) => (

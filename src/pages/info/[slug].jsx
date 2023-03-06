@@ -6,11 +6,10 @@ import Footer from "@layout/footer";
 import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
 import ReviewSidebar from "@containers/review-sidebar";
-import { getAllReviews, getCategories } from "../../lib/api";
+import { getAllReviews, getCategories, getGenres } from "../../lib/api";
 import ReviewHero from "@components/review/review-hero";
 
-
-const ReviewSlug = ({ post, relatedPosts, recentPosts, categories }) => {
+const ReviewSlug = ({ post, relatedPosts, recentPosts, categories, genres}) => {
     post = post[0]
     const date = new Date(post.createdAt);
     const age_rating = post?.age_rating?.data?.attributes
@@ -67,13 +66,13 @@ export async function getServerSideProps(res) {
         "languages",
         "age_rating",
         "timeToRead",
+        "categories",
         "system_requirements",
         "genres",
     ]
 
     const posts = await getAllReviews(fields);
     const categories = await getCategories(['title'])
-    console.log(categories)
     let post = posts?.filter((game) => game?.slug === slug)
 
     if(!post) {

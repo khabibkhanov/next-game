@@ -40,6 +40,8 @@ export function getReviewsBySlug(posts, fields = []) {
     const post = posts?.attributes
 
     let genres = post?.genres?.data?.map((genre) => genre) || [];
+    let categories = post?.categories?.data?.map((category) => category) || [];
+
     const items = {};
 
     fields.forEach((field) => { 
@@ -67,6 +69,23 @@ export function getReviewsBySlug(posts, fields = []) {
                     slug: slugify(genres?.attributes?.title),
                 }
             ));
+        }
+
+        
+        if (field === "categories" && field !== undefined) {
+            items[field] = categories?.map((categories) => (
+                {
+                    category_id: categories?.id,
+                    title: categories?.attributes?.title,
+                    slug: slugify(categories?.attributes?.title),
+                }
+            ));
+        }
+        
+        if ( field !== "genres" && field !== "categories" &&
+            typeof post[field] !== "undefined" 
+        ) {
+            items[field] = post[field];
         }
         if ( field !== "genres" &&
             typeof post[field] !== "undefined" 
