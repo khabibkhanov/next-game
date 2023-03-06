@@ -7,7 +7,7 @@ const GenreWidget = ({ genres, rootPage }) => {
 
     return (
         <div className="rbt-single-widget widget_tag_cloud mt--40">
-            <h3 className="title">Janrlar</h3>
+            <h3 className="title">Teglar</h3>
             <div className="inner mt--20">
                 <div className="tagcloud">
                     {settingGenres?.map((genres) => (

@@ -5,7 +5,7 @@ const CategoryWidget = ({ categories, rootPage }) => {
 
     return (
         <div className="rbt-single-widget widget_categories">
-            <h3 className="title">Categories</h3>
+            <h3 className="title">Janrlar</h3>
             <div className="inner">
                 <ul className="category-list">
                     {categories?.map((cat) => (

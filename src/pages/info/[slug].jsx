@@ -73,6 +73,7 @@ export async function getServerSideProps(res) {
 
     const posts = await getAllReviews(fields);
     const categories = await getCategories(['title'])
+    console.log(categories)
     let post = posts?.filter((game) => game?.slug === slug)
 
     if(!post) {

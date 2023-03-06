@@ -1,6 +1,6 @@
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
-import { getGames, getGamePicture, getGamesByGenre, getGenres } from "./request";
+import { getGames, getGamePicture, getCategoriesReq, getGamesByCategoryReq, getGenresReq, getGamesByGenreReq } from "./request";
 
 const wordsPerMinute = 225;
 
@@ -111,8 +111,14 @@ export async function getHomeBannerPictures() {
     return images
 }
 
+export async function getCategories (fields = [] ) {
+    let categories = await getCategoriesReq()
+
+    return categories.data
+}
+
 export async function getGamesByCategory(category, fields = [] ) {
-    const categories = await getGamesByGenre(category)
+    const categories = await getGamesByCategoryReq(category)
 
 
     const games = categories.data.attributes.games.data
@@ -122,8 +128,20 @@ export async function getGamesByCategory(category, fields = [] ) {
     return games
 }
 
-export async function getCategories(fields = [] ) {
-    let categories = await getGenres()
+export async function getGamesByGenre(genre, fields = [] ) {
+    const genres = await getGamesByGenreReq(genre)
 
-    return categories.data
+
+    const games = genres.data.attributes.games.data
+        ?.sort((a, b) => b.id - a.id)
+        ?.map((game) => getReviewsBySlug(game, fields))
+
+    return games
+}
+
+
+export async function getGenres(fields = [] ) {
+    let genres = await getGenresReq()
+
+    return genres.data
 }

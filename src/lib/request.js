@@ -35,7 +35,7 @@ export async function getOneGame(slug, fields) {
     return data
 }
 
-export async function getGenres() {
+export async function getGenresReq() {
     let data 
     await axios.get(`${baseUrl}/genres?populate=games`)
     .then(response => {
@@ -45,9 +45,27 @@ export async function getGenres() {
     return data;
 }
 
-export async function getGamesByGenre(id) {
+export async function getGamesByGenreReq(id) {
     let data
     await axios.get(`${baseUrl}/genres/${id}?populate[games][populate]=%2A`)
+    .then(response => {
+        data = response.data
+    })
+    return data;
+}
+
+export async function getCategoriesReq(id) {
+    let data 
+    await axios.get(`${baseUrl}/categories?populate=games`)
+    .then(response => {
+        data = response.data
+    })
+    return data;
+}
+
+export async function getGamesByCategoryReq(id) {
+    let data
+    await axios.get(`${baseUrl}/categories/${id}?populate[games][populate]=%2A`)
     .then(response => {
         data = response.data
     })
