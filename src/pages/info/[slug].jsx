@@ -58,6 +58,7 @@ export async function getServerSideProps(res) {
         "reviews",
         "slug",
         "title",
+        "createdAt",
         "release_date",
         "publisher_name",
         "age_restricts",

@@ -17,7 +17,7 @@
 
     .blog-content-top {
         padding-top: 70vh;
-        margin-bottom: 30px;
+        margin-bottom: 100px;
 
         .game-headings {
             font-size: 70px;
@@ -68,6 +68,7 @@
 
         @media #{$md-layout} {
             padding-top: 20px;
+            margin-bottom: 0;
 
             .game-headings {
                 display: block !important;
@@ -96,6 +97,7 @@
 
         @media #{$sm-layout} {
             padding-top: 20px;
+            margin-bottom: 0;
 
             .game-headings {
                 display: block !important;

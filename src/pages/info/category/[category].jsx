@@ -13,6 +13,10 @@ const GamesList = ({ posts, title, categories, recentPosts, tags }) => (
         <SEO pageTitle="Barcha Maqolalar" />
         <Header />
         <main id="main-content" className="mt--85">
+           <Breadcrumb
+                pageTitle={categories.filter(category => category.id === parseInt(title))[0].attributes.title || "Maqolalar"}
+                currentPage="Maqolalar"
+            />
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">

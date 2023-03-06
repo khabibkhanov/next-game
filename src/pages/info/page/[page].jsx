@@ -23,8 +23,8 @@ const GamesList = ({
         <Header />
         <main id="main-content" className="mt--85">
             <Breadcrumb
-                pageTitle="Barcha Maqolalar"
-                currentPage="Barcha Maqolalar"
+                pageTitle="Maqolalar"
+                currentPage="Maqolalar"
             />
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">

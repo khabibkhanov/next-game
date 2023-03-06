@@ -4,6 +4,7 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
 import ReviewArea from "@containers/review/layout";
+import Breadcrumb from "@components/breadcrumb"
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews, getCategories } from "../../lib/api";
@@ -21,6 +22,11 @@ const GamesList = ({
         <SEO pageTitle="Barcha Maqolalar" />
         <Header />
         <main id="main-content" className="mt--85">
+            <Breadcrumb
+                pageTitle="Maqolalar"
+                currentPage="Maqolalar"
+            />
+
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">
