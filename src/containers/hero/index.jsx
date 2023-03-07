@@ -4,7 +4,11 @@ import Button from "@ui/button";
 import clsx from "clsx";
 
 const BannerGallery = dynamic(() => import("@components/banner-ui/banner-gallery"), {
-    loading: () => <p>Loading...</p>,
+    loading: () => (
+        <div className="spinner-border text-dark" role="status">
+            <span className="sr-only">Loading...</span>
+        </div>
+    ),
     ssr: false,
 });
 
