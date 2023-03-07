@@ -855,7 +855,6 @@
         transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
         padding: 20px 20px;
 
-
         img {
             transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
             display: block;
@@ -863,7 +862,7 @@
             height: 180px !important;
             object-fit: cover !important;
             border-radius: 20px;
-            // object-position: center;
+            cursor: pointer;
             margin: 0 !important;
         }
     }
