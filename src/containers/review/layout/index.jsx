@@ -4,7 +4,6 @@ import ReviewCard from "@components/review/review-card";
 
 const ReviewArea = ({ className, data, rootPage }) => (
     <div className={clsx("blog-wrapper", className)}>
-        {console.log(data)}
         {data?.posts?.map((post) => (
             <ReviewCard
                 key={post.slug}
@@ -15,7 +14,7 @@ const ReviewArea = ({ className, data, rootPage }) => (
                 title={post.title}
                 slug={post.slug}    
                 publisher={post.publisher}
-                category={post.categories}
+                category={post.category}
                 timeToRead={post.timeToRead}
                 image={{ ...post.game_picture, alt: post.title, width: 350, height: 200 }}
                 rootPage={rootPage}

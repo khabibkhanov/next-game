@@ -77,7 +77,7 @@ export async function getServerSideProps() {
         "game_picture",
         "genres",
         "slug",
-        "categories",
+        "category",
         "timeToRead",
     ]
 

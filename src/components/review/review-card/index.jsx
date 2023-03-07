@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import Image from "next/image";
 import Anchor from "@ui/anchor";
-import { ImageType } from "@utils/types";
 import { images } from "next.config";
 
 const url = images.domains[0]
@@ -46,6 +45,11 @@ const ReviewCard = ({
                 }
                 <div className="content">
                         <div className="category-info">
+                            <div className="category-list">
+                                <Anchor path={`${rootPage}/category/${category.data.id}`}>
+                                    #{category.data.attributes.title}
+                                </Anchor>
+                            </div>
                             <div className="meta">
                                 <span>
                                     <i className="feather-clock" /> O'qish davomiyligi {timeToRead} daqiqa

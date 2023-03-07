@@ -72,7 +72,7 @@ export function getReviewsBySlug(posts, fields = []) {
         }
 
         
-        if (field === "categories" && field !== undefined) {
+        if (field === "category" && field !== undefined) {
             items[field] = categories?.map((categories) => (
                 {
                     category_id: categories?.id,
@@ -82,7 +82,7 @@ export function getReviewsBySlug(posts, fields = []) {
             ));
         }
         
-        if ( field !== "genres" && field !== "categories" &&
+        if ( field !== "genres" && field !== "category" &&
             typeof post[field] !== "undefined" 
         ) {
             items[field] = post[field];

@@ -24,7 +24,27 @@ const CategoryWidget = ({ categories, rootPage }) => {
         </div>
     );
 };
-
+{/* <motion.div layout className="isotope-list item-4">
+{products?.slice(0, 10)?.map((prod) => (
+    <motion.div
+        key={prod.id}
+        className={clsx("grid-item")}
+        layout
+    >
+        <Product
+            placeBid={!!data.placeBid}
+            title={prod.title}
+            slug={prod.slug}
+            latestBid={prod.latestBid}
+            price={prod.price}
+            likeCount={prod.likeCount}
+            image={prod.images?.[0]}
+            authors={prod.authors}
+            bitCount={prod.bitCount}
+        />
+    </motion.div>
+))}
+</motion.div> */}
 CategoryWidget.propTypes = {
     categories: PropTypes.arrayOf(PropTypes.shape({})),
     rootPage: PropTypes.string,

@@ -8,7 +8,7 @@ import ReviewArea from "@containers/review/layout";
 import ReviewSidebar from "@containers/review-sidebar";
 import { getAllReviews, getCategories, getGamesByCategory } from "../../../lib/api";
 
-const GamesList = ({ posts, title, categories, recentPosts, tags }) => (
+const GamesList = ({ posts, title, categories, recentPosts, genres }) => (
     <Wrapper>
         <SEO pageTitle="Barcha Maqolalar" />
         <Header />
@@ -30,7 +30,7 @@ const GamesList = ({ posts, title, categories, recentPosts, tags }) => (
                             <ReviewSidebar
                                 categories={categories}
                                 recentPosts={recentPosts}
-                                tags={tags}
+                                genres={genres}
                                 rootPage="/info"
                             />
                         </div>
@@ -45,8 +45,7 @@ const GamesList = ({ posts, title, categories, recentPosts, tags }) => (
 export async function getServerSideProps({ params }) {
 
     const { category } = params;
-
-    const posts = await getGamesByCategory(category, [
+    const fields =  [
         "reviews",
         "title",
         "release_date",
@@ -54,15 +53,22 @@ export async function getServerSideProps({ params }) {
         "slug",
         "genres",
         "timeToRead",
+        "category",
         "id"
-    ])
+    ]
 
+    const posts = await getGamesByCategory(category, fields)
+    const AllPosts = await getAllReviews(fields);
     const categories = await getCategories(['title'])
+    const genres = AllPosts.map((post) => [...post.genres]);
+    const recentPosts = AllPosts.slice(0, 4);
 
     return {
         props: {
             posts,
             categories,
+            recentPosts,
+            genres,
             title: params.category,
             className: "template-color-1",
         },
@@ -71,7 +77,8 @@ export async function getServerSideProps({ params }) {
 
 GamesList.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape({})),
-    // categories: PropTypes.arrayOf(PropTypes.shape({})),
+    recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
+    genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
     tags: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
     title: PropTypes.string,
