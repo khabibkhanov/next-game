@@ -46,8 +46,8 @@ const ReviewCard = ({
                 <div className="content">
                         <div className="category-info">
                             <div className="category-list">
-                                <Anchor path={`${rootPage}/category/${category.data.id}`}>
-                                    #{category.data.attributes.title}
+                                <Anchor path={`${rootPage}/category/${category?.data?.id}`}>
+                                    #{category?.data?.attributes?.title}
                                 </Anchor>
                             </div>
                             <div className="meta">
