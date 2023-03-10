@@ -13,6 +13,7 @@ const RelatedPostsArea = ({title, space, className, relatedPosts, rootPage }) =>
                     title={post.title}
                     slug={post.slug}
                     genres={post.genres}
+                    category={post.category}
                     timeToRead={post.timeToRead}
                     image={post.game_picture}
                     rootPage={rootPage}

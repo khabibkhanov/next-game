@@ -1,6 +1,7 @@
 {
     "name": "next-game",
     "private": true,
+    "module": "CommonJS",
     "scripts": {
         "dev": "next dev",
         "build": "rimraf dist && next build",
