@@ -5,7 +5,8 @@ import GameDetails from "@containers/review/game-details";
 import { Nav, TabContainer, TabContent, TabPane } from "react-bootstrap";
 
 const ReviewDetailsArea = ({ className, post }) => {
-    
+    const guides = post?.guides?.data.map((item) => item)
+
     return (
         <div className={clsx("blog-details-area", className)}>
             <TabContainer defaultActiveKey={'nav-info'}>
@@ -24,12 +25,14 @@ const ReviewDetailsArea = ({ className, post }) => {
                                         >
                                             Ma'lumotlar
                                         </Nav.Link>
-                                        <Nav.Link
-                                            as="button"
-                                            eventKey="nav-guide"
-                                        >
-                                            O'yinni yutish sirlari
-                                        </Nav.Link>
+                                        {
+                                            guides && <Nav.Link
+                                                as="button"
+                                                eventKey="nav-guide"
+                                            >
+                                                O'yinni yutish sirlari
+                                            </Nav.Link>
+                                        }
                                     </Nav>
                                 </nav>
                             </div>
@@ -47,13 +50,19 @@ const ReviewDetailsArea = ({ className, post }) => {
                                 <GameDetails games = {post} />
                             </div>
                         </TabPane>
-                        <TabPane eventKey="nav-guide">
-                            <div>
-                                <h1>
-                                    Guides
-                                </h1>
-                            </div>
+                        <TabPane eventKey="nav-guide" className="row d-flex g-5">
+                            {guides && guides.map(guide => (
+                                <div className="nav-info mb-5">
+                                    <h2>{guide.attributes.title}</h2>
+                                    <div
+                                        dangerouslySetInnerHTML={{ __html: markdown.toHTML(guide.attributes.guide_text)}}
+                                    />
+                                    <div className="mb-4"></div>
+                                    <hr />
+                                </div>
+                            ))}
                         </TabPane>
+               
                 </TabContent>
             </TabContainer>
         </div>

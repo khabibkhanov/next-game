@@ -32,14 +32,14 @@ const GamesList = ({
                         <div className="col-xl-8 col-lg-8">
                             <ReviewArea
                                 data={{ posts }}
-                                rootPage="/info"
+                                rootPage="/news"
                             />
                         </div>
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                             <ReviewSidebar
                                 recentPosts={recentPosts}
                                 genres={genres}
-                                rootPage="/info"
+                                rootPage="/news"
                             />
                         </div>
                     </div>
@@ -54,7 +54,7 @@ const GamesList = ({
                                 <Pagination
                                     currentPage={pagiData.currentPage}
                                     numberOfPages={pagiData.numberOfPages}
-                                    rootPage="/info"
+                                    rootPage="/news"
                                     className="single-column-blog"
                                 />
                             )}

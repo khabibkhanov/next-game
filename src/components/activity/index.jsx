@@ -21,39 +21,39 @@ const Activity = ({
                     <div className="thumbnail">
                         <Anchor path={path}>
                             <Image
-                                loading="lazy"
-                                src={image.src}
-                                alt={image?.alt || "Nft_Profile"}
-                                width={image?.width || 500}
-                                height={image?.height || 500}
+                                // loading="lazy"
+                                // src={image.src}
+                                // alt={image?.alt || "Nft_Profile"}
+                                // width={image?.width || 500}
+                                // height={image?.height || 500}
                             />
                         </Anchor>
                     </div>
                 )}
                 <div className="content">
                     <Anchor path={path}>
-                        <h6 className="title">{title}</h6>
+                        {/* <h6 className="title">{title}</h6> */}
                     </Anchor>
                     <p dangerouslySetInnerHTML={{ __html: desc }} />
                     <div className="time-maintane">
                         <div className="time data">
-                            <i className="feather-clock" />
+                            {/* <i className="feather-clock" />
                             <span>
                                 {time} on {date}
-                            </span>
+                            </span> */}
                         </div>
                         <div className="user-area data">
-                            <i className="feather-user" />
-                            <Anchor path={author.slug}>{author.name}</Anchor>
+                            {/* <i className="feather-user" />
+                            <Anchor path={author.slug}>{author.name}</Anchor> */}
                         </div>
                     </div>
                 </div>
             </div>
             <div className="icone-area">
-                {status === "follow" && <i className="feather-thumbs-up" />}
+                {/* {status === "follow" && <i className="feather-thumbs-up" />}
                 {status === "sale" && <i className="feather-shopping-cart" />}
                 {status === "like" && <i className="feather-heart" />}
-                {status === "offer" && <i className="feather-user-plus" />}
+                {status === "offer" && <i className="feather-user-plus" />} */}
             </div>
         </div>
     </div>

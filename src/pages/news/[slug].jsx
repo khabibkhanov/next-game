@@ -6,10 +6,10 @@ import Footer from "@layout/footer";
 import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
 import ReviewSidebar from "@containers/review-sidebar";
-import { getAllReviews, getCategories, getGenres } from "../../lib/api";
+import { getAllReviews, getCategories } from "../../lib/api";
 import ReviewHero from "@components/review/review-hero";
 
-const ReviewSlug = ({ post, relatedPosts, recentPosts, categories, genres}) => {
+const ReviewSlug = ({ post, relatedPosts, recentPosts, categories}) => {
     post = post[0]
     const date = new Date(post.createdAt);
     const age_rating = post?.age_rating?.data?.attributes
@@ -29,7 +29,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, categories, genres}) => {
                                 <RelatedPostsArea
                                     relatedPosts={relatedPosts}
                                     title="Boshqa shu kabi maqolalar"
-                                    rootPage="/info"
+                                    rootPage="/news"
                                 />
                             </div>
 
@@ -38,7 +38,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, categories, genres}) => {
                                     categories={categories}
                                     genres={post.genres}
                                     recentPosts={recentPosts}
-                                    rootPage="/info"
+                                    rootPage="/news"
                                 />
                             </div>
                         </div>
