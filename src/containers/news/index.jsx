@@ -35,8 +35,6 @@ const NewsArea = ({ className, data }) => (
                                         className="single-column mb--30"
                                         title={post.title}
                                         slug={post.slug}    
-                                        publisher={post.publisher}
-                                        category={post.category}
                                         createdAt={post.createdAt}
                                         timeToRead={post.timeToRead}
                                         image={{ ...post.game_picture, alt: post.title, width: 350, height: 200 }}

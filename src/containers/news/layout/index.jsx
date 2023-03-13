@@ -27,6 +27,7 @@ const NewsLayout = ({
                                 <Image
                                     src={image.data.attributes.formats.small.url}
                                     alt={image.data.attributes.formats.small.name || "NFT_portfolio"}
+                                    objectFit="cover"
                                     width={430}
                                     height={430}
                                 />

@@ -16350,6 +16350,7 @@ button .small-image {
 }
 .lg-product-wrapper .inner .thumbnail img {
   border-radius: 5px;
+  object-fit: cover;
   transition: var(--transition);
 }
 .lg-product-wrapper .inner .thumbnail img:hover {
