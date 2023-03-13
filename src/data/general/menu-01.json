@@ -5,8 +5,13 @@
         "path": "/"
     },
     {
+        "id": 2,
+        "text": "Yangiliklar",
+        "path": "/news"
+    },
+    {
         "id": 5,
-        "text": "Maqolalar",
+        "text": "O'yinlar",
         "path": "/info"
     },
     {

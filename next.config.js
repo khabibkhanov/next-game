@@ -29,7 +29,7 @@ module.exports = {
   },
   images: {
     domains: [
-        // 'res.cloudinary.com'
+        'res.cloudinary.com'
     ],
     // Add caching configuration for server-side rendered pages
     // generateEtags: false,

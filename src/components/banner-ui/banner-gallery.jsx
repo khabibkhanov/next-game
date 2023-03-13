@@ -7,10 +7,6 @@ import Link from "next/link";
 
 const url = images.domains[0]
 
-// const myLoader = (({src}) => {
-//     return src
-// })
-
 const BannerGallery = ({ className, pictures }) => (
     <div className="banner-gallery-loop">
         {pictures.map((image, index, arr) => (
@@ -37,7 +33,6 @@ const BannerGallery = ({ className, pictures }) => (
                     <Image
                         fetchpriority="high"
                         loading="lazy"
-                        // loader={myLoader}
                         src={`${image?.picture?.url}`}
                         alt={image?.picture?.alternativeText || "banner"}
                         width={300}

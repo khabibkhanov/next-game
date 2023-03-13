@@ -522,9 +522,10 @@
 
 .lg-product_tab-pane {
     padding: 30px;
-    border-left: 1px solid var(--color-border);
-    border-right: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+    border: 1px solid var(--color-border);
+    // border-left: 1px solid var(--color-border);
+    // border-right: 1px solid var(--color-border);
+    // border-bottom: 1px solid var(--color-border);
     border-radius: 0 0 5px 5px;
     @media #{$small-mobile} {
         padding: 10px;
@@ -696,12 +697,15 @@
             overflow: hidden;
             border-radius: 5px;
             max-width: 251px;
+            min-width: 250px;
 
             @media #{$laptop-device} {
                 max-width: 190px;
+                min-width: 190px;
             }
             @media #{$md-layout} {
                 max-width: 170px;
+                min-width: 170px;
             }
             @media #{$sm-layout} {
                 max-width: 430px;
@@ -768,18 +772,27 @@
                 }
             }
             a {
-                h6 {
+                width: 200px;
+                height: 40px;
+                overflow: hidden;
+            
+                h2 {
                     display: block;
-                    font-weight: 500;
-                    font-size: 18px;
                     transition: var(--transition);
                     margin-bottom: 15px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;                  
+
                     @media #{$md-layout} {
                         margin-bottom: 5px;
                     }
                 }
                 &:hover {
-                    h6 {
+                    h2 {
                         color: var(--color-primary);
                     }
                 }

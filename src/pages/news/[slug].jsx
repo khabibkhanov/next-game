@@ -35,8 +35,8 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, categories}) => {
 
                             <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                                 <ReviewSidebar
-                                    categories={categories}
                                     genres={post.genres}
+                                    recentTitle="So'nggi yangiliklar"
                                     recentPosts={recentPosts}
                                     rootPage="/news"
                                 />

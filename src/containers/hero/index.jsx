@@ -44,7 +44,7 @@ const BannerGallery = dynamic(() => import("@components/banner-ui/banner-gallery
                                     data-sal-duration="800"
                                     path={"/info"}
                                 >
-                                    Maqolalarni o'qish
+                                    Barcha o'yinlar
                                 </Button>
                         </div>
                 </div>

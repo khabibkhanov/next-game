@@ -8,6 +8,7 @@ const ReviewSidebar = ({
     className,
     categories,
     recentPosts,
+    recentTitle,
     genres,
     rootPage,
 }) => (
@@ -16,7 +17,7 @@ const ReviewSidebar = ({
             <CategoryWidget categories={categories} rootPage={rootPage} />
         )}
         {recentPosts?.length > 0 && (
-            <RecentReviewssWidget recentPosts={recentPosts} rootPage={rootPage} />
+            <RecentReviewssWidget recentPosts={recentPosts} pageTitle={recentTitle} rootPage={rootPage} />
         )}
         {genres?.length > 0 && <GenreWidget genres={genres} rootPage={rootPage} />}
     </aside>

@@ -8,6 +8,7 @@ import Breadcrumb from "@components/breadcrumb"
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews, getCategories } from "../../lib/api";
+import NewsArea from "@containers/news";
 
 const POSTS_PER_PAGE = 4;
 
@@ -19,19 +20,19 @@ const GamesList = ({
     pagiData,
 }) => (
     <Wrapper>
-        <SEO pageTitle="Barcha Maqolalar" />
+        <SEO pageTitle="Barcha Yangiliklar" />
         <Header />
         <main id="main-content" className="mt--85">
             <Breadcrumb
-                pageTitle="Maqolalar"
-                currentPage="Maqolalar"
+                pageTitle="Yangiliklar"
+                currentPage="Yangiliklar"
             />
 
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">
                         <div className="col-xl-8 col-lg-8">
-                            <ReviewArea
+                            <NewsArea
                                 data={{ posts }}
                                 rootPage="/news"
                             />
@@ -39,11 +40,9 @@ const GamesList = ({
                         <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                             <ReviewSidebar
                                 recentPosts={recentPosts}
-                                categories={categories}
-                                genres={genres}
+                                recentTitle="So'nggi yangiliklar"
                                 rootPage="/news"
                             />
-                            
                         </div>
                     </div>
                     <div className="row">
@@ -79,12 +78,13 @@ export async function getServerSideProps() {
         "slug",
         "category",
         "timeToRead",
+        'createdAt',
     ]
 
     const posts = await getAllReviews(fields);
     const categories = await getCategories(['title'])
     const genres = posts.map((post) => [...post.genres]);
-    const recentPosts = posts.slice(0, 4);
+    const recentPosts = posts.slice(0, 8);
 
     return {
         props: {

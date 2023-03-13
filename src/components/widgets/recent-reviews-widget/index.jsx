@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import Anchor from "@ui/anchor";
 
-const RecentReviewssWidget = ({ recentPosts, rootPage }) => (
+const RecentReviewssWidget = ({ recentPosts, rootPage, pageTitle }) => (
     <div className="rbt-single-widget widget_recent_entries mt--40">
-        <h3 className="title">So'nggi Maqolalar</h3>
+        <h3 className="title">{pageTitle}</h3>
 
         <div className="inner">
             <ul>
@@ -33,10 +33,6 @@ RecentReviewssWidget.propTypes = {
         })
     ),
     rootPage: PropTypes.string,
-};
-
-RecentReviewssWidget.defaultProps = {
-    rootPage: "/info",
 };
 
 export default RecentReviewssWidget;

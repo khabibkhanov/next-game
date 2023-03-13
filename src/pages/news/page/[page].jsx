@@ -19,12 +19,12 @@ const GamesList = ({
     page,
 }) => (
     <Wrapper>
-        <SEO pageTitle={`Barcha Maqolalar - Page: ${page}`} />
+        <SEO pageTitle={`Barcha Yangiliklar - Page: ${page}`} />
         <Header />
         <main id="main-content" className="mt--85">
             <Breadcrumb
-                pageTitle="Maqolalar"
-                currentPage="Maqolalar"
+                pageTitle={`Yangiliklar`}
+                currentPage="Yangiliklar"
             />
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
@@ -39,6 +39,7 @@ const GamesList = ({
                             <ReviewSidebar
                                 recentPosts={recentPosts}
                                 genres={genres}
+                                recentTitle="So'nggi yangiliklar"
                                 rootPage="/news"
                             />
                         </div>
