@@ -3,14 +3,15 @@ import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
-import RelatedPostsArea from "@containers/related-posts";
+import dynamic from 'next/dynamic'
 import ReviewSidebar from "@containers/review-sidebar";
-import { getAllReviews, getCategories } from "../../lib/api";
-import NewsDetailsArea from "@containers/news/details";
+import { getAllNews, getAllReviews, getCategories } from "../../lib/api";
 
-const ReviewSlug = ({ post, relatedPosts, recentPosts, categories}) => {
+const NewsDetailsArea = dynamic(() => import('@containers/news/details'))
+
+const ReviewSlug = ({ post, relatedPosts, recentPosts}) => {
     post = post[0]
-    const date = new Date(post.createdAt);
+    const date = new Date(post?.createdAt);
 
     return (
         <Wrapper>
@@ -31,7 +32,7 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, categories}) => {
 
                             <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
                                 <ReviewSidebar
-                                    genres={post.genres}
+                                    genres={post?.genres}
                                     recentTitle="So'nggi yangiliklar"
                                     recentPosts={recentPosts}
                                     rootPage="/news"
@@ -54,24 +55,15 @@ export async function getServerSideProps(res) {
         "slug",
         "title",
         "createdAt",
-        "release_date",
-        "publisher_name",
-        "age_restricts",
         "game_picture",
-        "purchase",
-        "languages",
-        "age_rating",
         "timeToRead",
-        "category",
-        "system_requirements",
         "genres",
-        "guides"
     ]
 
-    const posts = await getAllReviews(fields);
-    const categories = await getCategories(['title'])
+    const posts = await getAllNews(fields);
     let post = posts?.filter((game) => game?.slug === slug)
     if(!post) {
+
         return {
             notFound: true
         }
@@ -83,16 +75,16 @@ export async function getServerSideProps(res) {
             recentPostsNotCurrent = true
             return recentPostsNotCurrent
         }
-    }).slice(0, 4)
+    }).slice(0, 8)
 
     const relatedPosts = posts.filter((filterPost) => {
-        if (filterPost.slug === post[0].slug) {
+        if (filterPost.slug === post[0]?.slug) {
             return false; // exclude current post
         }
     
         let isRelated = false;
     
-        post[0].genres.forEach((genre) => {
+        post[0]?.genres.forEach((genre) => {
             if (filterPost.genres.find((g) => g.title === genre.title)) {
                 isRelated = true;
             }
@@ -104,11 +96,10 @@ export async function getServerSideProps(res) {
     relatedPosts.forEach((relatedPost, index) => {
         relatedPost.isLast = index === relatedPosts.length - 1;
     });
-// console.log(relatedPosts);
+
     return {
         props: {
             post,
-            categories,
             recentPosts,
             relatedPosts,
             className: "template-color-1",

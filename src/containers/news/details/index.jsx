@@ -8,13 +8,10 @@ const myLoader = (({src}) => {
     return src
 })
 
-const NewsDetailsArea = ({ className, post, date }) => {
-    const guides = post?.guides?.data.map((item) => item)
-
-    return (
+const NewsDetailsArea = ({ className, post, date }) => (
         <div className={clsx("blog-details-area", className)}>
         <div className="blog-content-top mb-5 pt-0">
-            <h2 className="title">{post.title}</h2>
+            <h2 className="title">{post?.title}</h2>
             <span className="date">
                 {date.getDate().toString().padStart(2, "0")}{" "}
                 {getMonth(date)}, {date.getFullYear()}
@@ -23,7 +20,7 @@ const NewsDetailsArea = ({ className, post, date }) => {
         <div className="bd-thumbnail">
             <div className="large-img mb--30">
                 {
-                    post?.game_picture?.data.attributes.url && (
+                    post?.game_picture?.data?.attributes?.url && (
                         <Image
                             priority="high"
                             className="game-hero"
@@ -41,13 +38,11 @@ const NewsDetailsArea = ({ className, post, date }) => {
         </div>
         <div
             className="news-details"
-            dangerouslySetInnerHTML={{ __html: markdown.toHTML(post.reviews ) }}
+            dangerouslySetInnerHTML={{ __html: markdown.toHTML(post?.reviews ) }}
         />
-{        console.log(post.isLast)}
         <hr className={`news-seperate-line ${post?.isLast}`} />
     </div>
-    );
-};
+);
 
 NewsDetailsArea.propTypes = {
     className: PropTypes.string,

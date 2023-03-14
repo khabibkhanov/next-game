@@ -71,3 +71,14 @@ export async function getGamesByCategoryReq(id) {
     })
     return data;
 }
+
+export async function getNews(fields) {
+    let data
+    fields = fields.join('%2C%20')
+
+    await axios.get(`${baseUrl}/news?populate=${fields}`)
+    .then(response => {
+        data = response.data
+    }) 
+    return data
+}

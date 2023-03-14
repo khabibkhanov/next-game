@@ -1,6 +1,6 @@
 import { marked } from "marked";
 import { slugify } from "@utils/methods";
-import { getGames, getGamePicture, getCategoriesReq, getGamesByCategoryReq, getGenresReq, getGamesByGenreReq } from "./request";
+import { getGames, getGamePicture, getCategoriesReq, getGamesByCategoryReq, getGenresReq, getGamesByGenreReq, getNews } from "./request";
 
 const wordsPerMinute = 225;
 
@@ -103,6 +103,16 @@ export async function getAllReviews(fields = []) {
     const posts = games?.data
         ?.sort((a, b) => b.id - a.id)
         ?.map((game) => getReviewsBySlug(game, fields))
+
+    return posts;
+}
+
+export async function getAllNews(fields = []) {
+    const news = await getNews(fields);
+
+    const posts = news?.data
+        ?.sort((a, b) => b.id - a.id)
+        ?.map((post) => getReviewsBySlug(post, fields))
 
     return posts;
 }

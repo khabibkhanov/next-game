@@ -6,7 +6,7 @@ import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
-import { getAllReviews, getGamesByCategory } from "../../../lib/api";
+import { getAllNews } from "../../../lib/api";
 import NewsArea from "@containers/news/area";
 
 const POSTS_PER_PAGE = 5;
@@ -70,20 +70,19 @@ const GamesList = ({
 
 export async function getServerSideProps({ params }) {
     const { page } = params;
-    const posts = await getAllReviews([
+    const posts = await getAllNews([
         "reviews",
         "title",
-        "release_date",
         "game_picture",
         "slug",
         "genres",
         "createdAt",
-        "category",
         "timeToRead"
     ])
 
     const genres = posts.map((post) => [...post.genres]);
-    const recentPosts = posts.slice(0, 4);
+    const recentPosts = posts.slice(0, 8);
+
     return {
         props: {
             posts: posts.slice(

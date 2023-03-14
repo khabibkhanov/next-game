@@ -25,6 +25,7 @@ const NewsArea = ({ className, data }) => (
                         <TabContent>
                             <TabPane
                                 eventKey="nav-home"
+                                className="blog-wrapper"
                             >
                                 {data?.posts?.map((post) => (
                                     <NewsLayout

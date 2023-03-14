@@ -6,7 +6,7 @@ import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb"
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
-import { getAllReviews, getCategories } from "../../lib/api";
+import { getAllNews, getAllReviews, getCategories } from "../../lib/api";
 import NewsArea from "@containers/news/area";
 
 const POSTS_PER_PAGE = 5;
@@ -14,8 +14,6 @@ const POSTS_PER_PAGE = 5;
 const GamesList = ({
     posts,
     recentPosts,
-    genres,
-    categories,
     pagiData,
 }) => (
     <Wrapper>
@@ -70,17 +68,15 @@ const GamesList = ({
 export async function getServerSideProps() {
     const fields = [
         "title",
-        "reviews",
+        "news_text",
         "game_picture",
         "genres",
         "slug",
-        "category",
         "timeToRead",
         'createdAt',
     ]
 
-    const posts = await getAllReviews(fields);
-    const categories = await getCategories(['title'])
+    const posts = await getAllNews(fields);
     const genres = posts.map((post) => [...post.genres]);
     const recentPosts = posts.slice(0, 8);
 
@@ -89,7 +85,6 @@ export async function getServerSideProps() {
             posts: posts.slice(0, POSTS_PER_PAGE),
             recentPosts,
             genres,
-            categories,
             className: "template-color-1",
             pagiData: {
                 currentPage: 1,
@@ -103,7 +98,6 @@ GamesList.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape({})),
     recentPosts: PropTypes.arrayOf(PropTypes.shape({})),
     genres: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
-    categories: PropTypes.arrayOf(PropTypes.shape({})),
     pagiData: PropTypes.shape({
         currentPage: PropTypes.number.isRequired,
         numberOfPages: PropTypes.number.isRequired,
