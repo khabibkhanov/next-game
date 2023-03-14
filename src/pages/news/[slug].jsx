@@ -3,16 +3,14 @@ import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
-import ReviewDetailsArea from "@containers/review-details";
 import RelatedPostsArea from "@containers/related-posts";
 import ReviewSidebar from "@containers/review-sidebar";
 import { getAllReviews, getCategories } from "../../lib/api";
-import ReviewHero from "@components/review/review-hero";
+import NewsDetailsArea from "@containers/news/details";
 
 const ReviewSlug = ({ post, relatedPosts, recentPosts, categories}) => {
     post = post[0]
     const date = new Date(post.createdAt);
-    const age_rating = post?.age_rating?.data?.attributes
 
     return (
         <Wrapper>
@@ -21,16 +19,14 @@ const ReviewSlug = ({ post, relatedPosts, recentPosts, categories}) => {
             <main id="main-content main-content-style position-relative" className="mt--85">
                 <div className="rn-blog-area rn-blog-details-default">
                     <div className="container">
-                        <div className="row g-6 game-site-header">
-                            <ReviewHero age_rating={age_rating} date={date} post={post} />
-
+                        <div className="row g-6 game-site-header pt--100">
                             <div className="col-xl-8 col-lg-10">
-                                <ReviewDetailsArea post={post} />
-                                <RelatedPostsArea
-                                    relatedPosts={relatedPosts}
-                                    title="Boshqa shu kabi maqolalar"
-                                    rootPage="/news"
-                                />
+                                <NewsDetailsArea date={date} post={post} />
+                                {
+                                    relatedPosts.map(post => (
+                                        <NewsDetailsArea date={new Date(post.createdAt)} post={post} />
+                                    ) )
+                                }
                             </div>
 
                             <div className="col-xl-4 col-lg-4 mt_md--40 mt_sm--40">
@@ -103,8 +99,12 @@ export async function getServerSideProps(res) {
         });
     
         return isRelated;
-    }).sort(() => 0.5 - Math.random()).slice(0, 3);
-
+    }).sort(() => 0.5 - Math.random());
+    
+    relatedPosts.forEach((relatedPost, index) => {
+        relatedPost.isLast = index === relatedPosts.length - 1;
+    });
+// console.log(relatedPosts);
     return {
         props: {
             post,

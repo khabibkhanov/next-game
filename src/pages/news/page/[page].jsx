@@ -4,12 +4,12 @@ import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
 import Breadcrumb from "@components/breadcrumb";
-import ReviewArea from "@containers/review/layout";
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews, getGamesByCategory } from "../../../lib/api";
+import NewsArea from "@containers/news/area";
 
-const POSTS_PER_PAGE = 4;
+const POSTS_PER_PAGE = 5;
 
 const GamesList = ({
     posts,
@@ -30,7 +30,7 @@ const GamesList = ({
                 <div className="container">
                     <div className="row g-6">
                         <div className="col-xl-8 col-lg-8">
-                            <ReviewArea
+                            <NewsArea
                                 data={{ posts }}
                                 rootPage="/news"
                             />
@@ -77,6 +77,7 @@ export async function getServerSideProps({ params }) {
         "game_picture",
         "slug",
         "genres",
+        "createdAt",
         "category",
         "timeToRead"
     ])

@@ -123,5 +123,14 @@
                 }
             }
         }
-    }
+    }  
+}
+
+.news-seperate-line {
+    margin: 50px;
+}
+
+.news-seperate-line.true {
+    margin: 0px;
+    display: none;
 }

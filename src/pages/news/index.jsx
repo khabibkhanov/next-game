@@ -3,14 +3,13 @@ import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header";
 import Footer from "@layout/footer";
-import ReviewArea from "@containers/review/layout";
 import Breadcrumb from "@components/breadcrumb"
 import ReviewSidebar from "@containers/review-sidebar";
 import Pagination from "@components/pagination";
 import { getAllReviews, getCategories } from "../../lib/api";
-import NewsArea from "@containers/news";
+import NewsArea from "@containers/news/area";
 
-const POSTS_PER_PAGE = 4;
+const POSTS_PER_PAGE = 5;
 
 const GamesList = ({
     posts,
@@ -27,7 +26,6 @@ const GamesList = ({
                 pageTitle="Yangiliklar"
                 currentPage="Yangiliklar"
             />
-
             <div className="rn-blog-area rn-blog-details-default rn-section-gapTop">
                 <div className="container">
                     <div className="row g-6">

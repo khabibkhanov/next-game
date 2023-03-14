@@ -3,7 +3,7 @@ import clsx from "clsx";
 import TabContent from "react-bootstrap/TabContent";
 import TabContainer from "react-bootstrap/TabContainer";
 import TabPane from "react-bootstrap/TabPane";
-import NewsLayout from "./layout";
+import NewsLayout from "../layout";
 
 const NewsArea = ({ className, data }) => (
     <div
