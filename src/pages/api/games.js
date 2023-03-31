@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-const baseUrl = 'https://game-backend-production.up.railway.app/api'
+const baseUrl = 'http://localhost:3001/api'
 
 export default async function handler(res, req) {
   let games

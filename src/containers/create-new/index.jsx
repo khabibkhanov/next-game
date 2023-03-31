@@ -7,6 +7,7 @@ import Button from "@ui/button";
 import ProductModal from "@components/modals/product-modal";
 import ErrorText from "@ui/error-text";
 import { toast } from "react-toastify";
+import NiceSelect from "@ui/nice-select";
 
 const CreateNewArea = ({ className, space }) => {
     const [showProductModal, setShowProductModal] = useState(false);
@@ -37,14 +38,17 @@ const CreateNewArea = ({ className, space }) => {
 
     const onSubmit = (data, e) => {
         const { target } = e;
-        const submitBtn =
-            target.localName === "span" ? target.parentElement : target;
+        console.log(data, target)
+
+        const submitBtn = target.localName === "span" ? target.parentElement : target;
         const isPreviewBtn = submitBtn.dataset?.btn;
-        setHasImageError(!selectedImage);
-        if (isPreviewBtn && selectedImage) {
-            setPreviewData({ ...data, image: selectedImage });
+        setHasImageError(!selectedImage)
+
+        if (isPreviewBtn && selectedImage) {    
+            setPreviewData({ ...data, image: selectedImage })
             setShowProductModal(true);
         }
+
         if (!isPreviewBtn) {
             notify();
             reset();
@@ -64,83 +68,23 @@ const CreateNewArea = ({ className, space }) => {
                 <form action="#" onSubmit={handleSubmit(onSubmit)}>
                     <div className="container">
                         <div className="row g-5">
-                            <div className="col-lg-3 offset-1 ml_md--0 ml_sm--0">
-                                <div className="upload-area">
-                                    <div className="upload-formate mb--30">
-                                        <h6 className="title">Upload file</h6>
-                                        <p className="formate">
-                                            Drag or choose your file to upload
-                                        </p>
-                                    </div>
-
-                                    <div className="brows-file-wrapper">
-                                        <input
-                                            name="file"
-                                            id="file"
-                                            type="file"
-                                            className="inputfile"
-                                            data-multiple-caption="{count} files selected"
-                                            multiple
-                                            onChange={imageChange}
-                                        />
-                                        {selectedImage && (
-                                            <img
-                                                id="createfileImage"
-                                                src={URL.createObjectURL(
-                                                    selectedImage
-                                                )}
-                                                alt=""
-                                                data-black-overlay="6"
-                                            />
-                                        )}
-
-                                        <label
-                                            htmlFor="file"
-                                            title="No File Choosen"
-                                        >
-                                            <i className="feather-upload" />
-                                            <span className="text-center">
-                                                Choose a File
-                                            </span>
-                                            <p className="text-center mt--10">
-                                                PNG, GIF, WEBP, MP4 or MP3.{" "}
-                                                <br /> Max 1Gb.
-                                            </p>
-                                        </label>
-                                    </div>
-                                    {hasImageError && !selectedImage && (
-                                        <ErrorText>Image is required</ErrorText>
-                                    )}
-                                </div>
-
-                                <div className="mt--100 mt_sm--30 mt_md--30 d-none d-lg-block">
-                                    <h5> Note: </h5>
-                                    <span>
-                                        {" "}
-                                        Service fee : <strong>2.5%</strong>{" "}
-                                    </span>{" "}
-                                    <br />
-                                    <span>
-                                        {" "}
-                                        You will receive :{" "}
-                                        <strong>25.00 ETH $50,000</strong>
-                                    </span>
-                                </div>
+                            <div className="col-lg-3 ml_md--0 ml_sm--0">
                             </div>
-                            <div className="col-lg-7">
+
+                            <div className="col-lg-9">
                                 <div className="form-wrapper-one">
                                     <div className="row">
-                                        <div className="col-md-12">
+                                        <div className="col-md-6">
                                             <div className="input-box pb--20">
                                                 <label
                                                     htmlFor="name"
                                                     className="form-label"
                                                 >
-                                                    Product Name
+                                                    O'yin nomi
                                                 </label>
                                                 <input
                                                     id="name"
-                                                    placeholder="e. g. `Digital Awesome Game`"
+                                                    placeholder="e. g. `Call of duty warfare eagames`"
                                                     {...register("name", {
                                                         required:
                                                             "Name is required",
@@ -154,34 +98,150 @@ const CreateNewArea = ({ className, space }) => {
                                             </div>
                                         </div>
 
-                                        <div className="col-md-12">
+                                        <div className="col-md-6">
                                             <div className="input-box pb--20">
                                                 <label
-                                                    htmlFor="Discription"
+                                                    htmlFor="name"
                                                     className="form-label"
                                                 >
-                                                    Discription
+                                                    slug
                                                 </label>
-                                                <textarea
-                                                    id="discription"
-                                                    rows="3"
-                                                    placeholder="e. g. “After purchasing the product you can get item...”"
-                                                    {...register(
-                                                        "discription",
-                                                        {
-                                                            required:
-                                                                "Discription is required",
-                                                        }
-                                                    )}
+                                                <input
+                                                    id="name"
+                                                    placeholder="e. g. `call-of-duty-warfare-eagames`"
+                                                    {...register("name", {
+                                                        required:
+                                                            "Name is required",
+                                                    })}
                                                 />
-                                                {errors.discription && (
+                                                {errors.name && (
                                                     <ErrorText>
-                                                        {
-                                                            errors.discription
-                                                                ?.message
-                                                        }
+                                                        {errors.name?.message}
                                                     </ErrorText>
                                                 )}
+                                            </div>
+                                        </div>
+
+                                        <div className="row mb--20">
+                                            <div className="col-md-6">
+                                                <div className="input-box pb--20">
+                                                    <label
+                                                        htmlFor="Properties"
+                                                        className="form-label"
+                                                        
+                                                    >
+                                                        Ishlab chiqarilgan sana
+                                                    </label>
+                                                    <input
+                                                        id="propertiys"  
+                                                        type="date"
+                                                        placeholder="e. g. `Properties`"
+                                                        {...register("propertiy", {
+                                                            required:
+                                                                "Propertiy is required",
+                                                        })}
+                                                    />
+                                                    {errors.propertiy && (
+                                                        <ErrorText>
+                                                            {
+                                                                errors.propertiy
+                                                                    ?.message
+                                                            }
+                                                        </ErrorText>
+                                                    )}
+                                                </div>
+
+                                                <div className="input-box pb--20">
+                                                    <label
+                                                        htmlFor="name"
+                                                        className="form-label"
+                                                    >
+                                                        O'yin nomi
+                                                    </label>
+                                                    <input
+                                                        id="name"
+                                                        placeholder="e. g. `Call of duty warfare eagames`"
+                                                        {...register("name", {
+                                                            required:
+                                                                "Name is required",
+                                                        })}
+                                                    />
+                                                    {errors.name && (
+                                                        <ErrorText>
+                                                            {errors.name?.message}
+                                                        </ErrorText>
+                                                    )}
+                                                </div>
+
+                                                <div className="input-box pb--20">
+                                                    <label
+                                                        htmlFor="name"
+                                                        className="form-label"
+                                                    >
+                                                        O'yin nomi
+                                                    </label>
+                                                    <input
+                                                        id="name"
+                                                        placeholder="e. g. `Call of duty warfare eagames`"
+                                                        {...register("name", {
+                                                            required:
+                                                                "Name is required",
+                                                        })}
+                                                    />
+                                                    {errors.name && (
+                                                        <ErrorText>
+                                                            {errors.name?.message}
+                                                        </ErrorText>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="upload-area pb-20">
+                                                    <div className="upload-formate mb-2">
+                                                        <span className="form-label">
+                                                            Rasm yuklang
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="brows-file-wrapper">
+                                                        <input
+                                                            name="file"
+                                                            id="file"
+                                                            type="file"
+                                                            className="inputfile"
+                                                            data-multiple-caption="{count} files selected"
+                                                            multiple
+                                                            onChange={imageChange}
+                                                        />
+                                                        {selectedImage && (
+                                                            <img
+                                                                id="createfileImage"
+                                                                src={URL.createObjectURL(
+                                                                    selectedImage
+                                                                )}
+                                                                alt=""
+                                                                data-black-overlay="6"
+                                                            />
+                                                        )}
+
+                                                        <label
+                                                            htmlFor="file"
+                                                            title="No File Choosen"
+                                                        >
+                                                            <i className="feather-upload" />
+                                                            <span className="text-center">
+                                                                Choose a File
+                                                            </span>
+                                                            <p className="text-center mt--10">
+                                                                PNG, GIF, WEBP, MP4 or MP3.{" "}
+                                                                <br /> Max 1Gb.
+                                                            </p>
+                                                        </label>
+                                                    </div>
+                                                    {hasImageError && !selectedImage && (
+                                                        <ErrorText>Image is required</ErrorText>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -215,76 +275,59 @@ const CreateNewArea = ({ className, space }) => {
                                         </div>
 
                                         <div className="col-md-4">
-                                            <div className="input-box pb--20">
+                                            <div className="select-box pb--20">
                                                 <label
-                                                    htmlFor="Size"
+                                                    htmlFor="price"
                                                     className="form-label"
                                                 >
-                                                    Size
+                                                    Item Price in $
                                                 </label>
-                                                <input
-                                                    id="size"
-                                                    placeholder="e. g. `Size`"
-                                                    {...register("size", {
-                                                        required:
-                                                            "Size is required",
-                                                    })}
-                                                />
-                                                {errors.size && (
-                                                    <ErrorText>
-                                                        {errors.size?.message}
-                                                    </ErrorText>
-                                                )}
-                                            </div>
-                                        </div>
+                                                <div className="input-two-wrapper">
+                                                    
+                                                    <div className="currency">
 
-                                        <div className="col-md-4">
-                                            <div className="input-box pb--20">
-                                                <label
-                                                    htmlFor="Propertie"
-                                                    className="form-label"
-                                                >
-                                                    Properties
-                                                </label>
-                                                <input
-                                                    id="propertiy"
-                                                    placeholder="e. g. `Propertie`"
-                                                    {...register("propertiy", {
-                                                        required:
-                                                            "Propertiy is required",
-                                                    })}
-                                                />
-                                                {errors.propertiy && (
-                                                    <ErrorText>
-                                                        {
-                                                            errors.propertiy
-                                                                ?.message
-                                                        }
-                                                    </ErrorText>
-                                                )}
+                                                        <NiceSelect
+                                                            options={[
+                                                                { value: "($)USD", text: "($)USD" },
+                                                                { value: "wETH", text: "wETH" },
+                                                                { value: "BIT Coin", text: "BIT Coin" },
+                                                                { value: "Bsdin", text: "BIT Coin" },
+                                                                { value: "soin", text: "BIT Coin" },
+
+                                                            ]}
+                                                            placeholder="Currency"
+                                                            className=""
+                                                            onChange={(e) => e}
+                                                        />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div className="col-md-12">
                                             <div className="input-box pb--20">
                                                 <label
-                                                    htmlFor="Royality"
+                                                    htmlFor="Discription"
                                                     className="form-label"
                                                 >
-                                                    Royality
+                                                    O'yin xaqida ma'lumotlar
                                                 </label>
-                                                <input
-                                                    id="royality"
-                                                    placeholder="e. g. `20%`"
-                                                    {...register("royality", {
-                                                        required:
-                                                            "Royality is required",
-                                                    })}
+                                                <textarea
+                                                    id="discription"
+                                                    rows="3"
+                                                    placeholder="e. g. Shu yerga yozing"
+                                                    {...register(
+                                                        "discription",
+                                                        {
+                                                            required:
+                                                                "Discription is required",
+                                                        }
+                                                    )}
                                                 />
-                                                {errors.royality && (
+                                                {errors.discription && (
                                                     <ErrorText>
                                                         {
-                                                            errors.royality
+                                                            errors.discription
                                                                 ?.message
                                                         }
                                                     </ErrorText>

@@ -120,9 +120,9 @@ export async function getAllNews(fields = []) {
 export async function getHomeBannerPictures() {
     let games = await getGamePicture()
 
-    const game_pictures = games.reduce((acc, game) => {
+    const game_pictures = games?.reduce((acc, game) => {
         const picture = game?.game_picture?.data?.attributes?.formats?.thumbnail ? game?.game_picture?.data?.attributes?.formats?.thumbnail : game?.game_picture?.data?.attributes;
-        const game_slug = game.slug
+        const game_slug = game?.slug
         if (picture !== undefined) {
           acc.push({picture, game_slug});
         }

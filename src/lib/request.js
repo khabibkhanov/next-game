@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = 'https://game-backend-production.up.railway.app/api'
+const baseUrl = 'http://localhost:3000/api'
 
 export async function getGames(fields) {
     let data

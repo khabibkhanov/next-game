@@ -18,15 +18,15 @@ const LoginForm = ({ className }) => {
     const onSubmit = (data, e) => {
         e.preventDefault()
 
-        axios({
-            method: "post",
-            url: "https://game-backend-production.up.railway.app/api/auth/local",
-            data,
-        })
-        .then((_res) => {
-            window.localStorage.setItem("access_token",_res.data.jwt)   
-            router.replace('/')
-        })
+        // axios({
+        //     method: "post",
+        //     url: "https://game-backend-production.up.railway.app/api/auth/local",
+        //     data,
+        // })
+        // .then((_res) => {
+        //     window.localStorage.setItem("access_token",_res.data.jwt)   
+        //     router.replace('/')
+        // })
     };
 
     return (
